@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Add Clearance
+gem 'clearance'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
