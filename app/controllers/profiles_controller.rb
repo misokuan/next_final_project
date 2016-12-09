@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
 
   # GET /profiles
   # GET /profiles.json
@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @profile = Profile.find_by(id: params[:id], user_id: params[:user_id])
   end
 
   # GET /profiles/new
@@ -19,6 +20,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @user = User.find_by(id: params[:user_id])
+    @profile = Profile.find(params[:profile])
+    
   end
 
   # POST /profiles
@@ -63,9 +67,6 @@ class ProfilesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
