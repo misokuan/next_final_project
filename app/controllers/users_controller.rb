@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
-   before_action :require_login
-
-  # def index
-  #   current_user.articles
-  # end
-
+  before_action :require_login
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  include 'clearance'
+  
   # GET /users
   # GET /users.json
   def index
