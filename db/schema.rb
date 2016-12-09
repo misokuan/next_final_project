@@ -11,12 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161209055459) do
+ActiveRecord::Schema.define(version: 20161209082743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -48,6 +46,7 @@ ActiveRecord::Schema.define(version: 20161209055459) do
     t.string   "interest",                   array: true
     t.string   "gender"
     t.integer  "user_id"
+    t.string   "avatar"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161209055459) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
