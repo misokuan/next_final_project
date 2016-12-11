@@ -12,7 +12,9 @@ class CampaignsController < ApplicationController
 
 	end 
 
-	def delete 
+	def destroy 
+		sign_out
+		redirect_to home_path
 	end 
 
 	def update 

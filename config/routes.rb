@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes". 
 
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
-    resources :campaigns, only: [:show, :delete, :edit, :update]
+    resources :campaigns, only: [:show, :edit, :update, :destroy]
     resources :profiles
   end
-  resources :campaigns, only: [:index, :show, :edit]
 
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
