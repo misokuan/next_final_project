@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<h1> This is the profile page </h1>
+
+<%= @profile.username %>
+<%= @profile.user_id %>
+
+<%= link_to 'edit', edit_user_profile_path(profile: @profile)%>
+

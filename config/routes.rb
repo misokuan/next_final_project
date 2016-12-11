@@ -8,9 +8,13 @@ Rails.application.routes.draw do
 
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+
+  get 'home' => 'home#index'
+  root 'home#index'
 
 
   # Example of regular route:
