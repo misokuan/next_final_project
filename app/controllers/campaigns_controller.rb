@@ -3,6 +3,7 @@ class CampaignsController < ApplicationController
 	end 
 
 	def show 
+		@campaign = current_user.campaign
 	end 
 
 	def edit 
