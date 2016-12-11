@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_one :profile
+  has_one :campaign 
   has_many :authentications, :dependent => :destroy  # attr_accessible :password, :password_confirmation
   # validates_confirmation_of :password_confirmation
   # validates_confirmation_of :password
@@ -23,6 +24,7 @@ class User < ActiveRecord::Base
   def validate_password
     raise PasswordDoesNotMatch if password_confirmation != password
   end   
+
 end
 
 class PasswordDoesNotMatch < StandardError; end 
