@@ -7,7 +7,11 @@ class SessionsController < Clearance::SessionsController
         if authentication.user
           user = authentication.user 
           authentication.update_token(auth_hash)
-          Profile.where(user_id: user.id).nil?
+          if user.profile.nil?
+            Profile.create(user_id: user.id) 
+          else 
+            Profile.where(user_id: user.id)
+          end
           @next = root_url
           @notice = "Signed in!"
         else
