@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :users, only: [:index, :new, :show, :edit] do 
     resources :profiles
   end
 
-
+  resources :campaigns, only: [:index, :show, :edit]
   # You can have the root of your site routed with "root"
   root 'users#index'
 
