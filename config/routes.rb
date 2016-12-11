@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :users, only: [:index, :new, :show, :edit]
-
+  resources :users, only: [:new, :index, :show, :edit, :update, :destroy] 
   # You can have the root of your site routed with "root"
-  # root 'users#index'
+  root 'users#index'
+
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
