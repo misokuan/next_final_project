@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
- 
+  has_one :profile
   has_many :authentications, :dependent => :destroy  # attr_accessible :password, :password_confirmation
   # validates_confirmation_of :password_confirmation
   # validates_confirmation_of :password
