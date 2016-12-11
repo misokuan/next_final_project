@@ -14,4 +14,7 @@
   <% end %>
 </div>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path(profile: @profile) %>
+
+
+@profile = Profile.find(params[:profile])
