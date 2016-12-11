@@ -28,3 +28,5 @@ class User < ActiveRecord::Base
   end   
 
 class PasswordDoesNotMatch < StandardError; end 
+
+end
