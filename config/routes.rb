@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes". 
 
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
+    resources :campaigns
     resources :profiles
   end
 
