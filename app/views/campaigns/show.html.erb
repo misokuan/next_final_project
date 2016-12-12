@@ -1,0 +1,29 @@
+<h1> This is the show campaign </h1>
+</tr>
+
+
+<%= "Title: " + @campaign.title %><br>
+<%= "Description: " + @campaign.description %><br>
+<%= "Rewards: " + @campaign.rewards %><br>
+<%= "Total Contributors: " + @campaign.total_contributors.to_s %><br>
+<%= "Total Amount Contributed: " + "$" + @campaign.total_amount_contribute.to_s %><br>
+<%= "Campaign Taggings: " + @campaign.taggings.to_s %><br>
+<%= "User ID: " + @campaign.user_id.to_s %><br>
+
+<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+
+
+
+<!--  create_table "campaigns", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "rewards"
+    t.integer  "total_contributors"
+    t.integer  "total_amount_contribute"
+    t.string   "cover_photo"
+    t.string   "campaign_images"
+    t.string   "taggings"
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end -->

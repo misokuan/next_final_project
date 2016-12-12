@@ -1,13 +1,21 @@
 Rails.application.routes.draw do
+  
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  resources :users, only: [:index, :new, :show, :edit] do 
+  # See how all your routes lay out with "rake routes". 
+
+  resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
+    resources :campaigns, only: [:show, :edit, :update, :destroy]
     resources :profiles
   end
 
-
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  match '/signout', :to => 'sessions#destroy', via: :delete
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+
+  get 'home' => 'home#index'
+  root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

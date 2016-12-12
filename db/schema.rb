@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209082743) do
+
+ActiveRecord::Schema.define(version: 20161211082125) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.string   "uid"
+    t.string   "token"
+    t.string   "provider"
+    t.string   "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "rewards"
+    t.integer  "total_contributors"
+    t.integer  "total_amount_contribute"
+    t.string   "cover_photo"
+    t.string   "campaign_images"
+    t.string   "taggings"
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -52,12 +80,13 @@ ActiveRecord::Schema.define(version: 20161209082743) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "email"
-    t.string   "encrypted_password", limit: 128
-    t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128
+    t.string   "encrypted_password",    limit: 128
+    t.string   "confirmation_token",    limit: 128
+    t.string   "remember_token",        limit: 128
+    t.string   "password_confirmation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
