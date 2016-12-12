@@ -3,11 +3,30 @@ class CampaignsController < ApplicationController
 	end 
 
 	def show 
+		@campaign = current_user.campaign
 	end 
 
 	def edit 
+		@user = User.find_by(id: params[:user_id])
+    @campaign = Campaign.find(params[:campaign])
+
 	end 
 
-	def delete 
+	def destroy 
+		sign_out
+		redirect_to home_path
+	end 
+
+	def update 
+		campaign = Campaign.find(params[:id])
+		campaign.update(campaign_params)
+		redirect_to user_campaign_path
+	end
+
+
+	private 
+
+	def campaign_params
+	    params.require(:campaign).permit(:title, :description, :rewards, :taggings)
 	end 
 end
