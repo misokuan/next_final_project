@@ -1,6 +1,6 @@
 <h1> Create your new campaign! </h1>
 
-<%= form_for [@user, @campaign] do |f| %>
+<%= form_for(@campaign, url: user_campaigns_path(:user_id => current_user.id)) do |f| %>
 <p>
     <%= f.label :Title %><br>
     <%= f.text_field :title %>

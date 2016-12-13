@@ -3,12 +3,21 @@ class CampaignsController < ApplicationController
 	end 
 
 	def new
-      @controller = Controller.new
+      @campaign = Campaign.new
     end
 
     def create
-    	@user = User.find_by(id: params[:user_id])
-    	@campaign = Campaign.new
+    	@campaign = Campaign.new(campaign_params)
+    	@campaign.user_id = current_user.id
+    	respond_to do |format|
+      	  if @campaign.save
+        	format.html { redirect_to user_campaign_path(user_id:@campaign.user_id, id:@campaign.id), notice: 'Campaign was successfully created.' }
+        	format.json { render :show, status: :created, location: campaign_url(@campaign) }
+      	  else
+        	format.html { render :new }
+        	format.json { render json: @campaign.errors, status: :unprocessable_entity }
+      	  end
+    	end
     end
 
 	def show 
