@@ -11,6 +11,22 @@ User ID: <%= @campaign.user_id %><br>
 
 <%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
 
+<% @posts = Post.new(campaign_id: @campaign.id) %>
+<%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
+        Post here:
+        <%= f.text_field :body %>
+        <%= f.submit %>
+    <% end %><br>
+
+Posts:<br>
+<% if @campaign.posts.length > 0 %>
+    <% @campaign.posts.each do |x| %>
+        <%= x.body %><br>
+        Posted at: <%= x.created_at %><br>
+        <br>
+    <% end %>
+<% end %>
+
 
 
 <!--  create_table "campaigns", force: :cascade do |t|
