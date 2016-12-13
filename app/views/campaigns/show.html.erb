@@ -10,22 +10,16 @@
 <%= "Campaign Taggings: " + "#{@campaign.taggings.to_s}" %><br>
 <%= "User ID: " + "#{@campaign.user_id.to_s}" %><br>
 
-<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+<%= link_to 'edit your campaign here', edit_user_campaign_path(campaign: @campaign)%><br>
+
+<p>Goals:</p> 
+Title: <%= @campaign.goal.title %><br>
+Description: <%= @campaign.goal.description %><br>
+Our Goals: <%= @campaign.goal.goal_per_month %><br>
+Total Amount: <%= @campaign.goal.current_per_month %><br>
 
 
+<%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
 
 
-
-<!--  create_table "campaigns", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "rewards"
-    t.integer  "total_contributors"
-    t.integer  "total_amount_contribute"
-    t.string   "cover_photo"
-    t.string   "campaign_images"
-    t.string   "taggings"
-    t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end -->
+<%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
