@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
     resources :campaigns, only: [:show, :edit, :update, :destroy] do
-      resources :posts
+      resources :posts do
+        resources :comments
+      end
     end
     resources :profiles
   end
