@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212131733) do
+ActiveRecord::Schema.define(version: 20161213042329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 20161212131733) do
     t.string "category_name"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "post_id"
+    t.text     "body"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "interests", force: :cascade do |t|
     t.string  "interest_name"
     t.integer "category_id"
@@ -52,16 +64,15 @@ ActiveRecord::Schema.define(version: 20161212131733) do
 
   add_index "interests", ["category_id"], name: "index_interests_on_category_id", using: :btree
 
-  create_table "messages", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
+    t.integer  "campaign_id"
     t.text     "body"
-    t.integer  "user_id"
-    t.integer  "stream_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["stream_id"], name: "index_messages_on_stream_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+  add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
 
   create_table "profile_interests", force: :cascade do |t|
     t.integer "profile_id"
@@ -87,17 +98,6 @@ ActiveRecord::Schema.define(version: 20161212131733) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
-  create_table "streams", force: :cascade do |t|
-    t.integer  "user_id"
-    t.text     "desc"
-    t.string   "status"
-    t.string   "opentok_session_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -111,19 +111,6 @@ ActiveRecord::Schema.define(version: 20161212131733) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
-  create_table "watches", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "stream_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "watches", ["stream_id"], name: "index_watches_on_stream_id", using: :btree
-  add_index "watches", ["user_id"], name: "index_watches_on_user_id", using: :btree
-
-  add_foreign_key "messages", "streams"
-  add_foreign_key "messages", "users"
-  add_foreign_key "streams", "users"
-  add_foreign_key "watches", "streams"
-  add_foreign_key "watches", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "users", column: "campaign_id"
 end
