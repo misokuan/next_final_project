@@ -2,17 +2,19 @@
 </tr>
 
 
-<%= "Title: " + "#{@campaign.title}" %><br>
-<%= "Description: " + "#{@campaign.description}" %><br>
-<%= "Rewards: " + "#{@campaign.rewards}" %><br>
-<%= "Total Contributors: " + "#{@campaign.total_contributors.to_s}" %><br>
-<%= "Total Amount Contributed: " + "$" + "#{@campaign.total_amount_contribute.to_s}" %><br>
-<%= "Campaign Taggings: " + "#{@campaign.taggings.to_s}" %><br>
-<%= "User ID: " + "#{@campaign.user_id.to_s}" %><br>
+<div class="col-md-12">
+<div class="col-md-6">
+<h2>Title <%= @campaign.title %></h2>
+Description: <%= @campaign.description %><br>
+Rewards: <%= @campaign.rewards %><br>
+Total Contributors: <%= @campaign.total_contributors %><br>
+Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
+Campaign Taggings: <%= @campaign.taggings %><br>
+User ID: <%= @campaign.user_id %><br>
 
-<%= link_to 'edit your campaign here', edit_user_campaign_path(campaign: @campaign)%><br>
+<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
 
-<p>Goals:</p> 
+<h2>Goals:</h2> 
 Title: <%= @campaign.goal.title %><br>
 Description: <%= @campaign.goal.description %><br>
 Our Goals: <%= @campaign.goal.goal_per_month %><br>
@@ -24,17 +26,6 @@ Total Amount: <%= @campaign.goal.current_per_month %><br>
 
 <%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
 
-<div class="col-md-12">
-<div class="col-md-6">
-<h1>Title <%= @campaign.title %></h1>
-Description: <%= @campaign.description %><br>
-Rewards: <%= @campaign.rewards %><br>
-Total Contributors: <%= @campaign.total_contributors %><br>
-Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
-Campaign Taggings: <%= @campaign.taggings %><br>
-User ID: <%= @campaign.user_id %><br>
-
-<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
 <% if current_user.id == @campaign.user.id %>
     <% @posts = Post.new(campaign_id: @campaign.id) %>
     <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>

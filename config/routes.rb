@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
     resources :campaigns, only: [:show, :edit, :update, :destroy] do 
+      resources :be_hero, only: [:show] 
+      resources :goals, only: [:edit, :update, :destroy]
       resources :posts do
         resources :comments
       end
-    resources :be_hero, only: [:show] 
-    resources :goals, only: [:edit, :update, :destroy]
+    end
     resources :profiles
   end
 
