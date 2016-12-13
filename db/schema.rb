@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213042329) do
+
+ActiveRecord::Schema.define(version: 20161213034933) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,13 +39,26 @@ ActiveRecord::Schema.define(version: 20161213042329) do
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "goal_id"
   end
 
+  add_index "campaigns", ["goal_id"], name: "index_campaigns_on_goal_id", using: :btree
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
   end
+
+
+  create_table "goals", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "goal_per_month"
+    t.integer  "current_per_month"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -56,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161213042329) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
 
   create_table "interests", force: :cascade do |t|
     t.string  "interest_name"
