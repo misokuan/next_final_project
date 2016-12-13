@@ -1,7 +1,6 @@
 class CreateGoals < ActiveRecord::Migration
   def up
     create_table :goals do |t|
-   		t.references :campaign, index:true 
    		t.string :title
    		t.string :description
    		t.integer :goal_per_month
