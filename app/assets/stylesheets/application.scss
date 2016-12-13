@@ -13,3 +13,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "users.scss";
+
+.email {
+	border: 1px solid #000;
+	width: 602px;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 2px 2px 2px;
+	text-align: center;
+}
