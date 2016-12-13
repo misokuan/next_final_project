@@ -2,15 +2,17 @@
 </tr>
 
 
-<%= "Title: " + @campaign.title %><br>
-<%= "Description: " + @campaign.description %><br>
-<%= "Rewards: " + @campaign.rewards %><br>
-<%= "Total Contributors: " + @campaign.total_contributors.to_s %><br>
-<%= "Total Amount Contributed: " + "$" + @campaign.total_amount_contribute.to_s %><br>
-<%= "Campaign Taggings: " + @campaign.taggings.to_s %><br>
-<%= "User ID: " + @campaign.user_id.to_s %><br>
+<%= "Title: " + "#{@campaign.title}" %><br>
+<%= "Description: " + "#{@campaign.description}" %><br>
+<%= "Rewards: " + "#{@campaign.rewards}" %><br>
+<%= "Total Contributors: " + "#{@campaign.total_contributors.to_s}" %><br>
+<%= "Total Amount Contributed: " + "$" + "#{@campaign.total_amount_contribute.to_s}" %><br>
+<%= "Campaign Taggings: " + "#{@campaign.taggings.to_s}" %><br>
+<%= "User ID: " + "#{@campaign.user_id.to_s}" %><br>
 
 <%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+
+
 
 
 
