@@ -1,7 +1,6 @@
-<h1> This is the show campaign </h1>
-</tr>
-
-Title: <%= @campaign.title %><br>
+<div class="col-md-12">
+<div class="col-md-6">
+<h1>Title <%= @campaign.title %></h1>
 Description: <%= @campaign.description %><br>
 Rewards: <%= @campaign.rewards %><br>
 Total Contributors: <%= @campaign.total_contributors %><br>
@@ -18,8 +17,9 @@ User ID: <%= @campaign.user_id %><br>
             <%= f.submit %>
         <% end %><br>
 <% end %>
-
-Posts:<br>
+</div>
+<div class="col-md-6">
+<h4>Posts:</h4>
 <% if @campaign.posts.length > 0 %>
     <% @campaign.posts.each do |x| %>
         <% @comments = Comment.new(post_id: x.id) %>
@@ -40,7 +40,7 @@ Posts:<br>
     <% end %>
 <% end %>
 
-
+</div>
 
 <!--  create_table "campaigns", force: :cascade do |t|
     t.string   "title"
