@@ -1,6 +1,10 @@
+<h1> This is the show campaign </h1>
+</tr>
+
+
 <div class="col-md-12">
 <div class="col-md-6">
-<h1>Title <%= @campaign.title %></h1>
+<h2>Title <%= @campaign.title %></h2>
 Description: <%= @campaign.description %><br>
 Rewards: <%= @campaign.rewards %><br>
 Total Contributors: <%= @campaign.total_contributors %><br>
@@ -9,6 +13,19 @@ Campaign Taggings: <%= @campaign.taggings %><br>
 User ID: <%= @campaign.user_id %><br>
 
 <%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+
+<h2>Goals:</h2> 
+Title: <%= @campaign.goal.title %><br>
+Description: <%= @campaign.goal.description %><br>
+Our Goals: <%= @campaign.goal.goal_per_month %><br>
+Total Amount: <%= @campaign.goal.current_per_month %><br>
+
+
+<%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
+
+
+<%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+
 <% if current_user.id == @campaign.user.id %>
     <% @posts = Post.new(campaign_id: @campaign.id) %>
     <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
@@ -55,3 +72,4 @@ User ID: <%= @campaign.user_id %><br>
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end -->
+
