@@ -1,3 +1,29 @@
+<h1> This is the show campaign </h1>
+</tr>
+
+
+<%= "Title: " + "#{@campaign.title}" %><br>
+<%= "Description: " + "#{@campaign.description}" %><br>
+<%= "Rewards: " + "#{@campaign.rewards}" %><br>
+<%= "Total Contributors: " + "#{@campaign.total_contributors.to_s}" %><br>
+<%= "Total Amount Contributed: " + "$" + "#{@campaign.total_amount_contribute.to_s}" %><br>
+<%= "Campaign Taggings: " + "#{@campaign.taggings.to_s}" %><br>
+<%= "User ID: " + "#{@campaign.user_id.to_s}" %><br>
+
+<%= link_to 'edit your campaign here', edit_user_campaign_path(campaign: @campaign)%><br>
+
+<p>Goals:</p> 
+Title: <%= @campaign.goal.title %><br>
+Description: <%= @campaign.goal.description %><br>
+Our Goals: <%= @campaign.goal.goal_per_month %><br>
+Total Amount: <%= @campaign.goal.current_per_month %><br>
+
+
+<%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
+
+
+<%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+
 <div class="col-md-12">
 <div class="col-md-6">
 <h1>Title <%= @campaign.title %></h1>
@@ -55,3 +81,4 @@ User ID: <%= @campaign.user_id %><br>
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end -->
+
