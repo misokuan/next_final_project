@@ -2,6 +2,15 @@ class CampaignsController < ApplicationController
 	def index 
 	end 
 
+	def new
+      @controller = Controller.new
+    end
+
+    def create
+    	@user = User.find_by(id: params[:user_id])
+    	@campaign = Campaign.new
+    end
+
 	def show 
 		@campaign = current_user.campaign
 	end 
