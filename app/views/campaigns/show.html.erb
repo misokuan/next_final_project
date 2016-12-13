@@ -23,3 +23,62 @@ Total Amount: <%= @campaign.goal.current_per_month %><br>
 
 
 <%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+
+<div class="col-md-12">
+<div class="col-md-6">
+<h1>Title <%= @campaign.title %></h1>
+Description: <%= @campaign.description %><br>
+Rewards: <%= @campaign.rewards %><br>
+Total Contributors: <%= @campaign.total_contributors %><br>
+Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
+Campaign Taggings: <%= @campaign.taggings %><br>
+User ID: <%= @campaign.user_id %><br>
+
+<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+<% if current_user.id == @campaign.user.id %>
+    <% @posts = Post.new(campaign_id: @campaign.id) %>
+    <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
+            Post here:
+            <%= f.text_field :body %>
+            <%= f.submit %>
+        <% end %><br>
+<% end %>
+</div>
+<div class="col-md-6">
+<h4>Posts:</h4>
+<% if @campaign.posts.length > 0 %>
+    <% @campaign.posts.each do |x| %>
+        <% @comments = Comment.new(post_id: x.id) %>
+        <div class="posts">
+        <%= x.body %><br>
+        Posted at: <%= x.created_at %><br>
+        <% if x.comments.length > 0 %>
+        <% x.comments.each do |comments| %>
+        &nbsp;&nbsp;<%= comments.body %> by <%= User.find(comments.user_id).email %><br>
+        <% end %>
+        <% end %>
+        <%= form_for(@comments, :url => user_campaign_post_comments_path(user_id: @campaign.user.id, campaign_id: @campaign.id, post_id: x.id)) do |f| %>
+        <%= f.text_field :body %>
+        <%= f.submit %>
+        <% end %>
+        </div>
+        <br>
+    <% end %>
+<% end %>
+
+</div>
+
+<!--  create_table "campaigns", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "rewards"
+    t.integer  "total_contributors"
+    t.integer  "total_amount_contribute"
+    t.string   "cover_photo"
+    t.string   "campaign_images"
+    t.string   "taggings"
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end -->
+

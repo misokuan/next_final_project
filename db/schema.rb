@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161213034933) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161213034933) do
     t.string "category_name"
   end
 
+
   create_table "goals", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -56,12 +59,36 @@ ActiveRecord::Schema.define(version: 20161213034933) do
     t.datetime "updated_at",        null: false
   end
 
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "post_id"
+    t.text     "body"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+
   create_table "interests", force: :cascade do |t|
     t.string  "interest_name"
     t.integer "category_id"
   end
 
   add_index "interests", ["category_id"], name: "index_interests_on_category_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.text     "body"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
 
   create_table "profile_interests", force: :cascade do |t|
     t.integer "profile_id"
@@ -100,4 +127,6 @@ ActiveRecord::Schema.define(version: 20161213034933) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "users", column: "campaign_id"
 end
