@@ -18,7 +18,7 @@ CarrierWave.configure do |config|
     provider:              'AWS',                        # required
     aws_access_key_id:     ENV['AWS_ACCESS_KEY'],                        # required
     aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],                        # required
-    region:                'us-west-2',                  # optional, defaults to 'us-east-1'
+    region:                'ap-southeast-1',                  # optional, defaults to 'us-east-1'
     # path_style:            true,
     # host:                  'https://bucketname.s3.amazonaws.com',             # optional, defaults to nil
     # host:                  's3.example.com',             # optional, defaults to nil
