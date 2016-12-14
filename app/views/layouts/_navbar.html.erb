@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,7 +14,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Some other link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Featured</a></li>
       </ul>
       <form class="navbar-form navbar-left">
@@ -30,7 +29,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
-            <li><a href="/users/<%=current_user.id%>/campaigns/<%=current_user.campaign.id%>">My Campaign</a></li>
+            <% if current_user.campaign == nil %>
+              <li><a href="/users/<%=current_user.id%>/campaigns/new">Create New Campaign</a></li>
+            <% else %>
+              <li><a href="/users/<%=current_user.id%>/campaigns/<%=current_user.campaign.id%>">My Campaign</a></li>
+            <% end %>
             <li><a href="#">Settings</a></li>
             <li><a href="#"> FAQ </a></li>
             <li role="separator" class="divider"></li>
@@ -44,6 +47,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 
     <div id="flash">
       <% flash.each do |key, value| %>
