@@ -12,6 +12,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-sm-3">
+    <% if @campaign.goal != nil %>
     <h2>Goals:</h2> 
 Title: <%= @campaign.goal.title %><br>
 Description: <%= @campaign.goal.description %><br>
@@ -23,7 +24,7 @@ Total Amount: <%= @campaign.goal.current_per_month %><br>
 
 
 <%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
-    </div>
+    <% end %></div>
     <div class="col-lg-9 col-sm-9">
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
