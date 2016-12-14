@@ -43,6 +43,7 @@ p {
   margin-bottom: 20px;
 }
 .bg-primary {
+  background-image: url('image_1_1_30.jpg');
   background-color: #F05F40;
 }
 .bg-dark {
@@ -149,6 +150,11 @@ aside {
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #F05F40;
   }
+}
+
+//Modal Sign In/Sign up //
+.controls_checkbox{
+  margin-left: 20px
 }
 header {
   position: relative;
@@ -390,7 +396,7 @@ fieldset[disabled] .btn-primary.active {
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   border: none;
-  border-radius: 10px;
+  border-radius: 0px;
   font-weight: 700;
   text-transform: uppercase;
 }
