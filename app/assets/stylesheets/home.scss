@@ -6,7 +6,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  padding-top: 0.5cm;
+ // padding-top: 0.5cm;
 }
 body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
@@ -62,7 +62,7 @@ aside {
   padding: 0;
 }
 .navbar-default {
-  background-color: white;
+  background-color: transparent !important;
   border-color: rgba(34, 34, 34, 0.05);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.35s;
@@ -71,7 +71,7 @@ aside {
 }
 
 .navbar-default .navbar-header .navbar-brand {
-  color: #F05F40;
+  color: #FFFFFF;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -106,6 +106,9 @@ aside {
 .navbar-default .nav > li.active > a:focus:hover {
   background-color: #253F59 ;
 }
+
+
+
 @media (min-width: 768px) {
   .navbar-default {
     background-color: #253F59 ;
@@ -387,7 +390,7 @@ fieldset[disabled] .btn-primary.active {
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   border: none;
-  border-radius: 300px;
+  border-radius: 10px;
   font-weight: 700;
   text-transform: uppercase;
 }
