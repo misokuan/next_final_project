@@ -18,7 +18,7 @@
 
   <p>
   	<%= f.label :Add_Campaign_Images %>
-  	<%= f.file_field :campaign_images %>
+  	<%= f.file_field :campaign_images, multiple: true %>
   </p>
 
    <p>
@@ -26,5 +26,5 @@
   	<%= f.file_field :cover_photo %>
   </p>
 
-    <%= f.submit "Edit Listings"%>
+    <%= f.submit "Edit Campaign"%>
 <% end %>

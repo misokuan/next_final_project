@@ -47,7 +47,6 @@ class ProfilesController < ApplicationController
 
     params.permit!
     @profile = Profile.find(params[:id])
-    byebug
     @profile.update(profile_params)
     redirect_to user_profile_path(:user_id => @profile.user_id, :id => @profile.id)
     # respond_to do |format|
