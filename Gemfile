@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
+# adding capybara for image testing
+
+
 # Add Clearance
 gem 'clearance'
 
 #adding test gem
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
 end
 # Add facebook login feature
 gem 'omniauth'
