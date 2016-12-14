@@ -1,0 +1,2 @@
+module BeHeroHelper
+end

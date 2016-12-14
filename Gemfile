@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Add Clearance
 gem 'clearance'
 
+#adding test gem
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
 # Add facebook login feature
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -58,5 +62,7 @@ end
 
 #add any other gems here
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'therubyracer'
+gem 'execjs'
 
 

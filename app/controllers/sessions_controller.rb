@@ -12,7 +12,7 @@ class SessionsController < Clearance::SessionsController
           else 
             Profile.where(user_id: user.id)
           end
-          @next = root_url
+          @next = user_profile_path(user, user.profile.id)
           @notice = "Signed in!"
         else
           user = User.create_with_auth_and_hash(authentication,auth_hash)

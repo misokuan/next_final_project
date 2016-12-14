@@ -5,6 +5,8 @@
 <%= image_tag @profile.avatar %>
 <%= @profile.username %>
 <%= @profile.user_id %>
+<%= @profile.description %>
+<%= @profile.address %>
 
-<%= link_to 'edit', edit_user_profile_path(profile: @profile)%>
+<%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
 

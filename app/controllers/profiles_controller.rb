@@ -23,7 +23,6 @@ class ProfilesController < ApplicationController
 
     @user = User.find_by(id: params[:user_id])
     @profile = Profile.find(params[:id])
-    
   end
 
   # POST /profiles
@@ -45,6 +44,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+
     params.permit!
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)
@@ -58,6 +58,7 @@ class ProfilesController < ApplicationController
     #     format.json { render json: @profile.errors, status: :unprocessable_entity }
     #   end
     # end
+
   end
 
   # DELETE /profiles/1
@@ -72,8 +73,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:username, :description, :date_of_birth, :address, :city, :interest, :gender, :avatar)
-
-      params.fetch(:profile, {})
+      params.require(:profile).permit(:username, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id)
     end
 end
