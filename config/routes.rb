@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes". 
 
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
+    resources :campaigns, only: [:show, :edit, :update, :destroy] do 
+      resources :be_hero, only: [:show] 
+      resources :goals, only: [:edit, :update, :destroy]
+      resources :posts do
+        resources :comments
+      end
+    end
     resources :profiles
   end
 
-
   # You can have the root of your site routed with "root"
-
-
+  match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
 
