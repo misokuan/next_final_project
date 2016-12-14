@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
     end
+    resources :streams, only: [:new, :create, :show] do
+      resources :viewers, only: [:index]
+    end
     resources :profiles, only: [:show, :edit, :update, :destroy]
   end
 
