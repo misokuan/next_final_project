@@ -47,6 +47,7 @@ class ProfilesController < ApplicationController
 
     params.permit!
     @profile = Profile.find(params[:id])
+    byebug
     @profile.update(profile_params)
     redirect_to user_profile_path(:user_id => @profile.user_id, :id => @profile.id)
     # respond_to do |format|
@@ -73,6 +74,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:username, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id)
+      params.require(:profile).permit(:username, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id, :avatar)
     end
 end
