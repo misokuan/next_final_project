@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :destroy] do 
     resources :campaigns, only: [:new, :create, :show, :edit, :update, :destroy] do 
-      resources :be_hero, only: [:show] 
+      resources :be_hero, only: [:new, :create] 
       resources :goals, only: [:edit, :update, :destroy]
       resources :posts, only: [:new, :create, :edit, :update, :destroy] do
         resources :comments, only: [:new, :create, :edit, :update, :destroy]
