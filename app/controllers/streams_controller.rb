@@ -13,7 +13,11 @@ class StreamsController < ApplicationController
 	end
 
 	def show
-	    @stream     = current_user.stream || current_user.create_stream
+		if current_user = User.find(params[:user_id])
+	    	@stream     = current_user.stream || current_user.create_stream
+	    else
+	    	@stream = User.find(params[:user_id]).stream
+	    end
         gon.opentok = opentok_data(@stream)
 	end
 

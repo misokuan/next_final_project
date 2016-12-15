@@ -6,16 +6,24 @@
 <br>
 <div class="col-lg-12 col-sm-12">
 	<div class="col-lg-3 col-sm-3">
+	<% if current_user == @stream.user %> 
 	<h1>Your stream</h1>
+	<% else %>
+	<h1><%= @stream.user.email %>'s stream </h1>
+	<% end %>
 	<h3>Title:</h3> 
 	<p><%= @stream.title %></p>
 	<h3>Desc:</h3>
 	<p><%= @stream.description %></p>
-	Link to your stream: <%= link_to user_stream_viewers_path(user_id: @stream.user.id, stream_id: @stream.id), user_stream_viewers_path(user_id: @stream.user.id, stream_id: @stream.id) %><br><br><br><br>
+	Link to your stream: <%= link_to user_stream_path(user_id: @stream.user.id, id: @stream.id), user_stream_path(user_id: @stream.user.id, id: @stream.id) %><br><br><br><br>
 	<button type="button" class="btn btn-primary btn-lg col-md-12">Give Credit</button>
 	</div>
 	<div class="col-lg-6 col-sm-6">
+	<% if current_user == @stream.user %>
 	<div id="publisher"></div>
+	<% else %>
+	<div id="stream"></div>
+	<% end %>
 	</div>
 	<div class="col-lg-3 col-sm-3">
 	<h1>Chatbox here</h1>
