@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :campaigns, only: [:new, :create, :show, :edit, :update, :destroy] do 
       resources :be_hero, only: [:new, :create] 
       resources :goals, only: [:edit, :update, :destroy]
-      resources :posts, only: [:new, :create, :edit, :update, :destroy] do
+      resources :posts, only: [:create, :update, :destroy] do
         resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
     end
