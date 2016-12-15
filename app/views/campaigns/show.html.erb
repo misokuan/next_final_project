@@ -19,16 +19,6 @@ Description: <%= @campaign.goal.description %><br>
 Our Goals: <%= @campaign.goal.goal_per_month %><br>
 Total Amount: <%= @campaign.goal.current_per_month %><br>
 
-Some Examples of Our Work in Progress: 
-
-<%= image_tag @campaign.cover_photo.thumb %>
-
-<% image_num = 0 %>
-  <% while image_num <= @campaign.campaign_images.length - 1 %>      
-    <img src="<%= @campaign.campaign_images[image_num].thumb.url %>">
-    <% image_num += 1 %>
-  <% end %>
-
 
 <%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
 
@@ -114,6 +104,16 @@ User ID: <%= @campaign.user_id %><br>
     </div>
     </div>
     </div>
+
+<h2>Some Examples of Our Work in Progress: </h2>
+
+<%= image_tag @campaign.cover_photo.desktop %>
+
+<% image_num = 0 %>
+  <% while image_num <= @campaign.campaign_images.length - 1 %>      
+    <img src="<%= @campaign.campaign_images[image_num].thumb.url %>">
+    <% image_num += 1 %>
+  <% end %>
 
 
 <!--  create_table "campaigns", force: :cascade do |t|
