@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 20161214091346) do
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "posts", "users", column: "campaign_id"
+  add_foreign_key "posts", "campaigns"
   add_foreign_key "streams", "users"
   add_foreign_key "viewers", "streams"
   add_foreign_key "viewers", "users"

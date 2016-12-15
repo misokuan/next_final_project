@@ -73,7 +73,7 @@ User ID: <%= @campaign.user_id %><br>
                 <% if @campaign.posts.length > 0 %>
                 <% @campaign.posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
-                    <%= x.body %><br>
+                    <%= x.body.html_safe %><br>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
