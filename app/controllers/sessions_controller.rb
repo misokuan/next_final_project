@@ -20,7 +20,10 @@ class SessionsController < Clearance::SessionsController
           @next = edit_user_profile_path(user_id: user.id, id: user.profile.id)   
           @notice = "User created - confirm or edit details..."
         end
-          
+        if user.username == nil
+          user.username = user.email[/[^@]+/]
+          user.save
+        end
         sign_in(user)
         redirect_to @next, :notice => @notice
       end

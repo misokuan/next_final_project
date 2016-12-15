@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   has_one :profile
   has_one :campaign 
   has_many :authentications, :dependent => :destroy
-  validates_presence_of :username
-  before_create {|user| user.username = user.email[/[^@]+/] if user.username.blank?}
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
