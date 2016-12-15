@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-
+    byebug
     params.permit!
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)
@@ -73,6 +73,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:username, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id, :avatar)
+      params.require(:profile).permit(:first_name, :last_name, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id, :avatar)
     end
 end
