@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161214084156) do
+
+ActiveRecord::Schema.define(version: 20161215070952) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,5 +127,4 @@ ActiveRecord::Schema.define(version: 20161214084156) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "posts", "users", column: "campaign_id"
 end

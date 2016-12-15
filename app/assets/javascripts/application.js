@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
@@ -22,4 +23,21 @@ $(".btn-pref .btn").click(function () {
     // $(".tab").addClass("active"); // instead of this do the below 
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
+// if($('#invisable_div').length){
+//   $('body').css('padding-top', '0cm');
+//   console.log('hello')
+// }
+// else 
+// 	$('body').css('padding-top', '0.85cm');
+// console.log('bye')
 });
+
+$(document).on("ready page:restore",function(){
+	if($('#invisable_div').length){
+  $('body').css('padding-top', '0cm');
+	}
+else {
+	$('body').css('padding-top', '0.85cm');
+	}
+});
+
