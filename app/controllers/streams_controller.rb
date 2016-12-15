@@ -9,12 +9,14 @@ class StreamsController < ApplicationController
 		params.permit!
 		@user = User.find(params[:user_id])
 		if Stream.find_by(user_id: @user.id) == nil
-			@stream = Stream.create(params[:stream])
+			@stream = Stream.create(user_id: @user.id)
+			@stream.update(params[:stream])
 		else
 			@stream = Stream.find_by(user_id: @user.id)
 			@stream.update(params[:stream])
 		end
-		Post.create(campaign_id: @user.campaign.id, body: "#{@user.email} is streaming #{@user.stream.title}! <a href=\"/users/#{@user.id}/streams/#{@user.stream.id}\">View now!</a>")
+		byebug
+		Post.create(campaign_id: @user.campaign.id, body: "#{@user.username} is streaming #{@user.stream.title}! <a href=\"/users/#{@user.id}/streams/#{@user.stream.id}\">View now!</a>")
 		redirect_to user_stream_path(current_user, @stream.id)
 	end
 

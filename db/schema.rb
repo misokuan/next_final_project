@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20161215080052) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,7 +147,6 @@ ActiveRecord::Schema.define(version: 20161215080052) do
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "posts", "campaigns"
   add_foreign_key "streams", "users"
   add_foreign_key "viewers", "streams"
   add_foreign_key "viewers", "users"

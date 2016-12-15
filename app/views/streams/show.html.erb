@@ -9,7 +9,7 @@
 	<% if current_user == @stream.user %> 
 	<h1>Your stream</h1>
 	<% else %>
-	<h1><%= @stream.user.email %>'s stream </h1>
+	<h1><%= @stream.user.username %>'s stream </h1>
 	<% end %>
 	<h3>Title:</h3> 
 	<p><%= @stream.title %></p>
