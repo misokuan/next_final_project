@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161213042329) do
-
-
+ActiveRecord::Schema.define(version: 20161215063959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,9 +81,18 @@ ActiveRecord::Schema.define(version: 20161213042329) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "title"
   end
 
   add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
+
+  create_table "posts_tags", id: false, force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
+  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id", using: :btree
+  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id", using: :btree
 
   create_table "profile_interests", force: :cascade do |t|
     t.integer "profile_id"
@@ -112,6 +118,12 @@ ActiveRecord::Schema.define(version: 20161213042329) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -119,7 +131,6 @@ ActiveRecord::Schema.define(version: 20161213042329) do
     t.string   "encrypted_password",    limit: 128
     t.string   "confirmation_token",    limit: 128
     t.string   "remember_token",        limit: 128
-    t.string   "avatar"
     t.string   "password_confirmation"
   end
 
@@ -128,4 +139,6 @@ ActiveRecord::Schema.define(version: 20161213042329) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "posts", "users", column: "campaign_id"
+  add_foreign_key "posts_tags", "posts"
+  add_foreign_key "posts_tags", "tags"
 end

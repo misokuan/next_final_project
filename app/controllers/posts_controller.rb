@@ -10,4 +10,11 @@ class PostsController < ApplicationController
 		redirect_to user_campaign_path(user_id: @posts.campaign.user.id, id: @posts.campaign.id)
 
 	end
+
+    def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @posts = tag.posts
+  
+  end
+
 end
