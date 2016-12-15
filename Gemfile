@@ -11,6 +11,10 @@ end
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# For live chat functionality
+gem 'twilio-ruby' # for interacting with twilio
+gem 'envyable' # for managing environment variables
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record

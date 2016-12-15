@@ -1,1 +1,1 @@
-OpenTokClient = OpenTok::OpenTok.new Figaro.env.opentok_api_key, Figaro.env.opentok_api_secret
+OpenTokClient = OpenTok::OpenTok.new(ENV['opentok_api_key'], ENV['opentok_api_secret'])
