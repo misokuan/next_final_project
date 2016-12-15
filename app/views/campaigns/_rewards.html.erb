@@ -1,0 +1,11 @@
+<%= form_tag user_campaign_rewards_path(user_id: @campaign.user.id, campaign_id: @campaign.id) do %>
+		<% @reward.each do |r| %>
+			<%= fields_for 'rewards[]', r do |f| %>
+				<%= f.label :amount %><br>
+				<%= f.number_field :amount %><br>
+				%= f.label :description %><br>
+				<%= f.text_field :description %><br>
+			<% end %>
+		<% end %>
+<%= submit_tag %>
+<% end %>

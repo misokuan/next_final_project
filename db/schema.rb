@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215080052) do
+ActiveRecord::Schema.define(version: 20161215130532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,17 @@ ActiveRecord::Schema.define(version: 20161215080052) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.decimal  "amount"
+    t.string   "description"
+    t.string   "rewards_class"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
+
   create_table "streams", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -147,6 +158,7 @@ ActiveRecord::Schema.define(version: 20161215080052) do
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "rewards", "campaigns"
   add_foreign_key "streams", "users"
   add_foreign_key "viewers", "streams"
   add_foreign_key "viewers", "users"
