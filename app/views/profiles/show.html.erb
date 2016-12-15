@@ -2,11 +2,11 @@
 
 <h1> This is the profile page </h1>
 
-<%= image_tag @profile.avatar %>
-<%= @profile.username %>
-<%= @profile.user_id %>
-<%= @profile.description %>
-<%= @profile.address %>
+<%= image_tag @profile.avatar.thumb %>
+<%= @profile.first_name %> <%= @profile.last_name %><br>
+<%= @profile.user_id %><br>
+<%= @profile.description %><br>
+<%= @profile.address %><br>
 
 <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
 

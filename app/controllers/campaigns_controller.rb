@@ -24,6 +24,7 @@ class CampaignsController < ApplicationController
 	end 
 
 	def edit 
+
 		@user = User.find_by(id: params[:user_id])
     	@campaign = Campaign.find(params[:campaign])
 	end 
@@ -34,8 +35,11 @@ class CampaignsController < ApplicationController
 	end 
 
 	def update 
+
+		params.permit!
 		campaign = Campaign.find(params[:id])
 		campaign.update(campaign_params)
+
 		redirect_to user_campaign_path
 	end
 
@@ -43,6 +47,6 @@ class CampaignsController < ApplicationController
 	private 
 
 	def campaign_params
-	    params.require(:campaign).permit(:title, :description, :rewards, :taggings)
+	    params.require(:campaign).permit(:title, :description, :rewards, :taggings, {campaign_images: []}, :cover_photo)
 	end 
 end
