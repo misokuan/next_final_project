@@ -1,7 +1,10 @@
 class BeHeroController < ApplicationController
+before_action :require_login
+
 	def new 
-		@user = current_user
 		@campaign = Campaign.find_by(id: params[:campaign_id])
+		@campaign_user = @campaign.user
+		@user = current_user
 		@client_token = Braintree::ClientToken.generate
 	end
 

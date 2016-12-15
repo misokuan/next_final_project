@@ -24,7 +24,6 @@ class CampaignsController < ApplicationController
 	end 
 
 	def edit 
-		byebug
 		@user = User.find_by(id: params[:user_id])
     	@campaign = Campaign.find(params[:campaign])
 	end 

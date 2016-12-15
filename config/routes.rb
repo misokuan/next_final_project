@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :profiles, only: [:show, :edit, :update, :destroy]
   end
+  resources :featured, only: [:index, :show]
 
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
