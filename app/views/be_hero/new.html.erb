@@ -15,14 +15,14 @@
   <label for="card-number">Card Number</label>
   <div class="hosted-field" id="card-number"></div>
 
-  <label for="cvv">CVV</label>a
+  <label for="cvv">CVV</label>
   <div class="hosted-field" id="cvv"></div>
 
   <label for="expiration-date">Expiration Date</label>
   <div class="hosted-field" id="expiration-date"></div>
 
-  <input type="hidden" name="payment_method_nounce">
-  <input type="submit" value="Pay $10" disabled>
+  <input type="hidden" name="payment_method_nonce">
+  <input id="submit_payment" type="submit" value="Pay $10" disabled>
 </form>
 
 
@@ -30,14 +30,14 @@
 <script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.6.0/js/hosted-fields.min.js"></script>
 <!-- Load the Hosted Fields component. -->
+
 <script>
-var form = document.querySelector('#checkout-form');
-var submit = document.querySelector('input[type="submit"]');
-var authorization = "<%= @client_token %>";
-braintree.client.create({
+  var form = document.querySelector('#checkout-form');
+  var submit = document.querySelector("#submit_payment");
+  var authorization = "<%= @client_token %>";
+  braintree.client.create({
   // Replace this with your own authorization.
   authorization: authorization
-
 }, function (clientErr, clientInstance) {
   if (clientErr) {
     // Handle error in client creation
@@ -77,6 +77,7 @@ braintree.client.create({
       return;
     }
 
+
     submit.removeAttribute('disabled');
 
     form.addEventListener('submit', function (event) {
@@ -87,11 +88,11 @@ braintree.client.create({
           // Handle error in Hosted Fields tokenization
           return;
         }
-
+        debugger
         // Put `payload.nonce` into the `payment-method-nonce` input, and then
         // submit the form. Alternatively, you could send the nonce to your server
         // with AJAX.
-        document.querySelector('input[name="payment_method_nounce"]').value = payload.nonce;
+        document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
         form.submit();
       });
     }, false);

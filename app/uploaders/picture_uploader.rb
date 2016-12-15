@@ -1,4 +1,4 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -24,27 +24,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   process resize_to_fit: [800, 800]
-
-  version :desktop do
-    process resize_to_fill: [820,312]
-  end
-
-  version :mobile do
-    process resize_to_fill: [640,360]
-  end
-
   #
   # def scale(width, height)
-  #   process resize_to_fill: [200,200] # do something
+  #   # do something
   # end
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [200, 200]
-  end
-
-  version :thumb2 do
-    process resize_to_fit: [50, 50]
+    process resize_to_fit: [300, 300]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

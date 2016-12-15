@@ -1,8 +1,8 @@
 class BeHeroController < ApplicationController
 	def new 
-		@client_token = Braintree::ClientToken.generate
 		@user = current_user
 		@campaign = Campaign.find_by(id: params[:campaign_id])
+		@client_token = Braintree::ClientToken.generate
 	end
 
 	def create 
@@ -14,7 +14,6 @@ class BeHeroController < ApplicationController
 		  :submit_for_settlement => true
 		  }
 		)
-		
 		flash[:alert] = "Your payment went through succesfully!"
 		redirect_to home_path
 	end

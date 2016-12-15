@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214091346) do
+ActiveRecord::Schema.define(version: 20161215070952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20161214091346) do
     t.integer  "total_contributors"
     t.integer  "total_amount_contribute"
     t.string   "cover_photo"
-    t.string   "campaign_images"
     t.string   "taggings"
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "goal_id"
+    t.json     "campaign_images"
   end
 
   add_index "campaigns", ["goal_id"], name: "index_campaigns_on_goal_id", using: :btree
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20161214091346) do
   create_table "posts", force: :cascade do |t|
     t.integer  "campaign_id"
     t.text     "body"
-    t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.json     "post_images"
   end
 
   add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
