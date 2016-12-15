@@ -7,7 +7,8 @@ class StreamsController < ApplicationController
 
 	def create
 		params.permit!
-		@stream = Stream.create(params[:stream])
+		@stream = Stream.find_by(user_id: params[:user_id])
+		@stream.update(params[:stream])
 		redirect_to user_stream_path(current_user, @stream.id)
 	end
 
