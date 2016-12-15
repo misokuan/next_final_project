@@ -1,5 +1,4 @@
 class BeHeroController < ApplicationController
-before_action :require_login
 
 	def new 
 		@campaign = Campaign.find_by(id: params[:campaign_id])

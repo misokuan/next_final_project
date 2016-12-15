@@ -22,7 +22,7 @@
   <label for="expiration-date">Expiration Date</label>
   <div class="hosted-field" id="expiration-date"></div>
 
-  <input type="hidden" name="payment_method_nonce">
+  <input id="payment_nonce_hidden" type="hidden" name="payment_method_nonce">
   <input id="submit_payment" type="submit" value="Pay $10" disabled>
 </form>
 
@@ -89,11 +89,11 @@
           // Handle error in Hosted Fields tokenization
           return;
         }
-        debugger
+        
         // Put `payload.nonce` into the `payment-method-nonce` input, and then
         // submit the form. Alternatively, you could send the nonce to your server
         // with AJAX.
-        document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
+        document.querySelector('#payment_nonce_hidden').value = payload.nonce;
         form.submit();
       });
     }, false);
