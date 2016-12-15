@@ -75,7 +75,7 @@ User ID: <%= @campaign.user_id %><br>
                 <% if @campaign.posts.length > 0 %>
                 <% @campaign.posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
-                    <%= x.body %><br>
+                    <%= x.body.html_safe %><br>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
@@ -86,7 +86,7 @@ User ID: <%= @campaign.user_id %><br>
                     <div class="testimonial-desc">
                     <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" />
                       <div class="testimonial-writer">
-                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).email.to_s %><br>
+                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).username.to_s %><br>
                         Posted at: <%= Date.parse(comments.created_at.to_s) %>
                      </div></div></div><br>
                     <% end %>
