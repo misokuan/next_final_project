@@ -20,7 +20,7 @@ class Clearance::UsersController < Clearance::BaseController
     if @user.save
       Profile.create(user_id: @user.id)
       sign_in @user
-      redirect_to user_profile_path(@user, @user.profile.id)
+      redirect_to edit_user_profile_path(@user, @user.profile.id)
     else
       render template: "users/new"
     end
@@ -49,9 +49,13 @@ class Clearance::UsersController < Clearance::BaseController
   def user_from_params
     email = user_params.delete(:email)
     password = user_params.delete(:password)
+    username = user_params.delete(:username)
+    params.permit!
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.email = email
+      byebug
+      user.username = username
       user.password = password
     end
   end

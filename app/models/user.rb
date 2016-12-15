@@ -1,13 +1,9 @@
 class User < ActiveRecord::Base
   include Clearance::User
-
-  include Clearance::User
   has_one :profile
   has_one :campaign 
+  has_many :authentications, :dependent => :destroy
 
-  has_many :authentications, :dependent => :destroy  # attr_accessible :password, :password_confirmation
-  # validates_confirmation_of :password_confirmation
-  # validates_confirmation_of :password
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
       u.email = auth_hash["extra"]["raw_info"]["email"]
