@@ -20,8 +20,7 @@ class Clearance::UsersController < Clearance::BaseController
     if @user.save
       Profile.create(user_id: @user.id)
       sign_in @user
-      UserMailer.welcome_email(@user).deliver_now
-      redirect_back_or url_after_create
+      redirect_to user_profile_path(@user, @user.profile.id)
     else
       render template: "users/new"
     end

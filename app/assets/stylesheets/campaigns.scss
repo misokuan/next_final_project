@@ -1,3 +1,198 @@
 // Place all the styles related to the Campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(214, 224, 226, 0.2);
+    -webkit-border-top-left-radius:5px;
+    -moz-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 1);
+}
+.card.hovercard .card-background {
+    height: 130px;
+}
+.card-background img {
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(25px);
+    margin-left: -100px;
+    margin-top: -200px;
+    min-width: 130%;
+}
+.card.hovercard .useravatar {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .useravatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+.card.hovercard .card-info {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+}
+.card.hovercard .card-info .card-title {
+    padding:0 5px;
+    font-size: 20px;
+    line-height: 1;
+    color: #262626;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.card.hovercard .card-info {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-pref .btn {
+    -webkit-border-radius:0 !important;
+}
+
+/*----------------------------------------------------*/
+/*----------------- Testimonials CSS -----------------*/
+/*----------------------------------------------------*/
+.testimonial{
+    margin-bottom: 10px;
+}
+
+    .testimonial-section {
+        width: 80%;
+        height: auto;
+        padding: 15px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        position: relative;
+        border: 1px solid #fff;
+    }
+    .testimonial-section:after {
+        top: 22%;
+        left: 105%;
+        border: solid transparent;
+        transform: rotate(-90deg);
+        content: " ";
+        position: absolute;
+        border-top-color: #fff;
+        border-width: 15px;
+        margin-left: 0px;
+    }
+
+    .testimonial-desc {
+        margin-top: 20px;
+        text-align:left;
+        padding-left: 15px;
+    }
+        .testimonial-desc img {
+            border: 1px solid #f5f5f5;
+            border-radius: 150px;
+            float: right;
+            height: 70px;
+            padding: 3px;
+            width: 70px;
+            display:inline-block;
+            vertical-align: top;
+        }
+
+        .testimonial-writer{
+        	float: right;
+        	float: top;
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 10px;
+        }
+
+            .testimonial-writer-name{
+                font-weight: bold;
+            }
+
+            .testimonial-writer-designation{
+                font-size: 85%;
+            }
+
+            .testimonial-writer-company{
+                font-size: 85%;
+            }
+    /*---- Outlined Styles ----*/
+    .testimonial.testimonial-default{
+        
+    }
+        .testimonial.testimonial-default .testimonial-section{
+            border-color: #777;
+        }
+
+            .testimonial.testimonial-default .testimonial-section:after{
+                border-top-color: #777;
+            }
+
+        .testimonial.testimonial-default .testimonial-desc{
+            
+        }
+
+            .testimonial.testimonial-default .testimonial-desc img{
+                border-color: #777;
+            }
+
+            .testimonial.testimonial-default .testimonial-writer-name{
+                color: #777;
+            }
+
+    .testimonial.testimonial-primary{
+        
+    }
+        .testimonial.testimonial-primary .testimonial-section{
+            border-color: #337AB7;
+            color: #286090;
+            background-color: rgba(51, 122, 183, 0.1);
+        }
+
+            .testimonial.testimonial-primary .testimonial-section:after{
+                border-top-color: #337AB7;
+            }
+
+        .testimonial.testimonial-primary .testimonial-desc{
+            
+        }
+
+            .testimonial.testimonial-primary .testimonial-desc img{
+                border-color: #337AB7;
+            }
+
+            .testimonial.testimonial-primary .testimonial-writer-name{
+                color: #337AB7;
+            }

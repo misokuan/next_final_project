@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Add Clearance
 gem 'clearance'
 
+#adding test gem
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
 # Add facebook login feature
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -41,6 +45,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
+gem "fog-aws"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,5 +62,9 @@ end
 
 #add any other gems here
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'therubyracer'
+gem 'execjs'
+gem "braintree", "~> 2.69.1"
+
 
 

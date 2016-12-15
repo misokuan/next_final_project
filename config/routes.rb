@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes". 
 
-  resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
-    resources :campaigns, only: [:show, :edit, :update, :destroy] do
-      resources :posts do
-        resources :comments
+  resources :users, only: [:index, :new, :destroy] do 
+    resources :campaigns, only: [:new, :create, :show, :edit, :update, :destroy] do 
+      resources :be_hero, only: [:new, :create] 
+      resources :goals, only: [:edit, :update, :destroy]
+      resources :posts, only: [:new, :create, :edit, :update, :destroy] do
+        resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
     end
-    resources :profiles
+    resources :profiles, only: [:show, :edit, :update, :destroy]
   end
 
   # You can have the root of your site routed with "root"
