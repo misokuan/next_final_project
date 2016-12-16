@@ -4,6 +4,14 @@ class FeaturedController < ApplicationController
       tag = Tag.find_by(name: params[:tag_name])
       byebug
       @campaign = tag.campaigns
+    elsif params[:pg_name] != nil
+      @campaign = []
+      @pgsearch = PgSearch.multisearch(params[:pg_name])
+      @pgsearch.each do |x|
+        @campaign << Campaign.find(x.searchable_id)
+      end
+      byebug
+      @campaign
     else
 		  @campaign = Campaign.all
     end

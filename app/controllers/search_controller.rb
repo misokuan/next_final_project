@@ -8,6 +8,6 @@ class SearchController < ApplicationController
 
     @find_search = params[:search][:words]
     @find_search.delete('#').downcase
-    redirect_to featured_index_path(tag_name: @find_search)
+    redirect_to featured_index_path(pg_name: @find_search)
   end
 end

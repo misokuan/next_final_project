@@ -165,6 +165,10 @@ GEM
       addressable (~> 2.3)
       httparty (~> 0.13.1)
     pg (0.19.0)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     public_suffix (2.0.4)
     puma (3.6.2)
     rack (1.6.5)
@@ -282,6 +286,7 @@ DEPENDENCIES
   omniauth-facebook
   opentok
   pg (~> 0.15)
+  pg_search
   puma (~> 3.0)
   rails (= 4.2.6)
   rspec-rails (~> 3.5)
