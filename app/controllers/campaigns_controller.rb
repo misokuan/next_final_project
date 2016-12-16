@@ -41,6 +41,12 @@ class CampaignsController < ApplicationController
 
 	# <%= link_to 'Delete Campaign', user_campaign_path(user_id:params[:user_id], id:params[:id]), :method => :delete%>
 
+	def destroy
+	
+      sign_out
+      redirect_to home_path
+    end
+
 	def update 
 
 		params.permit!
