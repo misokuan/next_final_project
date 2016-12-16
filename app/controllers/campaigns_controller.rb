@@ -26,6 +26,11 @@ class CampaignsController < ApplicationController
 
 	end 
 
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @campaign = tag.campaign
+  end
+
 	def edit 
 
 		@user = User.find_by(id: params[:user_id])

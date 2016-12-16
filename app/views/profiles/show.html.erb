@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<!--main content-->
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="content col-md-8 col-sm-12 col-xs-12">
+          <div class="section-block">
+            <div class="funding-meta"><p id="notice"><%= notice %></p>
 
 <h1> This is the profile page </h1>
 
@@ -8,5 +14,56 @@
 <%= @profile.description %><br>
 <%= @profile.address %><br>
 
+<p id="notice"><%= notice %></p><h1> This is the profile page </h1><table>
+ <thead>
+   <tr>
+     <th>Username</th>
+     <td><%= @profile.first_name %> <%= @profile.last_name %></td>
+   </tr>
+   <tr>
+     <th>Description</th>
+     <td><%= @profile.description %></td>
+   </tr>  
+   <tr>
+     <th>Date of birth</th>
+     <td><%= @profile.date_of_birth %></td>
+   </tr>
+   <tr>
+     <th>Address</th>
+     <td><%= @profile.address %></td>
+   </tr>
+   <tr>
+     <th>City</th>
+     <td><%= @profile.city %></td>
+   </tr>
+   <tr>
+     <th>Category of interest</th>
+     <td><%= @profile.interest %></td>
+   </tr>
+   <tr>
+     <th>Gender</th>
+     <td><%= @profile.gender %></td>
+   </tr>
+   <tr>  
+     <th>Avatar</th>
+     <th><%= image_tag @profile.avatar %>
+     
+ </thead>
+</table>
+ 
+  
 <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
 
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+  
+   

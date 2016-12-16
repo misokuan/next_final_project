@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     end
   end
   resources :featured, only: [:index, :show]
-
+  resources :search, only: [:create, :index]
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get '/posts/hashtag/:name', to:'posts#hashtags'
+
   post 'tokens' => "tokens#create"
 
   get 'home' => 'home#index'

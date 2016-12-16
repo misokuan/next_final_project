@@ -1,4 +1,12 @@
-<h1> Create your new campaign! </h1>
+
+<!--main content-->
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="content col-md-8 col-sm-12 col-xs-12">
+          <div class="section-block">
+            <div class="funding-meta">
+           <h1> Create your new campaign! </h1>
 
 <%= form_for(@campaign, url: user_campaigns_path(:user_id => @userid)) do |f| %>
 <p>
@@ -12,14 +20,43 @@
   </p>
 
   <p>
+    <%= f.label :Rewards %><br>
+    <%= f.text_area :rewards %>
+  </p>
+
+  <p>
+    <%= f.label :Add_Campaign_Images %>
+    <%= f.file_field :campaign_images %>
+
+
+    <%= f.label :taggings %><br>
+    <%= f.text_area :taggings %><br>
+  </p>
+
+  <p>
   	<%= f.label :Add_Campaign_Images %>
   	<%= f.file_field :campaign_images, multiple: true %>
   </p>
 
    <p>
-   	<%= f.label :Add_Campaign_Cover_Photo %>
-  	<%= f.file_field :cover_photo %>
+    <%= f.label :Add_Campaign_Cover_Photo %>
+    <%= f.file_field :cover_photo %>
   </p>
 
     <%= f.submit "Create Campaign"%>
 <% end %>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+  
+   
+
+      

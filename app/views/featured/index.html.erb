@@ -1,7 +1,8 @@
 <h1> Our Featured Campaigns </h1>
 
-	<% @campaign.all.each do |x| %>
-	<div id="feature_campaign">
+<% if @campaign.is_a? Array %>
+	<% @campaign.each do |x| %>
+		<div id="feature_campaign">
 		Title: <%= x.title %><br>
 		Description: <%= x.description %><br>
 		Rewards: <%= x.rewards %><br>
@@ -14,4 +15,23 @@
 		<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>
 		<br>
 	</div>
- 	<% end %>
+	<% end %>
+<% else %>
+	<% @campaign.all.each do |x| %>
+		<div id="feature_campaign">
+		Title: <%= x.title %><br>
+		Description: <%= x.description %><br>
+		Rewards: <%= x.rewards %><br>
+		Contributors: <%= x.total_contributors %><br>
+		Total Amount Contributed: <%= x.total_amount_contribute %><br>
+		Image: <%= x.campaign_images %><br>
+		Taggings: <%= x.taggings %><br>
+		Goal: <%= x.goal.goal_per_month %><br>
+		Current Goal: <%= x.goal.current_per_month %><br>
+		<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>
+		<br>
+	</div>
+
+	<% end %>
+
+ <% end %>
