@@ -22,7 +22,6 @@ class ProfilesController < ApplicationController
   def edit
     @user = User.find_by(id: params[:user_id])
     @profile = Profile.find(params[:profile])
-    
   end
 
   # POST /profiles
