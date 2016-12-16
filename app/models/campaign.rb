@@ -6,6 +6,8 @@ class Campaign < ActiveRecord::Base
 	has_many :rewards
 	has_many :posts, dependent: :destroy 
   has_and_belongs_to_many :tags
+  include PgSearch
+  multisearchable :against => [:title, :description, :taggings]
 
   after_create do
     campaign = Campaign.find_by(id: self.id)

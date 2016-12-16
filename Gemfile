@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-# adding capybara for image testing
-
-
+#Add PG-search gem
+gem 'pg_search'
 # Add Clearance
 gem 'clearance'
 
