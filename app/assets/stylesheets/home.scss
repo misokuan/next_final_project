@@ -13,9 +13,9 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
-  border-color: #F05F40;
+  border-color: #FFFFFF;
   border-width: 3px;
-  max-width: 50px;
+  max-width: 100px;
 }
 hr.light {
   border-color: white;
@@ -24,7 +24,7 @@ a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  color: #F05F40;
+  color: #D83333;
 }
 a:hover,
 a:focus {
@@ -45,7 +45,7 @@ p {
 }
 .bg-primary {
   background-image: url('image_1_1_30.jpg');
-  background-color: #F05F40;
+  background-color: #D83333;
 }
 .bg-dark {
   background-color: #222222;
@@ -99,11 +99,11 @@ aside {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-  color: #F05F40;
+  color: #D83333;
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #F05F40 !important;
+  color: #D83333 !important;
   background-color: #253F59 ; 
 }
 .navbar-default .nav > li.active > a:hover,
@@ -125,7 +125,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('header.jpg');
+  background-image: url('header_image_2.jpg');
   text-align: center;
   color: white;
 }
@@ -150,6 +150,12 @@ header .header-content .header-content-inner p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   margin-bottom: 50px;
+}
+
+#about{
+  .btn-primary{
+    color: transparent;
+  }
 }
 
 .section-heading {
@@ -214,12 +220,15 @@ header .header-content .header-content-inner p {
   margin: 0 auto 20px;
 }
 .text-primary {
-  color: #F05F40;
+  color: #D83333;
 }
 .no-gutter > [class*='col-'] {
   padding-right: 0;
   padding-left: 0;
 }
+
+//--------- BUTTONS ---------//
+
 .btn-default {
   color: #222222;
   background-color: white;
@@ -270,8 +279,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: white;
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #D83333;
+  border-color: #D83333;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
@@ -309,11 +318,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #F05F40;
-  border-color: #F05F40;
+  background-color: #D83333;
+  border-color: #D83333;
 }
 .btn-primary .badge {
-  color: #F05F40;
+  color: #D83333;
   background-color: white;
 }
 .btn {
@@ -365,7 +374,7 @@ body {
     border-color: rgba(255, 255, 255, 0.3);
   }
   .navbar-default .navbar-header .navbar-brand {
-    color: #F05F40;
+    color: #D83333;
   }
   .navbar-default .navbar-header .navbar-brand:hover,
   .navbar-default .navbar-header .navbar-brand:focus {
