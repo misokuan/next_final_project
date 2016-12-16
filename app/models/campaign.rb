@@ -2,6 +2,7 @@ class Campaign < ActiveRecord::Base
 	belongs_to :user 
 	belongs_to :goal
 	belongs_to :user
+	has_many :payments
 	has_many :rewards
 	has_many :posts, dependent: :destroy 
   has_and_belongs_to_many :tags

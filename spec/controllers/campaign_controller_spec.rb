@@ -21,7 +21,7 @@ RSpec.describe CampaignsController, type: :controller do
 		end
 	end
 
-	describe "POST #create" do
+	describe "POST #create (fix this)" do
 
 		context "with valid attributes" do
 			it "creates a new listing" do

@@ -3,20 +3,20 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes". 
 
-  resources :users, only: [:index, :new, :destroy] do 
-    resources :campaigns, only: [:new, :create, :show, :edit, :update, :destroy] do 
+  resources :users, only: [:index, :new] do 
+    resources :campaigns, only: [:new, :create, :show, :edit, :update] do 
       resources :be_hero, only: [:new, :create] 
-
-      resources :goals, only: [:edit, :update, :destroy]
+      resources :goals, only: [:new, :create, :edit, :update, :destroy]
       resources :rewards, only: [:new, :create, :edit, :update]
       resources :posts, only: [:new, :create, :edit, :update, :destroy] do
         resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
+      resources :rewards, only: [:new, :create, :edit, :update]
     end
+    resources :profiles, only: [:show, :edit, :update]
     resources :streams, only: [:new, :create, :show, :delete] do
       resources :viewers, only: [:index]
     end
-    resources :profiles, only: [:show, :edit, :update, :destroy]
   end
   resources :featured, only: [:index, :show]
   resources :search, only: [:create, :index]
