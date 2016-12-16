@@ -85,7 +85,7 @@ User ID: <%= @campaign.user_id %><br>
                       <%= link_to 'View Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id) %>
                     <% if current_user.id == @campaign.user.id %>
                       <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: x.campaign_id, id: x.id)%>
-                      <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id), :method => :delete%>
+                      <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
                     <% end %>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
