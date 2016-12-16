@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+<%= link_to 'Return to Campaign Page', user_campaign_path(user_id: params[:user_id], id: params[:campaign_id])%> <br>
+
+<% if current_user.id == @post.campaign.user_id %>
+    <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: params[:campaign_id], id: params[:id])%>
+    <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: params[:campaign_id], id: params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
+<% end %> <br>
+
+<%= @post.body %> <br>
+
+<% image_num = 0 %>
+  <% while image_num <= @post.post_images.length - 1 %>      
+    <img src="<%= @post.post_images[image_num].url %>">
+    <% image_num += 1 %>
+  <% end %>

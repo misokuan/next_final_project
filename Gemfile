@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
+#Add PG-search gem
+gem 'pg_search'
 # Add Clearance
 gem 'clearance'
 
 #adding test gem
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
 end
 # Add facebook login feature
 gem 'omniauth'

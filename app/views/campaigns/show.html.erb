@@ -27,13 +27,40 @@
 
             <%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
 
+    <% if @campaign.goal == nil %>
+    <%= link_to 'you need your goal here', new_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
+    <% end %>
+    <div class="col-lg-3 col-sm-3">
+    <% if @campaign.goal != nil %>
+    <h2>Goals:</h2>  
+Title: <%= @campaign.goal.title %><br>
+Description: <%= @campaign.goal.description %><br>
+Our Goals: <%= @campaign.goal.goal_per_month %><br>
+Total Amount: <%= @campaign.goal.current_per_month %><br>
+<%= link_to 'Edit Your Goal Here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
+
+<br>
+<br>
+<div>
+<h3> Rewards: </h3>
+<% @campaign.rewards.each do |x| %>
+Levels: <%= x.rewards_class %><br>
+Reward: <%= x.description %><br>
+Amount: $<%= x.amount %><br>
+<% end %>
+</div>
+<br>
+
             <%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
         </div>
         <div class="col-lg-9 col-sm-9">
     <% else %>
         <div class="col-sm-12"></div>
     <% end %>
-
+          
+<button><%= link_to 'Be A Hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %></button>
+    <% end %></div>
+    <div class="col-lg-9 col-sm-9">
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -197,13 +224,12 @@
 
 
           Description: <%= @campaign.description %><br>
-Rewards: <%= @campaign.rewards %><br>
 Total Contributors: <%= @campaign.total_contributors %><br>
 Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
-Campaign Taggings: <%= @campaign.taggings %><br>
+Campaign Taggings: <%= render_with_hashtags(@campaign.taggings) %><br>
 User ID: <%= @campaign.user_id %><br>
 
-<%= link_to 'edit', edit_user_campaign_path(campaign: @campaign)%>
+<%= link_to 'Edit Campaign Details', edit_user_campaign_path(campaign: @campaign)%>
         </div>
         <div class="tab-pane fade in" id="tab2">
           Tab 2
@@ -213,8 +239,8 @@ User ID: <%= @campaign.user_id %><br>
             <% @posts = Post.new(campaign_id: @campaign.id) %>
             <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
                 Post here:
-                  <%= f.text_field :body %>
-                <%= f.label :Add_Campaign_Images %>
+                  <%= f.text_field :body %> <br>
+                <%= f.label :Add_Images_To_New_Post %>
                   <%= f.file_field :post_images, multiple: true %>
                 <%= f.submit %>
             <% end %><br>
@@ -222,9 +248,22 @@ User ID: <%= @campaign.user_id %><br>
             <div class="col-sm-9">
             <h4>Posts:</h4>
                 <% if @campaign.posts.length > 0 %>
-                <% @campaign.posts.each do |x| %>
+                <% posts = @campaign.posts %>
+                <% posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
+
                     <%= x.body.html_safe %><br>
+                    <% image_num = 0 %>
+                      <% while image_num <= x.post_images.length - 1 %>      
+                        <img src="<%= x.post_images[image_num].thumb2.url %>">
+                        <% image_num += 1 %>
+                      <% end %>
+                      <%= link_to 'View Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id) %>
+                    <% if current_user.id == @campaign.user.id %>
+                      <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: x.campaign_id, id: x.id)%>
+                      <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
+                    <% end %>
+
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">

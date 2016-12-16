@@ -60,6 +60,13 @@ GEM
       builder (>= 2.0.0)
     builder (3.2.2)
     byebug (9.0.6)
+    capybara (2.11.0)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     clearance (1.15.1)
       bcrypt
       email_validator (~> 1.4)
@@ -158,6 +165,10 @@ GEM
       addressable (~> 2.3)
       httparty (~> 0.13.1)
     pg (0.19.0)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     public_suffix (2.0.4)
     puma (3.6.2)
     rack (1.6.5)
@@ -249,6 +260,8 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -257,6 +270,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   braintree (~> 2.69.1)
   byebug
+  capybara
   carrierwave!
   clearance
   coffee-rails (~> 4.1.0)
@@ -272,6 +286,7 @@ DEPENDENCIES
   omniauth-facebook
   opentok
   pg (~> 0.15)
+  pg_search
   puma (~> 3.0)
   rails (= 4.2.6)
   rspec-rails (~> 3.5)
