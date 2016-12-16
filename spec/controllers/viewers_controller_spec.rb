@@ -1,5 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe ViewersController, type: :controller do
+# RSpec.describe ViewersController, type: :controller do
 
-end
+# end
