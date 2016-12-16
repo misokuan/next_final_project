@@ -22,7 +22,14 @@ class CampaignsController < ApplicationController
 
 	def show 
 		@campaign = User.find(params[:user_id]).campaign
+		@posts = @campaign.posts
+
 	end 
+
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @campaign = tag.campaign
+  end
 
 	def edit 
 
@@ -30,10 +37,21 @@ class CampaignsController < ApplicationController
     	@campaign = Campaign.find(params[:campaign])
 	end 
 
-	def destroy 
-		sign_out
-		redirect_to home_path
-	end 
+	# def destroy
+
+	#   @campaign = Campaign.find(params[:campaign])
+	#   @campaign.destroy
+
+	# 	redirect_to user_profile_path
+	# end 
+
+	# <%= link_to 'Delete Campaign', user_campaign_path(user_id:params[:user_id], id:params[:id]), :method => :delete%>
+
+	def destroy
+	
+      sign_out
+      redirect_to home_path
+    end
 
 	def update 
 

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216022809) do
+
+ActiveRecord::Schema.define(version: 20161216081213) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +44,14 @@ ActiveRecord::Schema.define(version: 20161216022809) do
 
   add_index "campaigns", ["goal_id"], name: "index_campaigns_on_goal_id", using: :btree
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
+
+  create_table "campaigns_tags", id: false, force: :cascade do |t|
+    t.integer "campaign_id"
+    t.integer "tag_id"
+  end
+
+  add_index "campaigns_tags", ["campaign_id"], name: "index_campaigns_tags_on_campaign_id", using: :btree
+  add_index "campaigns_tags", ["tag_id"], name: "index_campaigns_tags_on_tag_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -82,9 +92,11 @@ ActiveRecord::Schema.define(version: 20161216022809) do
     t.string   "transaction_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "reward_id"
   end
 
   add_index "payments", ["campaign_id"], name: "index_payments_on_campaign_id", using: :btree
+  add_index "payments", ["reward_id"], name: "index_payments_on_reward_id", using: :btree
   add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
@@ -148,6 +160,15 @@ ActiveRecord::Schema.define(version: 20161216022809) do
 
   add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
 
+  create_table "searches", force: :cascade do |t|
+    t.string   "words"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
   create_table "streams", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -159,6 +180,12 @@ ActiveRecord::Schema.define(version: 20161216022809) do
   end
 
   add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -184,10 +211,13 @@ ActiveRecord::Schema.define(version: 20161216022809) do
   add_index "viewers", ["stream_id"], name: "index_viewers_on_stream_id", using: :btree
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
+  add_foreign_key "campaigns_tags", "campaigns"
+  add_foreign_key "campaigns_tags", "tags"
   add_foreign_key "comments", "posts"
   add_foreign_key "posts_tags", "posts"
   add_foreign_key "posts_tags", "tags"
   add_foreign_key "rewards", "campaigns"
+  add_foreign_key "searches", "users"
   add_foreign_key "streams", "users"
   add_foreign_key "viewers", "streams"
   add_foreign_key "viewers", "users"

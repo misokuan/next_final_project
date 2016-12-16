@@ -1,3 +1,41 @@
+<p id="notice"><%= notice %></p><h1> This is the profile page </h1><table>
+ <thead>
+   <tr>
+     <th>Username</th>
+     <td><%= @profile.first_name %> <%= @profile.last_name %></td>
+   </tr>
+   <tr>
+     <th>Description</th>
+     <td><%= @profile.description %></td>
+   </tr>  
+   <tr>
+     <th>Date of birth</th>
+     <td><%= @profile.date_of_birth %></td>
+   </tr>
+   <tr>
+     <th>Address</th>
+     <td><%= @profile.address %></td>
+   </tr>
+   <tr>
+     <th>City</th>
+     <td><%= @profile.city %></td>
+   </tr>
+   <tr>
+     <th>Category of interest</th>
+     <td><%= @profile.interest %></td>
+   </tr>
+   <tr>
+     <th>Gender</th>
+     <td><%= @profile.gender %></td>
+   </tr>
+   <tr>  
+     <th>Avatar</th>
+     <th><%= image_tag @profile.avatar %>
+     
+ </thead>
+</table>
+ 
+
 <p id="notice"><%= notice %></p>
 
 <h1> This is the profile page </h1>
@@ -45,13 +83,13 @@
 <%= @profile.user_id %>
 <%= @profile.description %>
 <%= @profile.address %>
-=======
+
 <%= image_tag @profile.avatar.thumb %>
 <%= @profile.first_name %> <%= @profile.last_name %><br>
 <%= @profile.user_id %><br>
 <%= @profile.description %><br>
 <%= @profile.address %><br>
->>>>>>> d980bc381d2192bb2546e98e8449eed13b35d62c
+
 
  -->
 <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
