@@ -1,0 +1,87 @@
+<%= javascript_include_tag "//static.opentok.com/webrtc/v2.2/js/TB.min.js" %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="col-lg-12 col-sm-12">
+	<div class="col-lg-3 col-sm-3">
+	<% if current_user == @stream.user %> 
+	<h1>Your stream</h1>
+	<% else %>
+	<h1><%= @stream.user.username %>'s stream </h1>
+	<% end %>
+	<h3>Title:</h3> 
+	<p><%= @stream.title %></p>
+	<h3>Desc:</h3>
+	<p><%= @stream.description %></p>
+	Link to your stream: <%= link_to user_stream_path(user_id: @stream.user.id, id: @stream.id), user_stream_path(user_id: @stream.user.id, id: @stream.id) %><br><br><br><br>
+	<a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>"><button type="button" class="btn btn-primary btn-lg col-md-12">Visit Campaign</button></a>
+	</div>
+	<div class="col-lg-6 col-sm-6">
+	<% if current_user == @stream.user %>
+	<div id="publisher"></div>
+	<% else %>
+	<div id="stream"></div>
+	<% end %>
+	</div>
+	<div class="col-lg-3 col-sm-3">
+	<h1>Chatbox here</h1>
+
+  <div id="messages"></div>
+   <input id="chat-input" class="form-control" type="text" placeholder="say anything" autofocus/>
+ </div>
+</div>
+	</div>
+</div>
+
+<script>
+function printMessage(message) {
+  $('#messages').append(message + "<br>");
+}
+
+$(function() {
+    var chatChannel;
+    var username;
+
+    function setupChannel() {
+        chatChannel.join().then(function(channel) {
+            printMessage(username + ' joined the chat.');
+        });
+
+        chatChannel.on('messageAdded', function(message) {
+            printMessage(message.author + ": " + message.body);
+         });
+    }
+
+    var $input = $('#chat-input'); 
+    $input.on('keydown', function(e) {
+        if (e.keyCode == 13) {
+            chatChannel.sendMessage($input.val())
+            $input.val('');
+        }
+     });
+
+    $.post("/tokens", function(data) {
+    username = data.username;
+    var accessManager = new Twilio.AccessManager(data.token);
+    var messagingClient = new Twilio.IPMessaging.Client(accessManager);
+
+    messagingClient.getChannelByUniqueName('chat').then(function(channel) {
+        if (channel) {
+            chatChannel = channel;
+            setupChannel();
+        } else {
+            messagingClient.createChannel({
+                uniqueName: 'chat',
+                friendlyName: 'Chat Channel' })
+            .then(function(channel) {
+                chatChannel = channel;
+                setupChannel();
+            });
+        }
+    });
+});
+
+});
+</script>

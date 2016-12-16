@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Featured</a></li>
+        <li><a href="/featured">Featured</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -29,7 +29,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
-
+            <li><a href="/users/<%=current_user.id%>/streams/new">Create New Stream</a></li>
             <% if current_user.campaign == nil %>
               <li><a href="/users/<%=current_user.id%>/campaigns/new">Create New Campaign</a></li>
             <% else %>

@@ -4,8 +4,8 @@
 
 .card {
     margin-top: 20px;
-    padding: 30px;
-    background-color: rgba(214, 224, 226, 0.2);
+    padding: 40px;
+    background-color: black;
     -webkit-border-top-left-radius:5px;
     -moz-border-top-left-radius:5px;
     border-top-left-radius:5px;
@@ -130,8 +130,8 @@
         }
 
         .testimonial-writer{
-        	float: right;
-        	float: top;
+            float: right;
+            float: top;
             display: inline-block;
             vertical-align: top;
             padding-left: 10px;
@@ -248,7 +248,7 @@
     text-decoration:none;
 }
 .goal-summary .reminder a:hover, .goal-summary .reminder a:focus {
-    background-color:#85AD90;
+    background-color:white;
     color:#fff;
 }
 @media (max-width: 767px) {
@@ -324,7 +324,7 @@
     margin:5px;
 }
 .profile-contents ul li a {
-    background-color: #85AD90;
+    background-color: #B4B4B4 ;
     color: #FFF;
     height: 40px;
     width: 40px;
@@ -340,9 +340,12 @@
     margin-top: 10px;
 }
 .profile-contents ul li a:hover {
-    background-color:#779A81;
+    background-color:#AB0000;
 }
 
+#image_frame{
+    background-color: black;
+}
 /*-Funding Meta-*/
 .funding-meta {}
 .funding-meta h1 {
@@ -387,7 +390,7 @@
 }
 .funding-meta h2, .funding-meta span.contribution {
     display:inline-block;
-    color: #85AD90;
+    color: #B4B4B4 ;
 }
 .funding-meta span.contribution, .funding-meta span.goal-progress {
     color: #A7A7A7;
@@ -406,7 +409,7 @@
     padding-right:5px;
 }
 .progress-bar {
-    background-color: #99DEAB;
+    background-color: #B4B4B4;
     box-shadow:none;
 }
 .progress {
@@ -425,7 +428,7 @@
     margin-bottom:10px;
 }
 .reward-block:hover {
-    background-color: #DCF7E3;
+    background-color: #E9ECFF;
 }
 .reward-block.last {
     margin-bottom:0;
@@ -554,7 +557,7 @@
     padding: 10px 25px;
 }
 .btn.btn-launch:hover, .btn.btn-launch:focus,.btn.btn-reward, .btn.btn-reward:hover, .btn.btn-reward :focus {
-    background-color:#85AD90;
+    background-color:#B4B4B4;
     box-shadow:none;
 }
 .btn.btn-reward {
@@ -579,7 +582,7 @@
     font-weight:700;
 }
 .btn.btn-contact:hover, .btn.btn-contact:focus {
-    background-color: #779A81;
+    background-color: #B4B4B4;
 }
 .btn.btn-contact i.fa {
     margin-right:10px;
@@ -631,6 +634,10 @@
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 2px;
+}
+
+.col-md-8{
+    padding: 10px;
 }
 
 /*-Overrides-*/

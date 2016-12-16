@@ -4,8 +4,59 @@
 <div id="campaign_launch">
   <!--main content-->
   <div class="main-content">
-    <div class="container">
-      <div class="row">
+            <div class="col-lg-12 col-sm-12">
+    <div class="card hovercard">
+        <div class="card-background">
+            <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
+            <!-- http://lorempixel.com/850/280/people/9/ -->
+        </div>
+        <div class="useravatar">
+            <img alt="" src="http://lorempixel.com/100/100/people/9/">
+        </div>
+        <div class="card-info"> <span class="card-title"><%= @campaign.title %></span>
+
+        </div>
+    </div>
+    <% if @campaign.goal != nil %>
+        <div class="col-lg-3 col-sm-3">
+            <h2>Goals:</h2> 
+            Title: <%= @campaign.goal.title %><br>
+            Description: <%= @campaign.goal.description %><br>
+            Our Goals: <%= @campaign.goal.goal_per_month %><br>
+            Total Amount: <%= @campaign.goal.current_per_month %><br>
+
+            <%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
+
+            <%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+        </div>
+        <div class="col-lg-9 col-sm-9">
+    <% else %>
+        <div class="col-sm-12"></div>
+    <% end %>
+
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <div class="hidden-xs">Overview</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">Gallery</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Posts</div>
+            </button>
+        </div>
+    </div>
+
+        <div class="well">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1">
+            
+            <div class="row">
         <div class="content col-md-8 col-sm-12 col-xs-12">
           <div class="section-block">
             <div class="funding-meta">
@@ -13,8 +64,8 @@
               <span class="type-meta"><i class="fa fa-user"></i> Jonathan Doe</span>
               <span class="type-meta"><i class="fa fa-tag"></i> <a href="#">crowdfunding</a>, <a href="#">launch</a> </span>
               <!--img src="assets/img/image-heartbeat.jpg" class="img-responsive" alt="launch HTML5 Crowdfunding"-->
-              <div class="video-frame">
-                <iframe src="https://player.vimeo.com/video/67938315" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              <div id="image_frame" class="video-frame">
+                <!--<iframe src="https://player.vimeo.com/video/67938315" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></-->
               </div>
               <p>Launch will enable you be in run  your own crowdfunding campaign, and be in complete control from concept to crowdfunding to launch.</p>
               <h2>$10,350</h2>              
@@ -143,61 +194,8 @@
         </div>
         <!--/sidebar-->
       </div>
-    </div>
-  </div>
-
-  <!------- END EXAMPLE ---->
 
 
-        <div class="col-lg-12 col-sm-12">
-    <div class="card hovercard">
-        <div class="card-background">
-            <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
-            <!-- http://lorempixel.com/850/280/people/9/ -->
-        </div>
-        <div class="useravatar">
-            <img alt="" src="http://lorempixel.com/100/100/people/9/">
-        </div>
-        <div class="card-info"> <span class="card-title"><%= @campaign.title %></span>
-
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-3">
-    <% if @campaign.goal != nil %>
-    <h2>Goals:</h2> 
-Title: <%= @campaign.goal.title %><br>
-Description: <%= @campaign.goal.description %><br>
-Our Goals: <%= @campaign.goal.goal_per_month %><br>
-Total Amount: <%= @campaign.goal.current_per_month %><br>
-
-
-<%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
-
-
-<%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
-    <% end %></div>
-    <div class="col-lg-9 col-sm-9">
-    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">Overview</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">Gallery</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Posts</div>
-            </button>
-        </div>
-    </div>
-
-        <div class="well">
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab1">
           Description: <%= @campaign.description %><br>
 Rewards: <%= @campaign.rewards %><br>
 Total Contributors: <%= @campaign.total_contributors %><br>
@@ -215,7 +213,9 @@ User ID: <%= @campaign.user_id %><br>
             <% @posts = Post.new(campaign_id: @campaign.id) %>
             <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
                 Post here:
-                <%= f.text_field :body %>
+                  <%= f.text_field :body %>
+                <%= f.label :Add_Campaign_Images %>
+                  <%= f.file_field :post_images, multiple: true %>
                 <%= f.submit %>
             <% end %><br>
             <% end %>
@@ -224,7 +224,7 @@ User ID: <%= @campaign.user_id %><br>
                 <% if @campaign.posts.length > 0 %>
                 <% @campaign.posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
-                    <%= x.body %><br>
+                    <%= x.body.html_safe %><br>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
@@ -235,7 +235,7 @@ User ID: <%= @campaign.user_id %><br>
                     <div class="testimonial-desc">
                     <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" />
                       <div class="testimonial-writer">
-                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).email.to_s %><br>
+                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).username.to_s %><br>
                         Posted at: <%= Date.parse(comments.created_at.to_s) %>
                      </div></div></div><br>
                     <% end %>
@@ -253,7 +253,29 @@ User ID: <%= @campaign.user_id %><br>
     </div>
     </div>
     </div>
+
 </div>
+    <div class="container">
+      
+    </div>
+  </div>
+
+  <!------- END EXAMPLE ---->
+
+
+
+
+
+<h2>Some Examples of Our Work in Progress: </h2>
+
+<%= image_tag @campaign.cover_photo.desktop %>
+
+<% image_num = 0 %>
+  <% while image_num <= @campaign.campaign_images.length - 1 %>      
+    <img src="<%= @campaign.campaign_images[image_num].thumb.url %>">
+    <% image_num += 1 %>
+  <% end %>
+
 
 <!--  create_table "campaigns", force: :cascade do |t|
     t.string   "title"

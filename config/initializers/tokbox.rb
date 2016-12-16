@@ -1,0 +1,1 @@
+OpenTokClient = OpenTok::OpenTok.new(ENV['opentok_api_key'], ENV['opentok_api_secret'])

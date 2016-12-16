@@ -7,11 +7,10 @@ html,
 body {
   height: 100%;
   width: 100%;
- // padding-top: 0.5cm;
-}
-body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+
 }
+
 hr {
   border-color: #FFFFFF;
   border-width: 3px;
@@ -66,7 +65,7 @@ aside {
 
 //------- NAVBAR ------//
 .navbar-default {
-  background-color: transparent !important;
+  background-color: #212F3C !important;
   border-color: rgba(34, 34, 34, 0.05);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.35s;
@@ -103,7 +102,7 @@ aside {
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #D83333 !important;
+  color: white !important;
   background-color: #253F59 ; 
 }
 .navbar-default .nav > li.active > a:hover,
