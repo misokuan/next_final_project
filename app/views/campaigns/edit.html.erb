@@ -28,3 +28,5 @@
 
     <%= f.submit "Edit Campaign"%>
 <% end %>
+
+<%= link_to 'Delete Campaign', user_campaign_path(user_id:params[:user_id], id:params[:id]), :method => :delete%>

@@ -31,9 +31,12 @@ class CampaignsController < ApplicationController
     	@campaign = Campaign.find(params[:campaign])
 	end 
 
-	def destroy 
-		sign_out
-		redirect_to home_path
+	def destroy
+
+	  @campaign = Campaign.find(params[:campaign])
+	  @campaign.destroy
+
+		redirect_to user_profile_path
 	end 
 
 	def update 
