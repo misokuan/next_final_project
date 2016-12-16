@@ -1,3 +1,19 @@
+<!--main content-->
+  <div class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="content col-md-8 col-sm-12 col-xs-12">
+          <div class="section-block">
+            <div class="funding-meta"><p id="notice"><%= notice %></p>
+
+<h1> This is the profile page </h1>
+
+<%= image_tag @profile.avatar.thumb %>
+<%= @profile.first_name %> <%= @profile.last_name %><br>
+<%= @profile.user_id %><br>
+<%= @profile.description %><br>
+<%= @profile.address %><br>
+
 <p id="notice"><%= notice %></p><h1> This is the profile page </h1><table>
  <thead>
    <tr>
@@ -38,3 +54,16 @@
   
 <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
 
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+  
+   

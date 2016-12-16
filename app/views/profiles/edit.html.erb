@@ -1,4 +1,29 @@
-<h1>Edit My Profile</h1>
+<!--main content-->
+  
+              <div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block well well-sm">
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+      </div>
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+   
+          <div class="col-lg-8">
+           <p id="notice">
+  <%= notice %></p>
 
 <%= form_for [@user, @profile] do |f| %>
 <p>
@@ -6,46 +31,75 @@
     <%= f.text_field :first_name %>
   </p>
 
-<p>
-    <%= f.label :Last_Name %><br>
-    <%= f.text_field :last_name %>
-  </p>  
+          </div>
+        
+   
+          <div class="col-lg-8">
+          <p>
+             <%= f.label :Last_Name %><br>
+            <%= f.text_field :last_name %>
+          </p>           
+           </div>
+      
+          <div class="col-lg-8">
+          <p>
+            <%= f.label :Description %><br>
+            <%= f.text_area :description %>
+          </p>
+          </div>
+   
+          <div class="col-lg-8">
+              <p>
+             <%= f.label :Date_Of_Birth %><br>
+               <%= f.date_field :date_of_birth %>
+            </p>
+          </div>
+
+          <div class="col-lg-8">
+              <p>
+               <%= f.label :Address %><br>
+               <%= f.text_area :address %>
+              </p>
+          </div>
+      
+       
+          <div class="col-md-8">
+            <p>
+             <%= f.label :City %><br>
+             <%= f.text_field :city %>
+            </p>
+          </div>
+       
+        
+          <div class="col-md-8">
+              <p>
+                <%= f.label :Category_of_Interest %><br>
+                Music <%= f.check_box :interest %>
+                Literature <%= f.check_box :interest %>
+              </p>
+          </div>
+
+          <div class="col-md-8">
+             <p>
+              <%= f.label :Gender %><br>
+              <%= f.text_field :gender %>
+             </p>
+          </div>
+
+          <div class="col-md-8">
+            <p>
+              <%= f.label :Avatar %><br>
+              <%= f.file_field :avatar %>
+            </p>
+
+              <%= f.submit "Edit Listings"%>
+            <% end %>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
  
-  <p>
-    <%= f.label :Description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.label :Date_Of_Birth %><br>
-    <%= f.date_field :date_of_birth %>
-  </p>
-
-  <p>
-    <%= f.label :Address %><br>
-    <%= f.text_area :address %>
-  </p>
-
-  <p>
-    <%= f.label :City %><br>
-    <%= f.text_field :city %>
-  </p>
-
-  <p>
-    <%= f.label :Category_of_Interest %><br>
-    Music <%= f.check_box :interest %>
-    Literature <%= f.check_box :interest %>
-  </p>
-
-   <p>
-    <%= f.label :Gender %><br>
-    <%= f.text_field :gender %>
-  </p>
-
-  <p>
-    <%= f.label :Avatar %><br>
-  	<%= f.file_field :avatar %>
-  </p>
-
-    <%= f.submit "Edit Listings"%>
-<% end %>
