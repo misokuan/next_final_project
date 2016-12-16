@@ -20,8 +20,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+
     @user = User.find_by(id: params[:user_id])
-    @profile = Profile.find(params[:profile])
+    @profile = Profile.find(params[:id])
   end
 
   # POST /profiles
@@ -43,15 +44,21 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-    respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
+    byebug
+    params.permit!
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
+    redirect_to user_profile_path(:user_id => @profile.user_id, :id => @profile.id)
+    # respond_to do |format|
+    #   if @profile.update(profile_params)
+    #     format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @profile }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @profile.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
   end
 
   # DELETE /profiles/1
@@ -66,6 +73,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.fetch(:profile, {})
+      params.require(:profile).permit(:first_name, :last_name, :description, :date_of_birth, :address, :city, :interest, :gender, :user_id, :avatar)
     end
 end

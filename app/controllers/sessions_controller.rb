@@ -12,15 +12,18 @@ class SessionsController < Clearance::SessionsController
           else 
             Profile.where(user_id: user.id)
           end
-          @next = root_url
+          @next = user_profile_path(user, user.profile.id)
           @notice = "Signed in!"
         else
           user = User.create_with_auth_and_hash(authentication,auth_hash)
           Profile.create(user_id: user.id)
-          @next = edit_user_path(user)   
+          @next = edit_user_profile_path(user_id: user.id, id: user.profile.id)   
           @notice = "User created - confirm or edit details..."
         end
-          
+        if user.username == nil
+          user.username = user.email[/[^@]+/]
+          user.save
+        end
         sign_in(user)
         redirect_to @next, :notice => @notice
       end

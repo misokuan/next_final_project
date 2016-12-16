@@ -12,6 +12,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-sm-3">
+    <% if @campaign.goal != nil %>
     <h2>Goals:</h2> 
 Title: <%= @campaign.goal.title %><br>
 Description: <%= @campaign.goal.description %><br>
@@ -22,8 +23,8 @@ Total Amount: <%= @campaign.goal.current_per_month %><br>
 <%= link_to 'edit your goal here', edit_user_campaign_goal_path(campaign_id: @campaign.id, goal: @goal) %><br>
 
 
-<%= link_to 'become a hero', user_campaign_be_hero_path(campaign_id: @campaign.id) %>
-    </div>
+<%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+    <% end %></div>
     <div class="col-lg-9 col-sm-9">
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
@@ -63,7 +64,9 @@ User ID: <%= @campaign.user_id %><br>
             <% @posts = Post.new(campaign_id: @campaign.id) %>
             <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
                 Post here:
-                <%= f.text_field :body %>
+                  <%= f.text_field :body %>
+                <%= f.label :Add_Campaign_Images %>
+                  <%= f.file_field :post_images, multiple: true %>
                 <%= f.submit %>
             <% end %><br>
             <% end %>
@@ -72,7 +75,7 @@ User ID: <%= @campaign.user_id %><br>
                 <% if @campaign.posts.length > 0 %>
                 <% @campaign.posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
-                    <%= x.body %><br>
+                    <%= x.body.html_safe %><br>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
@@ -83,7 +86,7 @@ User ID: <%= @campaign.user_id %><br>
                     <div class="testimonial-desc">
                     <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" />
                       <div class="testimonial-writer">
-                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).email.to_s %><br>
+                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).username.to_s %><br>
                         Posted at: <%= Date.parse(comments.created_at.to_s) %>
                      </div></div></div><br>
                     <% end %>
@@ -101,6 +104,16 @@ User ID: <%= @campaign.user_id %><br>
     </div>
     </div>
     </div>
+
+<h2>Some Examples of Our Work in Progress: </h2>
+
+<%= image_tag @campaign.cover_photo.desktop %>
+
+<% image_num = 0 %>
+  <% while image_num <= @campaign.campaign_images.length - 1 %>      
+    <img src="<%= @campaign.campaign_images[image_num].thumb.url %>">
+    <% image_num += 1 %>
+  <% end %>
 
 
 <!--  create_table "campaigns", force: :cascade do |t|

@@ -1,6 +1,6 @@
 <h1> Create your new campaign! </h1>
 
-<%= form_for(@campaign, url: user_campaigns_path(:user_id => current_user.id)) do |f| %>
+<%= form_for(@campaign, url: user_campaigns_path(:user_id => @userid)) do |f| %>
 <p>
     <%= f.label :Title %><br>
     <%= f.text_field :title %>
@@ -12,13 +12,8 @@
   </p>
 
   <p>
-    <%= f.label :Rewards %><br>
-    <%= f.text_area :rewards %>
-  </p>
-
-  <p>
   	<%= f.label :Add_Campaign_Images %>
-  	<%= f.file_field :campaign_images %>
+  	<%= f.file_field :campaign_images, multiple: true %>
   </p>
 
    <p>

@@ -3,21 +3,27 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes". 
 
-  resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do 
+  resources :users, only: [:index, :new, :destroy] do 
     resources :campaigns, only: [:new, :create, :show, :edit, :update, :destroy] do 
-      resources :be_hero, only: [:show] 
+      resources :be_hero, only: [:new, :create] 
+
       resources :goals, only: [:edit, :update, :destroy]
-      resources :posts do
-        resources :comments
+      resources :rewards, only: [:new, :create, :edit, :update]
+      resources :posts, only: [:new, :create, :edit, :update, :destroy] do
+        resources :comments, only: [:new, :create, :edit, :update, :destroy]
       end
     end
-    resources :profiles
+    resources :streams, only: [:new, :create, :show, :delete] do
+      resources :viewers, only: [:index]
+    end
+    resources :profiles, only: [:show, :edit, :update, :destroy]
   end
+  resources :featured, only: [:index, :show]
 
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-
+  post 'tokens' => "tokens#create"
 
   get 'home' => 'home#index'
   root 'home#index'

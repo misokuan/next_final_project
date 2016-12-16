@@ -2,9 +2,14 @@
 
 <%= form_for [@user, @profile] do |f| %>
 <p>
-    <%= f.label :Username %><br>
-    <%= f.text_field :username %>
+    <%= f.label :First_Name %><br>
+    <%= f.text_field :first_name %>
   </p>
+
+<p>
+    <%= f.label :Last_Name %><br>
+    <%= f.text_field :last_name %>
+  </p>  
  
   <p>
     <%= f.label :Description %><br>
@@ -38,9 +43,9 @@
   </p>
 
   <p>
-  	<%= f.file_field :image %>
+    <%= f.label :Avatar %><br>
+  	<%= f.file_field :avatar %>
   </p>
 
     <%= f.submit "Edit Listings"%>
 <% end %>
-

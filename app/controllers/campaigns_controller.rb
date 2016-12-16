@@ -4,24 +4,24 @@ class CampaignsController < ApplicationController
 
 	def new
       @campaign = Campaign.new
+      @userid = params[:user_id] # current_user.id
     end
 
     def create
     	@campaign = Campaign.new(campaign_params)
-    	@campaign.user_id = current_user.id
+    	@campaign.user_id = params[:user_id] # current_user.id
     	respond_to do |format|
       	  if @campaign.save
-        	format.html { redirect_to user_campaign_path(user_id:@campaign.user_id, id:@campaign.id), notice: 'Campaign was successfully created.' }
-        	format.json { render :show, status: :created, location: campaign_url(@campaign) }
+      	  	format.html { redirect_to new_user_campaign_reward_path(user_id:@campaign.user_id, campaign_id:@campaign.id), notice: 'Campaign was successfully created.' }
+        	#format.html { redirect_to user_campaign_path(user_id:@campaign.user_id, id:@campaign.id), notice: 'Campaign was successfully created.' }
       	  else
         	format.html { render :new }
-        	format.json { render json: @campaign.errors, status: :unprocessable_entity }
       	  end
     	end
     end
 
 	def show 
-		@campaign = current_user.campaign
+		@campaign = User.find(params[:user_id]).campaign
 	end 
 
   def hashtags
@@ -30,9 +30,9 @@ class CampaignsController < ApplicationController
   end
 
 	def edit 
-		@user = User.find_by(id: params[:user_id])
-    @campaign = Campaign.find(params[:campaign])
 
+		@user = User.find_by(id: params[:user_id])
+    	@campaign = Campaign.find(params[:campaign])
 	end 
 
 	def destroy 
@@ -41,8 +41,11 @@ class CampaignsController < ApplicationController
 	end 
 
 	def update 
+
+		params.permit!
 		campaign = Campaign.find(params[:id])
 		campaign.update(campaign_params)
+
 		redirect_to user_campaign_path
 	end
 
@@ -50,6 +53,6 @@ class CampaignsController < ApplicationController
 	private 
 
 	def campaign_params
-	    params.require(:campaign).permit(:title, :description, :rewards, :taggings)
+	    params.require(:campaign).permit(:title, :description, :rewards, :taggings, {campaign_images: []}, :cover_photo)
 	end 
 end
