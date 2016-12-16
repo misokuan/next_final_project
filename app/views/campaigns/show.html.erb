@@ -73,9 +73,15 @@ User ID: <%= @campaign.user_id %><br>
             <div class="col-sm-9">
             <h4>Posts:</h4>
                 <% if @campaign.posts.length > 0 %>
-                <% @campaign.posts.each do |x| %>
+                <% posts = @campaign.posts %>
+                <% posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
                     <%= x.body %><br>
+                    <% image_num = 0 %>
+                      <% while image_num <= x.post_images.length - 1 %>      
+                        <img src="<%= t.post_images[image_num].thumb.url %>">
+                        <% image_num += 1 %>
+                      <% end %>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
