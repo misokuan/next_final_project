@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215080052) do
+ActiveRecord::Schema.define(version: 20161216022809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 20161215080052) do
 
   add_index "interests", ["category_id"], name: "index_interests_on_category_id", using: :btree
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.integer  "transaction_amount"
+    t.string   "transaction_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "payments", ["campaign_id"], name: "index_payments_on_campaign_id", using: :btree
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.integer  "campaign_id"
     t.text     "body"
@@ -110,6 +122,29 @@ ActiveRecord::Schema.define(version: 20161215080052) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.decimal  "amount"
+    t.string   "description"
+    t.string   "rewards_class"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
+
+  create_table "streams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "status"
+    t.string   "opentok_session_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -124,5 +159,19 @@ ActiveRecord::Schema.define(version: 20161215080052) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  create_table "viewers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "stream_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "viewers", ["stream_id"], name: "index_viewers_on_stream_id", using: :btree
+  add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
+
   add_foreign_key "comments", "posts"
+  add_foreign_key "rewards", "campaigns"
+  add_foreign_key "streams", "users"
+  add_foreign_key "viewers", "streams"
+  add_foreign_key "viewers", "users"
 end

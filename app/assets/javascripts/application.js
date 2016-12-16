@@ -32,12 +32,12 @@ $(".btn-pref .btn").click(function () {
 // console.log('bye')
 });
 
-$(document).on("ready page:restore",function(){
-	if($('#invisable_div').length){
-  $('body').css('padding-top', '0cm');
-	}
-else {
-	$('body').css('padding-top', '0.85cm');
-	}
-});
+// $(document).on("ready page:restore",function(){
+// 	if($('#invisable_div').length){
+//   $('body').css('padding-top', '0cm');
+// 	}
+// else {
+// 	$('body').css('padding-top', '0.85cm');
+// 	}
+// });
 

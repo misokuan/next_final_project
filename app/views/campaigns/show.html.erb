@@ -76,7 +76,8 @@ User ID: <%= @campaign.user_id %><br>
                 <% posts = @campaign.posts %>
                 <% posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
-                    <%= x.body %><br>
+
+                    <%= x.body.html_safe %><br>
                     <% image_num = 0 %>
                       <% while image_num <= x.post_images.length - 1 %>      
                         <img src="<%= x.post_images[image_num].thumb2.url %>">
@@ -87,6 +88,7 @@ User ID: <%= @campaign.user_id %><br>
                       <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: x.campaign_id, id: x.id)%>
                       <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
                     <% end %>
+
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
@@ -97,7 +99,7 @@ User ID: <%= @campaign.user_id %><br>
                     <div class="testimonial-desc">
                     <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" />
                       <div class="testimonial-writer">
-                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).email.to_s %><br>
+                        <div class="testimonial-writer-name">User: <%= User.find(comments.user_id).username.to_s %><br>
                         Posted at: <%= Date.parse(comments.created_at.to_s) %>
                      </div></div></div><br>
                     <% end %>

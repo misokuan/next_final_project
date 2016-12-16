@@ -12,7 +12,8 @@ class CampaignsController < ApplicationController
     	@campaign.user_id = params[:user_id] # current_user.id
     	respond_to do |format|
       	  if @campaign.save
-        	format.html { redirect_to user_campaign_path(user_id:@campaign.user_id, id:@campaign.id), notice: 'Campaign was successfully created.' }
+      	  	format.html { redirect_to new_user_campaign_reward_path(user_id:@campaign.user_id, campaign_id:@campaign.id), notice: 'Campaign was successfully created.' }
+        	#format.html { redirect_to user_campaign_path(user_id:@campaign.user_id, id:@campaign.id), notice: 'Campaign was successfully created.' }
       	  else
         	format.html { render :new }
       	  end
