@@ -1,6 +1,12 @@
 class FeaturedController < ApplicationController
-	def index 
-		@campaign = Campaign.all
+	def index
+    if params[:tag_name] != nil 
+      tag = Tag.find_by(name: params[:tag_name])
+      byebug
+      @campaign = tag.campaigns
+    else
+		  @campaign = Campaign.all
+    end
 	end 
 
 	def show 

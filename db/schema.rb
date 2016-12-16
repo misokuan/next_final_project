@@ -131,12 +131,6 @@ ActiveRecord::Schema.define(version: 20161216055921) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rewards", force: :cascade do |t|
     t.integer  "campaign_id"
     t.decimal  "amount"
@@ -160,6 +154,12 @@ ActiveRecord::Schema.define(version: 20161216055921) do
 
   add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -174,11 +174,6 @@ ActiveRecord::Schema.define(version: 20161216055921) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
-  add_foreign_key "campaigns_tags", "campaigns"
-  add_foreign_key "campaigns_tags", "tags"
-  add_foreign_key "comments", "posts"
-end
-
   create_table "viewers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "stream_id"
@@ -189,6 +184,8 @@ end
   add_index "viewers", ["stream_id"], name: "index_viewers_on_stream_id", using: :btree
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
+  add_foreign_key "campaigns_tags", "campaigns"
+  add_foreign_key "campaigns_tags", "tags"
   add_foreign_key "comments", "posts"
   add_foreign_key "rewards", "campaigns"
   add_foreign_key "streams", "users"
