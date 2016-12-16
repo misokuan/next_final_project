@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show, :edit, :update, :destroy]
   end
   resources :featured, only: [:index, :show]
-
+  resources :search, only: [:create, :index]
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
