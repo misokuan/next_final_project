@@ -1,3 +1,4 @@
+<br>
 <%= javascript_include_tag "//static.opentok.com/webrtc/v2.2/js/TB.min.js" %>
 <script>
 function printMessage(message) {
@@ -49,33 +50,39 @@ $(function() {
 
 });
 </script>
-<div class="col-lg-12 col-sm-12">
-	<div class="col-lg-3 col-sm-3">
+<div class="col-lg-12 col-sm-12 videobox">
+<table>
+<tr><td rowspan="2" class="col-lg-3 col-sm-3 videotable">
+<br>
+    <div class="videopillar">
 	<% if current_user == @stream.user %> 
-	<h1>Your stream</h1>
 	<% else %>
-	<h1><%= @stream.user.username %>'s stream </h1>
+	<h1><%= @stream.user.username.upcase %>'S STREAM </h1>
 	<% end %>
-	<h3>Title:</h3> 
-	<p><%= @stream.title %></p>
-	<h3>Desc:</h3>
-	<p><%= @stream.description %></p>
-	Link to your stream: <%= link_to user_stream_path(user_id: @stream.user.id, id: @stream.id), user_stream_path(user_id: @stream.user.id, id: @stream.id) %><br><br><br><br>
-	<a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>"><button type="button" class="btn btn-primary btn-lg col-md-12">Visit Campaign</button></a>
-	</div>
-	<div class="col-lg-6 col-sm-6">
+	<h2><%= @stream.title %></h2>
+    <h4>by <%= link_to @stream.user.username, user_profile_path(user_id: @stream.user.id, id: @stream.user.profile.id) %></h4>
+	<p><%= @stream.description %></p></div>
+	</td>
+    <td class="col-lg-6 col-sm-6">
+    <div style="line-height:15%;">
+        <br>
+    </div>
 	<% if current_user == @stream.user %>
-	<div id="publisher"></div>
+	<div id="publisher" class="video-mask videoplay"><br>
 	<% else %>
-	<div id="stream"></div>
-	<% end %>
-	</div>
-	<div class="col-lg-3 col-sm-3">
-	<h1>Chatbox here</h1>
+	<div id="stream" class="video-mask videoplay"></div>
+	<% end %></td>
+    <td rowspan="2" class="col-lg-3 col-sm-3">
+    <br>
+    <div class="videopillar">
 
-  <div id="messages"></div>
-   <input id="chat-input" class="form-control" type="text" placeholder="say anything" autofocus/>
- </div>
+  <div align="center">
+  <h1>HELLO! <span class="glyphicon glyphicon-comment"></span></h1>
+  <div id="messages"></div><br>
+   <input id="chat-input" class="form-control" type="text" placeholder="Your message goes here..." autofocus/></div></td>
+ <tr>
+ <td class="col-lg-6 col-sm-6"><a href="/users/<%= @stream.user.id %>/streams/new" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12" style="border-bottom:1px solid #e3e4e5">Edit Stream</button></a><a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12">Visit Campaign</button></a><br></td></td></tr>
+ </table>
 </div>
 	</div>
 </div>
