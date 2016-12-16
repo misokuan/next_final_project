@@ -5,10 +5,10 @@ class PostsController < ApplicationController
 		params.permit!
 		@post = Post.new(posts_params)
 		@post.campaign_id = params[:campaign_id]
-		byebug
+
 		respond_to do |format|
       	  if @post.save
-        	format.html { redirect_to user_campaign_post_path(user_id:current_user.id, campaign_id:params[campaign_id]), notice: 'Campaign was successfully created.' }
+        	format.html { redirect_to user_campaign_post_path(user_id:current_user.id, campaign_id:params[:campaign_id], id:@post.id), notice: 'Campaign was successfully created.' }
       	  else
         	format.html { render :new }
       	  end
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 		# @post.save
 		# @post.update(params[:post])
 
-		redirect_to user_campaign_path(user_id: @posts.campaign.user.id, id: @posts.campaign.id)
+		# redirect_to user_campaign_path(user_id: @posts.campaign.user.id, id: @posts.campaign.id)
 
 	end
 
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 	end 
 
 	def edit 
-		byebug
+
 		@user = User.find(params[:user_id])
     	@campaign = Campaign.find(params[:campaign_id])
     	@post = Post.find(params[:id])
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 	def update 
 
 		params.permit!
-		byebug
+
 		@post = Post.find(params[:id])
 		@post.update(posts_params)
 
@@ -44,6 +44,8 @@ class PostsController < ApplicationController
 	end
 
 	def destroy 
+
+		@post = Post.find(params[:id])
 
 		@post.destroy
 		redirect_to user_campaign_path
