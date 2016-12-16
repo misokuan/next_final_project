@@ -26,16 +26,17 @@ class PostsController < ApplicationController
 	end 
 
 	def edit 
-
-		@user = User.find_by(id: params[:user_id])
-    	@campaign = Campaign.find(params[:campaign])
-    	@post = Post.find(params[:post])
+		byebug
+		@user = User.find(params[:user_id])
+    	@campaign = Campaign.find(params[:campaign_id])
+    	@post = Post.find(params[:id])
 
 	end 
 
 	def update 
 
 		params.permit!
+		byebug
 		@post = Post.find(params[:id])
 		@post.update(posts_params)
 

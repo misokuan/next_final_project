@@ -1,0 +1,13 @@
+<h1>Here's the Post Edit Page Numbnuts!</h1>
+
+<%= form_for [@user, @campaign, @post] do |f| %>
+
+<p>Post here:<br>
+    <%= f.text_field :body %></p> 
+
+<p><%= f.label :Add_Images_To_New_Post %> <br>
+    <%= f.file_field :post_images, multiple: true %> </p>
+
+    <%= f.submit "Edit Post"%>
+
+<% end %>

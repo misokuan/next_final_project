@@ -79,9 +79,12 @@ User ID: <%= @campaign.user_id %><br>
                     <%= x.body %><br>
                     <% image_num = 0 %>
                       <% while image_num <= x.post_images.length - 1 %>      
-                        <img src="<%= x.post_images[image_num].thumb.url %>">
+                        <img src="<%= x.post_images[image_num].thumb2.url %>">
                         <% image_num += 1 %>
                       <% end %>
+                    <% if current_user.id == @campaign.user.id %>
+                      <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: x.campaign_id, id: x.id)%>
+                    <% end %>
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">
