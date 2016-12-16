@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216035036) do
-
+ActiveRecord::Schema.define(version: 20161216102334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,13 +29,13 @@ ActiveRecord::Schema.define(version: 20161216035036) do
     t.string   "title"
     t.string   "description"
     t.string   "rewards"
-    t.integer  "total_contributors"
-    t.integer  "total_amount_contribute"
+    t.integer  "total_contributors",      default: 0
+    t.integer  "total_amount_contribute", default: 0
     t.string   "cover_photo"
     t.string   "taggings"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "goal_id"
     t.json     "campaign_images"
   end

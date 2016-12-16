@@ -11,8 +11,10 @@ class BeHeroController < ApplicationController
 		@reward = Reward.find_by(campaign_id: params[:campaign_id], amount: params[:reward_amount])
 		run_first									#check private
 		run_braintree_sale				#check private
-		run_payment_create				#check private
-		byebug
+		if @result.nil? == false	#check private
+			run_payment_create
+			run_updates_on_campaigns
+		end
 		flash[:alert] = "Your payment went through succesfully!"
 		redirect_to featured_index_path
 	end
@@ -44,4 +46,19 @@ private
 		@payment.reward_id = @reward.id
 		@payment.save!
 	end
+
+	def run_updates_on_campaigns
+		if @campaign.total_amount_contribute.nil?
+			@campaign.update(total_amount_contribute: @result.transaction_amount)
+		else
+			@campaign.update(total_amount_contribute: @campaign.total_amount_contribute + @result.transaction.amount)
+		end
+
+		if @campaign.total_contributors.nil?
+			@campaign.update(total_contributors: 1)
+		else 
+			@campaign.update(total_contributors: 1 + @campaign.total_contributors)
+		end
+	end
+
 end
