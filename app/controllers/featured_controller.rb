@@ -2,7 +2,6 @@ class FeaturedController < ApplicationController
 	def index
     if params[:tag_name] != nil 
       tag = Tag.find_by(name: params[:tag_name])
-      byebug
       @campaign = tag.campaigns
     elsif params[:pg_name] != nil
       @campaign = []
@@ -10,8 +9,6 @@ class FeaturedController < ApplicationController
       @pgsearch.each do |x|
         @campaign << Campaign.find(x.searchable_id)
       end
-      byebug
-      @campaign
     else
 		  @campaign = Campaign.all
     end
