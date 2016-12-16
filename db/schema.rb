@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215063959) do
+ActiveRecord::Schema.define(version: 20161216022809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20161215063959) do
     t.integer  "total_contributors"
     t.integer  "total_amount_contribute"
     t.string   "cover_photo"
-    t.string   "campaign_images"
     t.string   "taggings"
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "goal_id"
+    t.json     "campaign_images"
   end
 
   add_index "campaigns", ["goal_id"], name: "index_campaigns_on_goal_id", using: :btree
@@ -75,13 +75,25 @@ ActiveRecord::Schema.define(version: 20161215063959) do
 
   add_index "interests", ["category_id"], name: "index_interests_on_category_id", using: :btree
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.integer  "transaction_amount"
+    t.string   "transaction_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "payments", ["campaign_id"], name: "index_payments_on_campaign_id", using: :btree
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.integer  "campaign_id"
     t.text     "body"
-    t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "title"
+    t.json     "post_images"
   end
 
   add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
@@ -106,7 +118,6 @@ ActiveRecord::Schema.define(version: 20161215063959) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "description"
-    t.string   "username"
     t.date     "date_of_birth"
     t.string   "address"
     t.string   "city"
@@ -114,6 +125,8 @@ ActiveRecord::Schema.define(version: 20161215063959) do
     t.string   "gender"
     t.integer  "user_id"
     t.string   "avatar"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -124,6 +137,29 @@ ActiveRecord::Schema.define(version: 20161215063959) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.decimal  "amount"
+    t.string   "description"
+    t.string   "rewards_class"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
+
+  create_table "streams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "status"
+    t.string   "opentok_session_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -132,13 +168,27 @@ ActiveRecord::Schema.define(version: 20161215063959) do
     t.string   "confirmation_token",    limit: 128
     t.string   "remember_token",        limit: 128
     t.string   "password_confirmation"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  create_table "viewers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "stream_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "viewers", ["stream_id"], name: "index_viewers_on_stream_id", using: :btree
+  add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
+
   add_foreign_key "comments", "posts"
-  add_foreign_key "posts", "users", column: "campaign_id"
   add_foreign_key "posts_tags", "posts"
   add_foreign_key "posts_tags", "tags"
+  add_foreign_key "rewards", "campaigns"
+  add_foreign_key "streams", "users"
+  add_foreign_key "viewers", "streams"
+  add_foreign_key "viewers", "users"
 end

@@ -11,7 +11,7 @@ RSpec.describe "Campaign setup", :type => :request do
 		expect(response).to render_template(:new)
 	end
 
-	it "shows the edit page" do
+	it "shows the edit page (fix this is future)" do
 		get "/users/#{@user.id}/campaigns/edit"
 		current_user = @user
 		expect(response).to render_template(:edit)

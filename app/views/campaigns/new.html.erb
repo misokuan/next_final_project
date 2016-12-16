@@ -12,13 +12,8 @@
   </p>
 
   <p>
-    <%= f.label :Rewards %><br>
-    <%= f.text_area :rewards %>
-  </p>
-
-  <p>
   	<%= f.label :Add_Campaign_Images %>
-  	<%= f.file_field :campaign_images %>
+  	<%= f.file_field :campaign_images, multiple: true %>
   </p>
 
    <p>

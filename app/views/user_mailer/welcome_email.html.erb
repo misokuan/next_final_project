@@ -2,16 +2,22 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
+  <div class="email col-md-8">
+  <img src="https://cdn.pixabay.com/photo/2015/05/22/20/28/hotel-779692_960_720.jpg" width="600px" height="300px">
     <h1>Welcome to example.com, <%= @user.email %></h1>
     <p>
       You have successfully signed up to example.com,
       your username is: <%= @user.email %>.<br>
     </p>
+    <p>You may now start publishing your campaign, have live streams for your fans and also support other local artists!</p>
     <p>
       To login to the site, just follow this link: <%= @url %>.
     </p>
     <p>Thanks for joining and have a great day!</p>
+    <br>
+    </div>
   </body>
 </html>

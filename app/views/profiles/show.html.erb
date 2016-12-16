@@ -45,6 +45,13 @@
 <%= @profile.user_id %>
 <%= @profile.description %>
 <%= @profile.address %>
+=======
+<%= image_tag @profile.avatar.thumb %>
+<%= @profile.first_name %> <%= @profile.last_name %><br>
+<%= @profile.user_id %><br>
+<%= @profile.description %><br>
+<%= @profile.address %><br>
+>>>>>>> d980bc381d2192bb2546e98e8449eed13b35d62c
 
  -->
 <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>

@@ -23,7 +23,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process resize_to_fill: [200, 200]
+  process resize_to_fit: [800, 800]
+
+  version :desktop do
+    process resize_to_fill: [820,312]
+  end
+
+  version :mobile do
+    process resize_to_fill: [640,360]
+  end
+
   #
   # def scale(width, height)
   #   process resize_to_fill: [200,200] # do something
@@ -31,6 +40,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process resize_to_fit: [200, 200]
+  end
+
+  version :thumb2 do
     process resize_to_fit: [50, 50]
   end
 

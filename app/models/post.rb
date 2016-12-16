@@ -21,4 +21,5 @@ class Post < ActiveRecord::Base
       post.tags << tag
     end
   end
+  mount_uploaders :pictures, PictureUploader
 end
