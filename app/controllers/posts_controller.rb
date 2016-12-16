@@ -23,10 +23,11 @@ class PostsController < ApplicationController
 
 	def show 
 		@post = Post.find(params[:id])
+		
 	end 
 
 	def edit 
-
+		
 		@user = User.find(params[:user_id])
     	@campaign = Campaign.find(params[:campaign_id])
     	@post = Post.find(params[:id])
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
 	def destroy 
 
 		@post = Post.find(params[:id])
-
+		
 		@post.destroy
 		redirect_to user_campaign_path
 	end 
