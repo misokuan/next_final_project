@@ -57,3 +57,23 @@ class PostsController < ApplicationController
 	    params.require(:post).permit(:body, {post_images: []})
 	end 
 end
+
+# Shows each Campaign Posts and any pictures attached to each post.
+
+# <h2>Some of our New Posts about the Campaign: </h2>
+
+# <% if @campaign.posts.length != 0 %>
+
+#   <% posts = @campaign.posts %>
+#   <% posts.each do |t| %>
+
+#     <%= t.body %><br>
+
+#     <% image_num = 0 %>
+#       <% while image_num <= t.post_images.length - 1 %>      
+#         <img src="<%= t.post_images[image_num].thumb.url %>">
+#         <% image_num += 1 %>
+#       <% end %>
+
+#   <% end %>
+# <% end %>
