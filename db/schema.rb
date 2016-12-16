@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216102334) do
+ActiveRecord::Schema.define(version: 20161216125207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,14 +118,6 @@ ActiveRecord::Schema.define(version: 20161216102334) do
 
   add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
 
-  create_table "posts_tags", id: false, force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
-  end
-
-  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id", using: :btree
-  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id", using: :btree
-
   create_table "profile_interests", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "interest_id"
@@ -216,8 +208,6 @@ ActiveRecord::Schema.define(version: 20161216102334) do
   add_foreign_key "campaigns_tags", "campaigns"
   add_foreign_key "campaigns_tags", "tags"
   add_foreign_key "comments", "posts"
-  add_foreign_key "posts_tags", "posts"
-  add_foreign_key "posts_tags", "tags"
   add_foreign_key "rewards", "campaigns"
   add_foreign_key "searches", "users"
   add_foreign_key "streams", "users"

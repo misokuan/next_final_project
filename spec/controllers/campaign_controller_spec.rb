@@ -4,7 +4,7 @@ RSpec.describe CampaignsController, type: :controller do
 
 	before(:each) do
 		@user = User.create!(email: "abc@email.com", encrypted_password: "1234Qwer")
-		@campaign = Campaign.create(user_id: @user.id, title: "My Campaign Title", description: "Abcdef")
+		@campaign = Campaign.create(user_id: @user.id, title: "My Campaign Title", description: "Abcdef", taggings: "#abc #def")
 		sign_in_as @user
 	end
 
@@ -26,14 +26,14 @@ RSpec.describe CampaignsController, type: :controller do
 		context "with valid attributes" do
 			it "creates a new listing" do
 				expect{
-					campaign_params = {title: "Abc", description: "Def"}
+					campaign_params = {title: "Abc", description: "Def", taggings: "#abc #def"}
 					post :create, user_id: @user.id, :campaign => campaign_params }.to change(Campaign,:count).by(1)
 			end
 
 			it "redirects to the new campaign" do
-				campaign_params = {title: "Abc", description: "Def"}
+				campaign_params = {title: "Abc", description: "Def", taggings: "#abc #def"}
 				post :create, user_id: @user.id, campaign: campaign_params
-	 				expect(response).to redirect_to user_campaign_path(@user, Campaign.last)
+	 				expect(response).to redirect_to new_user_campaign_reward_path(@user, Campaign.last)
 			end
 		end
 	end

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Campaign setup", :type => :request do
 	before(:each) do
 		@user = User.create(email: "abc@gmail.com", password: "1234Qwer")
-		@campaign = Campaign.create(user_id: @user.id)
+		@campaign = Campaign.create(user_id: @user.id, taggings: '#abc #def')
 	end
 
 	it "shows the campaign " do
