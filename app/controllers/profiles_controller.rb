@@ -44,7 +44,6 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-    
     params.permit!
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)

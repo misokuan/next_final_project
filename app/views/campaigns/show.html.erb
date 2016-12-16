@@ -77,8 +77,8 @@ User ID: <%= @campaign.user_id %><br>
             <% @posts = Post.new(campaign_id: @campaign.id) %>
             <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
                 Post here:
-                  <%= f.text_field :body %>
-                <%= f.label :Add_Campaign_Images %>
+                  <%= f.text_field :body %> <br>
+                <%= f.label :Add_Images_To_New_Post %>
                   <%= f.file_field :post_images, multiple: true %>
                 <%= f.submit %>
             <% end %><br>
@@ -86,9 +86,22 @@ User ID: <%= @campaign.user_id %><br>
             <div class="col-sm-9">
             <h4>Posts:</h4>
                 <% if @campaign.posts.length > 0 %>
-                <% @campaign.posts.each do |x| %>
+                <% posts = @campaign.posts %>
+                <% posts.each do |x| %>
                     <% @comments = Comment.new(post_id: x.id) %>
+
                     <%= x.body.html_safe %><br>
+                    <% image_num = 0 %>
+                      <% while image_num <= x.post_images.length - 1 %>      
+                        <img src="<%= x.post_images[image_num].thumb2.url %>">
+                        <% image_num += 1 %>
+                      <% end %>
+                      <%= link_to 'View Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id) %>
+                    <% if current_user.id == @campaign.user.id %>
+                      <%= link_to 'Edit Post', edit_user_campaign_post_path(campaign_id: x.campaign_id, id: x.id)%>
+                      <%= link_to 'Delete Post', user_campaign_post_path(campaign_id: x.campaign_id, id: x.id), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
+                    <% end %>
+
                     Posted at: <%= x.created_at %><br></div>
                     <% if x.comments.length > 0 %>
                     <div class="col-sm-9">

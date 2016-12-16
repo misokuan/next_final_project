@@ -1,0 +1,15 @@
+<h1>Edit your Post</h1>
+
+<%= form_for [@user, @campaign, @post] do |f| %>
+
+<p>Post here:<br>
+    <%= f.text_field :body %></p> 
+
+<p><%= f.label :Add_Images_To_New_Post %> <br>
+    <%= f.file_field :post_images, multiple: true %> </p>
+
+    <%= f.submit "Edit Post"%>
+
+<% end %>
+
+<%= link_to 'Delete Post', user_campaign_post_path(campaign_id:params[:campaign_id], id:params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
