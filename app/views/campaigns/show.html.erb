@@ -226,7 +226,7 @@ Amount: $<%= x.amount %><br>
           Description: <%= @campaign.description %><br>
 Total Contributors: <%= @campaign.total_contributors %><br>
 Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
-Campaign Taggings: <%= render_with_hashtags(@campaign.taggings) %><br>
+Campaign Taggings: <%= render_with_hashtags(@campaign.taggings) if @campaign.taggings != nil %><br>
 User ID: <%= @campaign.user_id %><br>
 
 <%= link_to 'Edit Campaign Details', edit_user_campaign_path(campaign: @campaign)%>
