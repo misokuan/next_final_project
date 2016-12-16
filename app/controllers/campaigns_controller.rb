@@ -21,6 +21,8 @@ class CampaignsController < ApplicationController
 
 	def show 
 		@campaign = User.find(params[:user_id]).campaign
+		@posts = @campaign.posts
+
 	end 
 
 	def edit 

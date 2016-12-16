@@ -1,0 +1,9 @@
+<%= link_to 'Return to Campaign Page', user_campaign_path(user_id: params[user_id], id: params[campaign_id])%>
+
+<%= @post.body %>
+
+<% image_num = 0 %>
+  <% while image_num <= @post.post_images - 1 %>      
+    <img src="<%= @post.post_images[image_num].url %>">
+    <% image_num += 1 %>
+  <% end %>

@@ -3,9 +3,19 @@ class PostsController < ApplicationController
 	def create
 
 		params.permit!
-		@posts = Post.new(campaign_id: params[:campaign_id])
-		@posts.save
-		@posts.update(params[:post])
+		@post = Post.new(posts_params)
+		@post.campaign_id = params[:campaign_id]
+		byebug
+		respond_to do |format|
+      	  if @post.save
+        	format.html { redirect_to user_campaign_post_path(user_id:current_user.id, campaign_id:params[campaign_id]), notice: 'Campaign was successfully created.' }
+      	  else
+        	format.html { render :new }
+      	  end
+    	end
+
+		# @post.save
+		# @post.update(params[:post])
 
 		redirect_to user_campaign_path(user_id: @posts.campaign.user.id, id: @posts.campaign.id)
 

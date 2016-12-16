@@ -64,8 +64,8 @@ User ID: <%= @campaign.user_id %><br>
             <% @posts = Post.new(campaign_id: @campaign.id) %>
             <%= form_for(@posts, :url => user_campaign_posts_path(user_id: @campaign.user.id, campaign_id: @campaign.id)) do |f| %>
                 Post here:
-                  <%= f.text_field :body %>
-                <%= f.label :Add_Campaign_Images %>
+                  <%= f.text_field :body %> <br>
+                <%= f.label :Add_Images_To_New_Post %>
                   <%= f.file_field :post_images, multiple: true %>
                 <%= f.submit %>
             <% end %><br>
@@ -104,6 +104,24 @@ User ID: <%= @campaign.user_id %><br>
     </div>
     </div>
     </div>
+
+<h2>Some of our New Posts about the Campaign: </h2>
+
+<% if @campaign.posts.length != 0 %>
+
+  <% posts = @campaign.posts %>
+  <% posts.each do |t| %>
+
+    <%= t.body %><br>
+
+    <% image_num = 0 %>
+      <% while image_num <= t.post_images.length - 1 %>      
+        <img src="<%= t.post_images[image_num].thumb.url %>">
+        <% image_num += 1 %>
+      <% end %>
+
+  <% end %>
+<% end %>
 
 <h2>Some Examples of Our Work in Progress: </h2>
 
