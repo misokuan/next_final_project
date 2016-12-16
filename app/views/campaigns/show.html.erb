@@ -79,7 +79,7 @@ User ID: <%= @campaign.user_id %><br>
                     <%= x.body %><br>
                     <% image_num = 0 %>
                       <% while image_num <= x.post_images.length - 1 %>      
-                        <img src="<%= t.post_images[image_num].thumb.url %>">
+                        <img src="<%= x.post_images[image_num].thumb.url %>">
                         <% image_num += 1 %>
                       <% end %>
                     Posted at: <%= x.created_at %><br></div>
