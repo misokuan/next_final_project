@@ -31,13 +31,15 @@ class CampaignsController < ApplicationController
     	@campaign = Campaign.find(params[:campaign])
 	end 
 
-	def destroy
+	# def destroy
 
-	  @campaign = Campaign.find(params[:campaign])
-	  @campaign.destroy
+	#   @campaign = Campaign.find(params[:campaign])
+	#   @campaign.destroy
 
-		redirect_to user_profile_path
-	end 
+	# 	redirect_to user_profile_path
+	# end 
+
+	# <%= link_to 'Delete Campaign', user_campaign_path(user_id:params[:user_id], id:params[:id]), :method => :delete%>
 
 	def update 
 
