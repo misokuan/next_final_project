@@ -7,6 +7,17 @@
 
 <%= @post.body %> <br>
 
+<%= form_for(@comment, :url => user_campaign_post_comments_path(user_id: current_user.id, campaign_id: params[:campaign_id], post_id: @post.id)) do |f| %>
+	<p>
+        <%= f.text_field :body %>
+        <%= f.submit %>
+    </p>
+<% end %>
+
+<% @post.comments.each do |c|%> 
+	<%= c.body %> <%= c.user.email %><br>
+<% end %>
+
 <% image_num = 0 %>
   <% while image_num <= @post.post_images.length - 1 %>      
     <img src="<%= @post.post_images[image_num].url %>">

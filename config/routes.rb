@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       resources :goals, only: [:edit, :update, :destroy]
       resources :posts, only: [:create, :show, :edit, :update, :destroy] do
-        resources :comments, only: [:new, :create, :edit, :update, :destroy]
+        resources :comments, only: [:create, :edit, :update, :destroy]
       end
       resources :rewards, only: [:new, :create, :edit, :update]
     end
