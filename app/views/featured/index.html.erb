@@ -1,31 +1,15 @@
 <h1> Our Featured Campaigns </h1>
 
-<div class='main-content' >
+
 	<div class='col-md-3'>
 		<h3> This is where we put the categories place </h3>
 	</div>
 
 	<div class='col-md-9'>
 		<h3> This is where we put the featured campaign / categories area </h3>
-		<% if @campaign.is_a? Array %>
-			<% @campaign.each do |x| %>
-				<div id="feature_campaign">
-					Title: <%= x.title %><br>
-					Description: <%= x.description %><br>
-					Rewards: <%= x.rewards %><br>
-					Contributors: <%= x.total_contributors %><br>
-					Total Amount Contributed: <%= x.total_amount_contribute %><br>
-					Image: <%= x.campaign_images %><br>
-					Taggings: <%= x.taggings %><br>
-					Goal: <%= x.goal.goal_per_month %><br>
-					Current Goal: <%= x.goal.current_per_month %><br>
-					<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>
-					<br>
-				</div>
-			<% end %>
-		<% else %>
 			<% @campaign.all.each do |x| %>
-			<div id="feature_campaign">
+			<div id="feature_campaign" class="clearfix">
+			<img src"<%= x.campaign_images[image_num].thumb.url %>", alt="rss feed">
 				Campaign ID: <%= x.id %><br>
 				Campaign Owner: <%= x.user.email %><br>
 				Title: <%= x.title %><br>
@@ -33,16 +17,15 @@
 				Rewards: <%= x.rewards %><br>
 				Contributors: <%= x.total_contributors %><br>
 				Total Amount Contributed: <%= x.total_amount_contribute %><br>
-				Image: <%= x.campaign_images %><br>
 				Taggings: <%= x.taggings %><br>
 				Goal: <%= x.goal.goal_per_month %><br>
 				Current Goal: <%= x.goal.current_per_month %><br>
-				<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>
-				<br>
+				<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>	
 			</div>
-	<% end %>
- <% end %>
+			<br>
+ 	<% end %>
  </div>
-</div>
 
 
+
+	
