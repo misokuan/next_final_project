@@ -81,7 +81,19 @@ $(function() {
   <div id="messages"></div><br>
    <input id="chat-input" class="form-control" type="text" placeholder="Your message goes here..." autofocus/></div></td>
  <tr>
- <td class="col-lg-6 col-sm-6"><a href="/users/<%= @stream.user.id %>/streams/new" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12" style="border-bottom:1px solid #e3e4e5">Edit Stream</button></a><a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12">Visit Campaign</button></a><br></td></td></tr>
+ <td class="col-lg-6 col-sm-6">
+    <div class="col-lg-2 col-sm-2"><img src="http://i452.photobucket.com/albums/qq244/missnpk93/speaker_zpsnrfdpnzl.png" width="85px" height="85px"></div>
+        <% if current_user == @stream.user %>
+            <div class="col-lg-8 col-sm-8">
+            <a href="/users/<%= @stream.user.id %>/streams/new" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12" style="border-bottom:1px solid #e3e4e5">Edit Stream</button></a>
+            <a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12">Visit Campaign</button></a><br></div>
+        <% else %>
+            <div class="col-lg-8 col-sm-8">
+            <a href="/users/<%= @stream.user.id %>/campaigns/<%= @stream.user.campaign.id %>" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12" style="border-bottom:1px solid #e3e4e5">Visit Campaign</button></a>
+            <a href="/featured" target="_blank"><button type="button" class="btn btn-primary btn-lg col-md-12">View Featured Campaigns</button></a><br></div>
+        <% end %>
+    <div class="col-lg-2 col-sm-2"><img src="http://i452.photobucket.com/albums/qq244/missnpk93/speaker_zpsnrfdpnzl.png" width="85px" height="85px"></div>
+</td></tr>
  </table>
 </div>
 	</div>

@@ -11,10 +11,18 @@
 	background-color: #fff;
 }
 
+.speakers {
+  	background-image: url('speaker.png');
+	height: 25px;
+	width: 25px;
+}
+
 .videobox {
 	height: 510px;
 	margin-top: 10px;
 	background-color: #e3e4e5;
+	background-image: url('http://slodive.com/wp-content/uploads/2012/04/wood-background/grey-wood-back.jpg');
+	background-size: 100% 100%;	
 }
 
 .videotable {
