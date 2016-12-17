@@ -14,12 +14,32 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
+
+		@user = User.find(params[:user_id])
+    	@campaign = Campaign.find(params[:campaign_id])
+    	@post = Post.find(params[:post_id])
+    	@comment = Comment.find(params[:id])
+
 	end
 
 	def update
+
+		params.permit!
+
+		@comment = Comment.find(params[:id])
+		@comment.update(comments_params)
+
+		redirect_to user_campaign_post_path
+
 	end
 
 	def destroy
+
+		@comment = Comment.find(params[:id])
+		
+		@comment.destroy
+		redirect_to user_campaign_path
+
 	end
 
 	private

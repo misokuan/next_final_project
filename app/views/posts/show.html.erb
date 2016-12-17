@@ -16,6 +16,11 @@
 
 <% @post.comments.each do |c|%> 
 	<%= c.body %> <%= c.user.email %><br>
+	<% if current_user.id = c.user_id %>
+	  <%= link_to 'Edit Comment', edit_user_campaign_post_comment_path(user_id: params[:user_id], campaign_id: params[:campaign_id], post_id: params[:id])%>
+      <%= link_to 'Delete Comment', user_campaign_post_path(campaign_id: params[:campaign_id], id: params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
+    <% end %>
+
 <% end %>
 
 <% image_num = 0 %>

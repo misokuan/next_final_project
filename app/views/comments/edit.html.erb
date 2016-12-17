@@ -1,0 +1,12 @@
+<h1>Edit your Comment</h1>
+
+<%= form_for [@user, @campaign, @post, @comment] do |f| %>
+
+<p>Post here:<br>
+    <%= f.text_field :body %></p> 
+
+    <%= f.submit "Edit Comment"%>
+
+<% end %>
+
+<%= link_to 'Delete Comment', user_campaign_post_comment_path(campaign_id:params[:campaign_id], post_id:params[:post_id], comment:params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this comment?" } %>
