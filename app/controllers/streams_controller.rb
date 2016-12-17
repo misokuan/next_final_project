@@ -15,7 +15,7 @@ class StreamsController < ApplicationController
 			@stream = Stream.find_by(user_id: @user.id)
 			@stream.update(params[:stream])
 		end
-		byebug
+		#byebug
 		Post.create(campaign_id: @user.campaign.id, body: "#{@user.username} is streaming #{@user.stream.title}! <a href=\"/users/#{@user.id}/streams/#{@user.stream.id}\">View now!</a>")
 		redirect_to user_stream_path(current_user, @stream.id)
 	end
