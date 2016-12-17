@@ -42,6 +42,7 @@ class CampaignsController < ApplicationController
     end
 
 	def update 
+		byebug
 		params.permit!
 		campaign = Campaign.find(params[:id])
 
