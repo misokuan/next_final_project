@@ -4,14 +4,14 @@
 <div id="campaign_launch">
   <!--main content-->
   <div class="main-content">
-            <div class="col-lg-12 col-sm-12">
+           
     <div class="card hovercard">
         <div class="card-background">
             <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
             <!-- http://lorempixel.com/850/280/people/9/ -->
         </div>
         <div class="useravatar">
-            <img alt="" src="http://lorempixel.com/100/100/people/9/">
+            <img alt="" src="http://i.scdn.co/image/9b7c27ee2692f2beb9d8fbc591a50cb4274e63a8">
         </div>
         <div class="card-info"> <span class="card-title"><%= @campaign.title %></span>
 
@@ -53,17 +53,17 @@ Amount: $<%= x.amount %><br>
 
             <%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
         </div>
-        <div class="col-lg-9 col-sm-9">
+        <div class="col-lg-12 col-sm-9">
     <% else %>
         <div class="col-sm-12"></div>
     <% end %>
           
 <button><%= link_to 'Be A Hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %></button>
     <% end %></div>
-    <div class="col-lg-9 col-sm-9">
+    <div class="col-lg-12 col-sm-9">
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 <div class="hidden-xs">Overview</div>
             </button>
         </div>
@@ -170,8 +170,7 @@ Amount: $<%= x.amount %><br>
           <div class="section-block summary">
             <h1 class="section-title">LAUNCH</h1>
             <div class="profile-contents">
-              <h2 class="position">Sky Rocketing Your Funding Campaign</h2>
-              <img src="assets/img/profile-img.jpg" class="profile-image img responsive" alt="John Doe">
+         
               <!--social links-->
               <ul class="list-inline">
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
