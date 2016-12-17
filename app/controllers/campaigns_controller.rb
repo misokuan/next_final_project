@@ -51,8 +51,9 @@ class CampaignsController < ApplicationController
 	def update 
 
 		params.permit!
-		campaign = Campaign.find(params[:id])
-		campaign.update(campaign_params)
+		@campaign = Campaign.find(params[:id])
+
+		@campaign.update(campaign_params)
 
 		redirect_to user_campaign_path
 	end
