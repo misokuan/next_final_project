@@ -3,7 +3,7 @@ $ ->
     # Initialize an OpenTok Session object
     session = TB.initSession(gon.opentok.sessionId);
 
-    videoOptions = {width: 640, height: 480}
+    videoOptions = {width: 640, height: 360}
 
     # Attach event handlers
     session.on

@@ -2,4 +2,96 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#messages {height: 300px; overflow: scroll; border: 1px solid #ddd}
+#messages {
+    border-radius: 10px;
+	height: 340px;
+	width: 250px; 
+	overflow: scroll;
+	border: 1px solid #ddd;
+	background-color: #fff;
+}
+
+.speakers {
+  	background-image: url('speaker.png');
+	height: 25px;
+	width: 25px;
+}
+
+.videobox {
+	height: 510px;
+	margin-top: 10px;
+	background-color: #e3e4e5;
+	background-image: url('http://slodive.com/wp-content/uploads/2012/04/wood-background/grey-wood-back.jpg');
+	background-size: 100% 100%;	
+}
+
+.videotable {
+	margin: 2px;
+}
+
+.videopillar {
+    border-radius: 10px;
+    margin: 1px;
+    padding: 3px;
+    color: #fff;
+	height: 472px;
+	background-color: #212F3C;	
+}
+
+.videopillar h1 {
+	background: none;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 25px;
+    font-weight:700;
+}
+
+.videopillar h2 {
+	padding-top: 7px;
+	font-family: 'Satisfy';
+	text-align: center;
+	font-size: 40px;
+}
+
+.videopillar h3 {
+    color: #fff;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight:700;
+}
+
+.videopillar h4 {
+	text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight:400;
+}
+
+.videopillar p {
+	padding: 10px;
+	 text-align: justify;
+}
+
+.videobuttons {
+	position: absolute; 
+	bottom: 0;
+}
+
+.video-mask{
+width: 350px;
+-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
+-webkit-transform: rotate(0.000001deg); 
+-webkit-border-radius: 10px; 
+-moz-border-radius: 10px;
+border-radius: 10px; 
+overflow: hidden; 
+}
+
+.videoplay {
+	height: 500px;
+}
+
+.form-control {
+	background-color: #ffffff;
+	width: 250px;
+}
