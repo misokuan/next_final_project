@@ -1,25 +1,70 @@
-<h1> Edit your Campaign! </h1>
+<!--main content-->
+  
+              <div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Campaign</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+        
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. Use this to show important messages to the user.
+      </div>
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+   
+          <div class="col-lg-8">
+           <p id="notice">
+  <%= notice %></p>
 
 <%= form_for [@user, @campaign] do |f| %>
 <p>
-    <%= f.label :Title %><br>
+        <%= f.label :Title %><br>
     <%= f.text_field :title %>
   </p>
- 
-  <p>
-    <%= f.label :Description %><br>
+
+          </div>
+       
+          <div class="col-lg-8">
+          <p>
+       <%= f.label :Description %><br>
     <%= f.text_area :description %>
-  </p>
+          </p>
+          </div>
+   
+        
 
-  <p>
-  	<%= f.label :Add_Campaign_Images %>
-  	<%= f.file_field :campaign_images, multiple: true %>
-  </p>
+          <div class="col-lg-8">
+              <p>
+               <%= f.label :Add_Campaign_Images %>
+    <%= f.file_field :campaign_images, multiple: true %>
+              </p>
+          </div>
+      
+       
+          <div class="col-md-8">
+            <p>
+              <%= f.label :Add_Campaign_Cover_Photo %>
+    <%= f.file_field :cover_photo %>
+            </p>
+          </div>
 
-   <p>
-   	<%= f.label :Add_Campaign_Cover_Photo %>
-  	<%= f.file_field :cover_photo %>
-  </p>
 
-    <%= f.submit "Edit Campaign"%>
-<% end %>
+                  <%= f.submit "Edit Campaign"%>
+              <% end %>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+ 
