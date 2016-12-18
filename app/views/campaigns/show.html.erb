@@ -291,9 +291,9 @@ User ID: <%= @campaign.user_id %><br>
                     <% end %>
                     <hr class="col-sm-9"><br></div>
                     <% end %>
-        <%= form_for(@comments, :url => user_campaign_post_comments_path(user_id: @campaign.user.id, campaign_id: @campaign.id, post_id: x.id)) do |f| %>
+        <%= form_for(@comments, :url => user_campaign_post_comments_path(user_id: current_user.id, campaign_id: @campaign.id, post_id: x.id)) do |f| %>
         <%= f.text_field :body %>
-        <%= f.submit %>
+        <%= f.submit %> <br>
         <% end %>
         <br>
     <% end %>

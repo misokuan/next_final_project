@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one :campaign 
   has_one :stream
   has_many :viewers
+  has_many :comments
   has_many :authentications, :dependent => :destroy
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
