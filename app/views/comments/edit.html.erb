@@ -9,4 +9,4 @@
 
 <% end %>
 
-<%= link_to 'Delete Comment', user_campaign_post_comment_path(campaign_id:params[:campaign_id], post_id:params[:post_id], comment:params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this comment?" } %>
+<%= link_to 'Delete Comment', user_campaign_post_comment_path(user_id: params[:user_id], post_id: params[:post_id], comment: params[:id]), :method => :delete, data: { confirm: "Are you sure to delete this comment?" } %>

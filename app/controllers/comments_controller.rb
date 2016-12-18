@@ -29,16 +29,16 @@ class CommentsController < ApplicationController
 		@comment = Comment.find(params[:id])
 		@comment.update(comments_params)
 
-		redirect_to user_campaign_post_path
+		redirect_to user_campaign_post_path(user: @comment.user_id, campaign: params[:campaign_id], id: @comment.post_id)
 
 	end
 
 	def destroy
 
 		@comment = Comment.find(params[:id])
-		
+		byebug
 		@comment.destroy
-		redirect_to user_campaign_path
+		redirect_to user_campaign_path(user: params[:user_id], campaign: params[:campaign_id])
 
 	end
 
