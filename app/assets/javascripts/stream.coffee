@@ -3,7 +3,7 @@ $ ->
     # Initialize an OpenTok Session object
     session = TB.initSession(gon.opentok.sessionId);
 
-    videoOptions = {width: 640, height: 480}
+    videoOptions = {width: 640, height: 360}
   
     # Initialize a Publisher, and place it into the element with id="publisher"
     publisher = TB.initPublisher(gon.opentok.apiKey, 'publisher', videoOptions);

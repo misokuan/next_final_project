@@ -26,24 +26,17 @@ class CampaignsController < ApplicationController
 
 	end 
 
-	def edit 
+  def hashtags
+    tag = Tag.find_by(name: params[:name])
+    @campaign = tag.campaign
+  end
 
+	def edit 
 		@user = User.find_by(id: params[:user_id])
-    	@campaign = Campaign.find(params[:campaign])
+    @campaign = Campaign.find(params[:campaign])
 	end 
 
-	# def destroy
-
-	#   @campaign = Campaign.find(params[:campaign])
-	#   @campaign.destroy
-
-	# 	redirect_to user_profile_path
-	# end 
-
-	# <%= link_to 'Delete Campaign', user_campaign_path(user_id:params[:user_id], id:params[:id]), :method => :delete%>
-
 	def destroy
-	
       sign_out
       redirect_to home_path
     end
@@ -51,8 +44,8 @@ class CampaignsController < ApplicationController
 	def update 
 
 		params.permit!
-		@campaign = Campaign.find(params[:id])
 
+		@campaign = Campaign.find(params[:id])
 		@campaign.update(campaign_params)
 
 		redirect_to user_campaign_path
@@ -62,6 +55,6 @@ class CampaignsController < ApplicationController
 	private 
 
 	def campaign_params
-	    params.require(:campaign).permit(:title, :description, :rewards, :taggings, {campaign_images: []}, :cover_photo)
+	    params.require(:campaign).permit(:title, :description, :taggings, {campaign_images: []}, :cover_photo)
 	end 
 end

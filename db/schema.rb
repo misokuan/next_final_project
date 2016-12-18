@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216022809) do
+ActiveRecord::Schema.define(version: 20161216125207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,19 +29,27 @@ ActiveRecord::Schema.define(version: 20161216022809) do
     t.string   "title"
     t.string   "description"
     t.string   "rewards"
-    t.integer  "total_contributors"
-    t.integer  "total_amount_contribute"
+    t.integer  "total_contributors",      default: 0
+    t.integer  "total_amount_contribute", default: 0
     t.string   "cover_photo"
     t.string   "taggings"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "goal_id"
     t.json     "campaign_images"
   end
 
   add_index "campaigns", ["goal_id"], name: "index_campaigns_on_goal_id", using: :btree
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
+
+  create_table "campaigns_tags", id: false, force: :cascade do |t|
+    t.integer "campaign_id"
+    t.integer "tag_id"
+  end
+
+  add_index "campaigns_tags", ["campaign_id"], name: "index_campaigns_tags_on_campaign_id", using: :btree
+  add_index "campaigns_tags", ["tag_id"], name: "index_campaigns_tags_on_tag_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -82,10 +90,22 @@ ActiveRecord::Schema.define(version: 20161216022809) do
     t.string   "transaction_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "reward_id"
   end
 
   add_index "payments", ["campaign_id"], name: "index_payments_on_campaign_id", using: :btree
+  add_index "payments", ["reward_id"], name: "index_payments_on_reward_id", using: :btree
   add_index "payments", ["user_id"], name: "index_payments_on_user_id", using: :btree
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "campaign_id"
@@ -93,6 +113,7 @@ ActiveRecord::Schema.define(version: 20161216022809) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.json     "post_images"
+    t.string   "title"
   end
 
   add_index "posts", ["campaign_id"], name: "index_posts_on_campaign_id", using: :btree
@@ -133,6 +154,15 @@ ActiveRecord::Schema.define(version: 20161216022809) do
 
   add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
 
+  create_table "searches", force: :cascade do |t|
+    t.string   "words"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
   create_table "streams", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -144,6 +174,12 @@ ActiveRecord::Schema.define(version: 20161216022809) do
   end
 
   add_index "streams", ["user_id"], name: "index_streams_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -169,8 +205,11 @@ ActiveRecord::Schema.define(version: 20161216022809) do
   add_index "viewers", ["stream_id"], name: "index_viewers_on_stream_id", using: :btree
   add_index "viewers", ["user_id"], name: "index_viewers_on_user_id", using: :btree
 
+  add_foreign_key "campaigns_tags", "campaigns"
+  add_foreign_key "campaigns_tags", "tags"
   add_foreign_key "comments", "posts"
   add_foreign_key "rewards", "campaigns"
+  add_foreign_key "searches", "users"
   add_foreign_key "streams", "users"
   add_foreign_key "viewers", "streams"
   add_foreign_key "viewers", "users"

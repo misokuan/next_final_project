@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
 	def create
-
 		params.permit!
 		@post = Post.new(posts_params)
 		@post.campaign_id = params[:campaign_id]

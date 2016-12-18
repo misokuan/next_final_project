@@ -1,5 +1,3 @@
-
-
 <div id="feature_show_campaign">
 	<% x = @campaign %>
 	<h1><%= x.title %></h1>
@@ -14,5 +12,5 @@
 </div>
 
 		<%= link_to 'Go to Campaign Page', user_campaign_path(user_id: @user.id) %><br>
-		<%= link_to 'be a hero', new_user_campaign_be_hero_path(user_id: @current_user, campaign_id: @campaign.id) %>
+		<%= link_to 'be a hero', new_user_campaign_be_hero_path(user_id: @campaign.user.id, campaign_id: @campaign.id) %>
 

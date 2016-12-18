@@ -1,12 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="padding-top: 60px;">
+    <h1>Profile</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+    
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Personal info</h3>
+        
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Username:</label>
+            <div class="col-lg-8">
+            	<%= @profile.first_name %> <%= @profile.last_name %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Description:</label>
+            <div class="col-lg-8">
+              <%= @profile.description %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Date of Birth:</label>
+            <div class="col-lg-8">
+              <%= @profile.date_of_birth %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Address:</label>
+            <div class="col-lg-8">
+              <%= @profile.address %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">City:</label>
+            <div class="col-lg-8">
+             <%= @profile.city %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Category of Interest:</label>
+            <div class="col-md-8">
+              <%= @profile.interest %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Gender:</label>
+            <div class="col-md-8">
+              <%= @profile.gender %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Avatar</label>
+            <div class="col-md-8">
+              <%= image_tag @profile.avatar %>
+            </div>
+          </div>
+          <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
 
-<h1> This is the profile page </h1>
-
-<%= image_tag @profile.avatar.thumb %>
-<%= @profile.first_name %> <%= @profile.last_name %><br>
-<%= @profile.user_id %><br>
-<%= @profile.description %><br>
-<%= @profile.address %><br>
-
-<%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
-
+         
+        </form>
+      </div>
+  </div>
+</div>
+<hr>

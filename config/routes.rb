@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     resources :campaigns, only: [:new, :create, :show, :edit, :update] do 
       resources :be_hero, only: [:new, :create] 
 
-      resources :goals, only: [:edit, :update, :destroy]
-      resources :posts, only: [:create, :show, :edit, :update, :destroy] do
-        resources :comments, only: [:create, :edit, :update, :destroy]
+      resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
+        resources :comments, only: [:new, :create, :edit, :update, :destroy]
+
+      resources :goals, only: [:new, :create, :edit, :update, :destroy]
+      resources :rewards, only: [:new, :create, :edit, :update]
+
       end
       resources :rewards, only: [:new, :create, :edit, :update]
     end
@@ -19,10 +22,12 @@ Rails.application.routes.draw do
     end
   end
   resources :featured, only: [:index, :show]
-
+  resources :search, only: [:create, :index]
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+  get '/posts/hashtag/:name', to:'posts#hashtags'
+
   post 'tokens' => "tokens#create"
 
   get 'home' => 'home#index'

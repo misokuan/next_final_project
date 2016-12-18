@@ -1,17 +1,29 @@
-<h1> Our Featured Campaigns </h1>
+ <div id='feature-index' class="container">
+  <div class="page-header">
+    <h1 class="text-center">Featured Campaigns</h1>
+  </div>
+  <p class="lead text-center">Here are some awesome pawsome talents that would be even better with your support!</p>
+  <div class="container">
+  <div class="row stylish-panel">
+    <% @campaign.all.each do |x| %>
+      <div class="col-md-4">
+        <div id='hello'>
+          <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+          <h2><%= x.title %></h2>
+          <p>Description: <%= x.description %></p>
+          <p>Campaign ID:<%= x.id %></p>
+          <p>Campaign User:<%= x.user.email %></p>
+					<div id='hello2'>          
+          	<a href="/featured/<%= x.id %>" class="btn btn-primary" title="See more"> Preview Campaign</a>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>
 
-	<% @campaign.all.each do |x| %>
-	<div id="feature_campaign">
-		Title: <%= x.title %><br>
-		Description: <%= x.description %><br>
-		Rewards: <%= x.rewards %><br>
-		Contributors: <%= x.total_contributors %><br>
-		Total Amount Contributed: <%= x.total_amount_contribute %><br>
-		Image: <%= x.campaign_images %><br>
-		Taggings: <%= x.taggings %><br>
-		Goal: <%= x.goal.goal_per_month %><br>
-		Current Goal: <%= x.goal.current_per_month %><br>
-		<%= link_to 'Show Campaign', featured_path(id: x.id) %><br>
-		<br>
-	</div>
- 	<% end %>
+
+
+
+
+	
