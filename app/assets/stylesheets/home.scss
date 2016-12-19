@@ -116,6 +116,19 @@ aside {
 .controls_checkbox{
   margin-left: 20px
 }
+
+.sign-in-size {
+  width: 250px;
+}
+
+.btn-info {
+  background-color: #3b5998;
+}
+
+.modal-footer {
+  padding: 10px 0px 10px 10px;
+}
+
 header {
   position: relative;
   width: 100%;
@@ -225,6 +238,10 @@ header .header-content .header-content-inner p {
 .no-gutter > [class*='col-'] {
   padding-right: 0;
   padding-left: 0;
+}
+
+.form-float {
+  float: right;
 }
 
 //--------- BUTTONS ---------//

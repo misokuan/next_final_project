@@ -36,16 +36,12 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:campaign])
 	end 
 
-	def destroy
-      sign_out
-      redirect_to home_path
-    end
-
 	def update 
-		params.permit!
-		campaign = Campaign.find(params[:id])
 
-		campaign.update(campaign_params)
+		params.permit!
+
+		@campaign = Campaign.find(params[:id])
+		@campaign.update(campaign_params)
 
 		redirect_to user_campaign_path
 	end

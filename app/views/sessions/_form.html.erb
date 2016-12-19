@@ -1,23 +1,27 @@
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
+    <div class="form-float">
+    <%= form.text_field :email, type: 'email' %></div>
+  </div><br>
 
   <div class="password-field">
     <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div class="form-float">
+    <%= form.password_field :password %></div>
+  </div><br>
+      <div class="modal-footer">
+        <center>
+        <div class="submit-field">
+    <%= form.submit :class => "btn btn-primary btn-lg col-md-12 sign-in-size" %>
+        </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
 
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
+        <div class="other-links">
+        <%=link_to "Log In With FB", "/auth/facebook", :class => "btn btn-info btn-lg col-md-12 sign-in-size" %>
+        </div>
+        </center>
+  </div> 
 <% end %>
-<a href="/auth/facebook">Log In With Facebook</a>
+    <center>
+<%= link_to t(".forgot_password"), new_password_path %></center>
