@@ -63,15 +63,19 @@
              <td><%= f.text_field :city %></td>
            </tr>
 
-           <tr> <td>                         <b>Interest :</b></td>
-            <td><%= f.check_box :interest %><label>Music</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <%= f.check_box :interest %><label>Literature</label></td>
+           <tr> <td><b><%= f.label :Interest %><b>:</b></td>
+           <% num = 1 %>
+            <td><%= f.collection_check_boxes :interest, Interest.all, :id, :interest_name do |b| %>
+              <div class="collection-check-box">
+              <%= b.check_box %>
+              <%= Interest.find(num).interest_name.capitalize %>&nbsp;
+              <% num += 1 %>
+              </div>
+              <% end %>
+            </td>
             </tr>
-
-            <tr><td colspan="2"><%= f.submit "Edit Profile", class: "btn btn-primary btn-lg col-md-12 profile-size"%></td>
-              </tr>
-              </table>
+              </table><br>
+              <%= f.submit "Submit Changes", class: "btn btn-primary btn-lg col-md-12 profile-size"%>
               <% end %>
         </div>
             <br><br>

@@ -25,10 +25,13 @@
         <% end %>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
           <% if signed_in? %>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <% if current_user.profile.avatar.url != nil %>
+              <img src="<%= current_user.profile.avatar.url %>" class="avatar img-circle img-thumbnail" alt="avatar" width="25px" height="25px">
+              <% else %>
+              <img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="avatar img-circle img-thumbnail" alt="avatar" width="25px" height="25px"><% end %>&nbsp;&nbsp;<%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
             <li><a href="/users/<%=current_user.id%>/streams/new">Create New Stream</a></li>
