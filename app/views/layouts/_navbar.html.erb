@@ -36,7 +36,7 @@
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
             <li><a href="/users/<%=current_user.id%>/streams/new">Create New Stream</a></li>
             <% if current_user.campaign == nil %>
-              <li><a href="/users/<%=current_user.id%>/campaigns/new">Create New Campaign</a></li>
+              <li><a href="/campaign_setup/new"">Create New Campaign</a></li>
             <% else %>
               <li><a href="/users/<%=current_user.id%>/campaigns/<%=current_user.campaign.id%>">My Campaign</a></li>
             <% end %>
@@ -60,6 +60,41 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <br>
+        <div class='container'>
+          <div class="bs-example bs-example-tabs">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+                <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+              </ul>
+          </div>
+        </div>
+      <div class="container">
+        <div class="modal-body">
+          <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="signin">
+             <div id="clearance" class="sign-in">
+                <h2>Sign In</h2>
+                <%= render partial: '/sessions/form' %>
+             </div>
+          </div>
+          <div class="tab-pane fade" id="signup">
+              <div id="clearance" class="sign-up">
+                <h2>Sign Up</h2>
+                <% @user = User.new %>
+                <%= form_for @user do |form| %>
+                <%= render partial: 'clearance/users/form', object: form %>
+                  <div class="submit-field">
+                    <%= form.submit %>
+                  </div>
+                  <div class="other-links">
+                    <%= link_to t(".sign_in"), sign_in_path %>
+                  </div>
+                <% end %>
+              </div>
+          </div>
+          </div>
+        </div>
+
         <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active col-lg-6 col-sm-6"><a href="#signin" data-toggle="tab"><center>Sign In</center></a></li>
@@ -96,7 +131,6 @@
     </div>
   </div>
 </div>
-
 
     <div id="flash">
       <% flash.each do |key, value| %>

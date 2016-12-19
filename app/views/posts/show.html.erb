@@ -10,8 +10,7 @@
   <%= @post.body %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_user_campaign_post_path(user_id: params[:user_id], campaign_id: params[:campaign_id], id:@post) %> |
 <%= link_to 'Return to Campaign Page', user_campaign_path(user_id: params[:user_id], id: params[:campaign_id])%> <br>
 
 <% if current_user.id == @post.campaign.user_id %>

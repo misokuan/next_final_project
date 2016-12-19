@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
 	def destroy
 
 		@comment = Comment.find(params[:id])
-		byebug
+
 		@comment.destroy
 		redirect_to user_campaign_path(user: params[:user_id], campaign: params[:campaign_id])
 

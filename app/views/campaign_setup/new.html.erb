@@ -1,0 +1,167 @@
+<div class="container">
+	<div class="row">
+		<section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-heart"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-grain"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-usd"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <form action="/campaign_setup" method="post" >
+                <div class="tab-content"> 
+                    <!--step 1-->
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h3>Your Campaign Details</h3>
+                        <p>Step 1</p>
+                          <div class="form-group">
+                            <div>
+                              <label> Campaign Title</label><br>
+                              <input type="text" name="campaign_title">
+                            </div>
+                            <div>
+                              <label> Campaign Description</label><br>
+                              <input type="text" name="campaign_description">
+                            </div>
+                            <div>
+                              <label> Which Categories Should your campaign be included in</label><br>
+                              <input type="checkbox" name="campaign_tag_music" value="#music"> &nbsp Music &nbsp <span class="glyphicon glyphicon-music"></span><br>
+                              <input type="checkbox" name="campaign_tag_art" value="#art"> &nbsp Art &nbsp <span class="glyphicon glyphicon-pencil"></span><br>
+                              <input type="checkbox" name="campaign_tag_novels" value="#novels"> &nbsp Literature &nbsp <span class="glyphicon glyphicon-book"></span><br>
+                              <input type="checkbox" name="campaign_tag_tutorials" value="#tutorials"> &nbsp Tutorials  &nbsp <span class="glyphicon glyphicon-education"></span><br>
+                            </div>
+                          </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">Continue</button></li>
+                        </ul>
+                    </div>
+                    <!--step 2-->
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <h3>Your campaign need goals!</h3>
+                        <p>Step 2</p>
+                          <div>
+                            <label>Goal Title</label><br>
+                            <input type="text" name="goal_title">
+                          </div>
+                          <div>
+                            <label>Goal Description</label><br>
+                            <input type="text" name="goal_description">
+                          </div>
+                          <div>
+                            <label>Your Goal Per Month</label><br>
+                            $&nbsp <input type="number" name="goal_per_month">
+                          </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Continue</button></li>
+                        </ul>
+                    </div>
+                    <!--step 3-->
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3> </h3>
+                        <p>Your Campaign needs Rewards!</p>
+                        <div>
+                          <h4> Reward Alpha </h4>
+                            <label>Description</label>: <input type="text" name="reward_description"><br>
+                            <label>Subscription Reward : </label>&nbsp $<input type="number" name="reward_alpha">                            
+                        </div>
+                        <div>
+                          <h4> Reward Beta </h4>
+                            <label>Description</label>: <input type="text" name="reward_description2"><br>
+                            <label>Subscription Reward : </label>&nbsp $<input type="number" name="reward_beta">                            
+                        </div>
+                        <div>
+                          <h4> Reward Gamma </h4>
+                            <label>Description</label>: <input type="text" name="reward_description3"><br>
+                            <label>Subscription Reward : </label>&nbsp $<input type="number" name="reward_gamma">                            
+                        </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Continue</button></li>
+                        </ul>
+                    </div>
+                    <!--step 4-->
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete</h3>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <input type="hidden" name="user_id" value="<%= current_user.id%>">
+                            <input type="submit" value="Confirm and Submit">
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </section>
+   </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+      //Initialize tooltips
+      $('.nav-tabs > li a[title]').tooltip();
+      
+      //Wizard
+      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+          var $target = $(e.target);
+      
+          if ($target.parent().hasClass('disabled')) {
+              return false;
+          }
+      });
+
+      $(".next-step").click(function (e) {
+
+          var $active = $('.wizard .nav-tabs li.active');
+          $active.next().removeClass('disabled');
+          nextTab($active);
+
+      });
+      $(".prev-step").click(function (e) {
+
+          var $active = $('.wizard .nav-tabs li.active');
+          prevTab($active);
+
+      });
+  });
+
+  function nextTab(elem) {
+      $(elem).next().find('a[data-toggle="tab"]').click();
+  }
+  function prevTab(elem) {
+      $(elem).prev().find('a[data-toggle="tab"]').click();
+  }
+</script>
