@@ -5,6 +5,9 @@ gem 'pg_search'
 # Add Clearance
 gem 'clearance'
 
+# Add age checker
+gem 'birthday', '~> 0.3.0'
+
 #adding test gem
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
