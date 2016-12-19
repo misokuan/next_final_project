@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Profile view request", :type => :request do
 before(:each) do
     @user = User.create(email: "ejaytkm@gmail.com", password: "edelix123")
-    @profile = Profile.create(description: "Just a boy who loves the wind", first_name: 'ejay', last_name: 'tan', address: "12-8-19 Hartamas Regency", city: "Kuala Lumpur", interest: "gym, drink", gender: "male", user_id: @user.id)
+    @profile = Profile.create(description: "Just a boy who loves the wind", first_name: 'ejay', address: "12-8-19 Hartamas Regency", city: "Kuala Lumpur", interest: "gym, drink", gender: "male", user_id: @user.id)
   end
 
   it "Profile show get response page" do

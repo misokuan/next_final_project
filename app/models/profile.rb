@@ -6,8 +6,14 @@ class Profile < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 
 	def full_name
-	  if self.first_name != nil || self.last_name != nil
-		return "#{self.first_name.titleize} #{self.last_name.titleize}"
+	  a = self.first_name.titleize if self.first_name != nil
+	  b = self.last_name.titleize if self.last_name != nil
+	  if a != nil && b != nil
+	  	return "#{a} #{b}"
+	  elsif a != nil && b == nil
+	  	return "#{a}"
+	  elsif a == nil && b != nil
+	  	return "#{b}"
 	  else
 	  	return "N/A"
 	  end

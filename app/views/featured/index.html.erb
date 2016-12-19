@@ -34,7 +34,12 @@
                           <div class="text-center"><%= @campaign.first.title %></div>
                         </div>
                       </div>
-                            <% @campaign.all.each do |x| %>
+                            <% if @campaign.is_a? Array %>
+                            <% iterate_campaign = @campaign %>
+                            <% else %>
+                            <% iterate_campaign = @campaign.all %>
+                            <% end %>
+                            <% iterate_campaign.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
                           <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
@@ -67,7 +72,7 @@
                           <div class="text-center"><%= @campaign.first.title %></div>
                         </div>
                       </div>
-                            <% @campaign.all.each do |x| %>
+                            <% iterate_campaign.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
                           <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
@@ -100,7 +105,7 @@
                           <div class="text-center"><%= @campaign.first.title %></div>
                         </div>
                       </div>
-                            <% @campaign.all.each do |x| %>
+                            <% iterate_campaign.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
                           <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
@@ -133,7 +138,7 @@
                           <div class="text-center"><%= @campaign.first.title %></div>
                         </div>
                       </div>
-                            <% @campaign.all.each do |x| %>
+                            <% iterate_campaign.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
                           <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
