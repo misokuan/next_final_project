@@ -2,48 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.stylish-panel {
-    padding: 20px 0;
-    text-align: center;
-}
-.stylish-panel > div > div{
-    padding: 10px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    transition: 0.2s;
-}
-.stylish-panel > div:hover > div{
-    margin-top: -10px;
-    border: 1px solid rgb(200, 200, 200);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
-    background: rgba(200, 200, 200, 0.1);
-    transition: 0.5s;
+#feature-background { 
+    background-image: url('/assets/images/bg-2-full.jpg');
+    color: white;
 }
 
-.stylish-panel > div:hover img {
-    border-radius: 50%;
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
+
+.list-group {
+    color: black;
+    max-width: 300px;
 }
 
-#hello {
-	height: 450px;
-	position: relative;
+.col-md-9 .well {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(7, 12, 46, .3);
+    text-align: center
 }
 
-//add to push right. subtract to push left
-#hello2 {
-	position: absolute;
-	margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
-  bottom: 0;
+
+
+.carousel-inner.onebyone-carosel { margin: auto; width: 80%; }
+.onebyone-carosel .active.left { left: -33.33%; }
+.onebyone-carosel .active.right { left: 33.33%; }
+.onebyone-carosel .next { left: 33.33%; }
+.onebyone-carosel .prev { left: -33.33%; }
+
+.text-center {
+    color: white;
 }
 
-#feature-index { 
-	padding-top: 10px;
+#somewhereincode {
+    padding: 0px;
 }
+
+.row {
+    width: 100%;
+}
+

@@ -17,7 +17,8 @@
 
         </div>
     </div>
-    <% if @campaign.goal != nil %>
+    <!--fix this -->
+    <% if @campaign.goal == nil %> 
         <div class="col-lg-3 col-sm-3">
             <h2>Goals:</h2> 
             Title: <%= @campaign.goal.title %><br>
@@ -51,7 +52,7 @@ Amount: $<%= x.amount %><br>
 </div>
 <br>
 
-            <%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
+            
         </div>
         <div class="col-lg-12 col-sm-9">
     <% else %>
@@ -230,7 +231,8 @@ Total Amount Contributed: $<%= @campaign.total_amount_contribute %><br>
 Campaign Taggings: <%= render_with_hashtags(@campaign.taggings) if @campaign.taggings != nil %><br>
 User ID: <%= @campaign.user_id %><br>
 
-<%= link_to 'Edit Campaign Details', edit_user_campaign_path(campaign: @campaign)%>
+<%= link_to 'Edit Campaign Details', edit_user_campaign_path(campaign: @campaign)%><br>
+<%= link_to 'be a hero', new_user_campaign_be_hero_path(campaign_id: @campaign.id) %>
         </div>
         <div class="tab-pane fade in" id="tab2">
           
@@ -333,4 +335,3 @@ User ID: <%= @campaign.user_id %><br>
   
   <!-- Template JS -->
   <script type="text/javascript" src="assets/js/main.js"></script>
-

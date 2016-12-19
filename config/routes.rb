@@ -12,9 +12,11 @@ Rails.application.routes.draw do
 
       resources :goals, only: [:new, :create, :edit, :update, :destroy]
       resources :rewards, only: [:new, :create, :edit, :update]
+      resources :rewards, only: [:new, :create, :edit, :update]
+      resources :posts, only: [:new, :create, :edit, :update, :destroy] do
+        resources :comments, only: [:new, :create, :edit, :update, :destroy]
 
       end
-      resources :rewards, only: [:new, :create, :edit, :update]
     end
     resources :profiles, only: [:show, :edit, :update]
     resources :streams, only: [:new, :create, :show, :delete] do
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
   end
   resources :featured, only: [:index, :show]
   resources :search, only: [:create, :index]
+  resources :campaign_setup, only: [:new, :create]
+
   # You can have the root of your site routed with "root"
   match '/signout', :to => 'sessions#destroy', via: :delete
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
