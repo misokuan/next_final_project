@@ -16,7 +16,7 @@ class BeHeroController < ApplicationController
 			run_updates_on_campaigns
 		end
 		flash[:alert] = "Your payment went through succesfully!"
-		redirect_to featured_index_path
+		redirect_to home_path
 	end
 
 
@@ -49,7 +49,7 @@ private
 
 	def run_updates_on_campaigns
 		if @campaign.total_amount_contribute.nil?
-			@campaign.update(total_amount_contribute: @result.transaction_amount)
+			@campaign.update(total_amount_contribute: @result.transaction.amount)
 		else
 			@campaign.update(total_amount_contribute: @campaign.total_amount_contribute + @result.transaction.amount)
 		end

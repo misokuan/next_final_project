@@ -10,13 +10,15 @@ class Campaign < ActiveRecord::Base
   multisearchable :against => [:title, :description, :taggings]
 
   after_create do
-    campaign = Campaign.find_by(id: self.id)
-    #find the campaign ID itself
-    hashtags = self.taggings.scan(/#\w+/)
-    #scans campaign body that starts with #
-    hashtags.uniq.map do |hashtag|
-      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
-      campaign.tags << tag
+    if self.taggings.nil? == false
+      campaign = Campaign.find_by(id: self.id)
+      #find the campaign ID itself
+      hashtags = self.taggings.scan(/#\w+/)
+      #scans campaign body that starts with #
+      hashtags.uniq.map do |hashtag|
+        tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+        campaign.tags << tag
+      end
     end
   end
 
