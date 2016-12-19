@@ -1,3 +1,41 @@
 .profile-size {
-  width: 215px;
+}
+
+.edit-profile {
+	background: rgba(204, 204, 204, 0.85);
+	width: 50%;
+	-webkit-box-shadow: -7px 0px 10px 0px #202123, 7px 0px 10px 0px #202123;
+-moz-box-shadow: -7px 0px 10px 0px #202123, 7px 0px 10px 0px #202123;
+box-shadow: -7px 0px 10px 0px #202123, 7px 0px 10px 0px #202123;
+}
+
+.profile-background {
+	background-image: url('http://i452.photobucket.com/albums/qq244/missnpk93/hzgs56ze49s-anthony-delanoix_zpsntk4lmwx.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: scroll;
+	-webkit-background-size: 100% auto;
+	-moz-background-size: 100% auto;
+	-o-background-size: 100% auto;
+	background-size: cover;
+	background-position: 0px -200px;
+	overflow: visible;
+	background-attachment: fixed;
+}
+
+.form-color label {
+	color: #282828;
+}
+
+label {
+	color: #282828;
+}
+
+tr {
+height:auto;
+}
+
+td {
+height:50px;
+width: 150px;
 }

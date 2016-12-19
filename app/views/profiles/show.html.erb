@@ -1,11 +1,13 @@
-<div class="container" style="padding-top: 60px;">
-    <h1>Profile</h1>
-  	<hr>
+<div class="container" style="padding-top: 50px;">
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+        <% if @profile.avatar.url == nil %>
+            <img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="avatar img-circle img-thumbnail" alt="avatar" width="250px" height="250px">
+            <% else %>
+            <img src="<%= @profile.avatar.url %>" class="avatar img-circle img-thumbnail" alt="avatar" width="250px" height="150px">
+            <% end %>
     
         </div>
       </div>
@@ -60,12 +62,6 @@
             <label class="col-md-3 control-label">Gender:</label>
             <div class="col-md-8">
               <%= @profile.gender %>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Avatar</label>
-            <div class="col-md-8">
-              <%= image_tag @profile.avatar %>
             </div>
           </div>
           <%= link_to 'edit', edit_user_profile_path(profile_id: @profile)%>
