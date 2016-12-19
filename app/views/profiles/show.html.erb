@@ -26,20 +26,20 @@
           <br>
             <h1><%= @profile.full_name %></h1><br>
             <%= @profile.description %><br><br>
-          <b>Gender:</b><br>
-            <%= @profile.gender.capitalize %><br><br>
-          <b>Age:</b> <br>
-            <%= @profile.date_of_birth_age %> years old<br><br>
-          <b>Address:</b><br>
-             <%= @profile.address %><br><br>
-          <b>City:</b><br>
-             <%= @profile.city %><br><br>
-          <b>Interests</b><br>
+          <b>Gender:</b><br><% if @profile.gender != nil %>
+            <%= @profile.gender.capitalize %><% else %>N/A<% end %><br><br>
+          <b>Age:</b> <br><% if @profile.date_of_birth != nil %>
+            <%= @profile.date_of_birth_age %> years old<% else %>N/A<% end %><br><br>
+          <b>Address:</b><br><% if @profile.address != nil %>
+             <%= @profile.address %><% else %>N/A<% end %><br><br>
+          <b>City:</b><br><% if @profile.city != nil %>
+             <%= @profile.city %><% else %>N/A<% end %><br><br>
+          <b>Interests</b><br><% if @profile.interest.length != 0 %>
             <% @profile.interest.each do |int| %>
               <% if int.to_i > 0 %>
               #<%= Interest.find(int.to_i).interest_name.capitalize %>&nbsp;&nbsp;
               <% end %>
-              <% end %><br><br>
+              <% end %><% else %>N/A<% end %><br><br>
             <% if current_user == @profile.user %>
             <%= button_to "Edit Profile", edit_user_profile_path(@profile.user, @profile.id), method: :get, class: "btn btn-primary btn-lg col-md-12 profile-size"%>
             <% end %>
