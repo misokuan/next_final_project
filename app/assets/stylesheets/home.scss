@@ -64,7 +64,7 @@ aside {
 
 //------- NAVBAR ------//
 .navbar-default {
-  background-color: #212F3C !important;
+  background-color: white !important;
   border: none;
   border-color: transparent;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -74,42 +74,11 @@ aside {
   height:53px;
 }
 
-.navbar-default .navbar-header .navbar-brand {
-  color: #FFFFFF;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+.navbar-default a {
+  color: black;
 }
-.navbar-default .navbar-header .navbar-brand:hover,
-.navbar-default .navbar-header .navbar-brand:focus {
-  color: #eb3812;
-}
-.navbar-default .navbar-header .navbar-toggle {
-  font-weight: 700;
-  font-size: 12px;
-  color: #222222;
-  text-transform: uppercase;
-}
-.navbar-default .nav > li > a,
-.navbar-default .nav > li > a:focus {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 13px;
-  color: #222222;
-}
-.navbar-default .nav > li > a:hover,
-.navbar-default .nav > li > a:focus:hover {
-  color: #D83333;
-}
-.navbar-default .nav > li.active > a,
-.navbar-default .nav > li.active > a:focus {
-  color: white !important;
-  background-color: #253F59 ; 
-}
-.navbar-default .nav > li.active > a:hover,
-.navbar-default .nav > li.active > a:focus:hover {
-  background-color: #253F59 ;
-}p
+ 
+
 
 
 //-------MODAL SIGN IN/SIGN UP ---------//

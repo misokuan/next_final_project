@@ -1,55 +1,70 @@
-<div id='feature-background'>
-  <div id='feature-index'>
-    <div class='row'>
-      <div class="col-md-3">
-        <div class="page-header">
-          <h3> &nbsp Categories </h3>
-        </div>
-          <div class="container">
-              <ul class="list-group">
-                <li class="list-group-item">Music</li>
-                <li class="list-group-item">Art</li>
-                <li class="list-group-item">Novels</li>
-                <li class="list-group-item">Tutorials</li>
-              </ul>
-          </div>
-      </div>
 
-      <div class="col-md-9">
+
+<div id='feature-background'>
+  <div id='feature-index-background'>
+    <h1> Featured Campaigns </h1>
+  </div>
+  <div class="container">
         <div class="page-header">
           <h3> Our Featured </h3>
         </div>
           <!--First Category-->
-          <h4> Music </h4>
+        
           <div class="row">
+          <h4> Music </h4>
             <div class="span12">
               <div class="well">
+                
                 <div id="myCarousel" class="carousel fdi-Carousel slide">
                   <!-- Carousel items -->
-                  <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                    <div class="carousel-inner onebyone-carosel">                              
-                      <div class="item active">
+                  <div class="carousel fdi-Carousel slide art" id="eventCarousel1" data-interval="0">
+                    <div class="carousel-inner onebyone-carosel"> 
+                    <% @campaign_novels = Tag.where(name: "novels").first.campaigns %>                             
+                      <div class="item active">           
                         <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= @campaign.first.title %></div>
+                          <div id='music-section'> <!--that divs -->
+                            <a href="#"><img src="/assets/images/email_banner.jpg" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= @campaign_novels.first.title %></div></h5>
+                            <div class="text-left"><%= @campaign_novels.first.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End" %></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= @campaign_novels.first.total_contributors %></div>
+                              <div class="col-md-4"><%= @campaign_novels.first.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                            <% if @campaign.is_a? Array %>
-                            <% iterate_campaign = @campaign %>
-                            <% else %>
-                            <% iterate_campaign = @campaign.all %>
-                            <% end %>
-                            <% iterate_campaign.each do |x| %>
+                            <% @campaign_novels.each do |x| %>
                       <div class="item">
-                        <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= x.title %></div>
+                        <div  class="col-md-4">
+                          <div id="music-section">
+                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= x.title %></div></h5>
+                            <div class="text-left"><%= x.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End"%></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= x.total_contributors %></div>
+                              <div class="col-md-4"><%= x.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                             <% end %>     
+                            <% end %>     
                     </div>
-                    <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
-                    <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
+                    <a class="left carousel-control" href="#eventCarousel1" data-slide="prev"></a>
+                    <a class="right carousel-control" href="#eventCarousel1" data-slide="next"></a>
                   </div>
                         <!--/carousel-inner-->
                 </div><!--/myCarousel-->
@@ -93,26 +108,56 @@
           <!--Third Category -->
           <h4> Novels </h4>
           <div class="row">
+          <h4> Novel </h4>
             <div class="span12">
               <div class="well">
                 <div id="myCarousel" class="carousel fdi-Carousel slide">
                   <!-- Carousel items -->
                   <div class="carousel fdi-Carousel slide music" id="eventCarousel3" data-interval="0">
-                    <div class="carousel-inner onebyone-carosel">                              
+                    <div class="carousel-inner onebyone-carosel"> 
+                    <% @campaign_music = Tag.where(name: "music").first.campaigns %>                             
                       <div class="item active">
-                        <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= @campaign.first.title %></div>
+                        <div class="col-md-4"> <!--that divs -->
+                          <div id='music-section'>
+                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= @campaign_music.first.title %></div></h5>
+                            <div class="text-left"><%= @campaign_music.first.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End" %></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= @campaign_music.first.total_contributors %></div>
+                              <div class="col-md-4"><%= @campaign_music.first.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                            <% iterate_campaign.each do |x| %>
+                            <% @campaign_music.each do |x| %>
                       <div class="item">
-                        <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= x.title %></div>
+                        <div id="music-section" class="col-md-4">
+                          <div id='music-section'>
+                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= x.title %></div></h5>
+                            <div class="text-left"><%= x.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End"%></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= x.total_contributors %></div>
+                              <div class="col-md-4"><%= x.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                             <% end %>     
+                            <% end %>     
                     </div>
                     <a class="left carousel-control" href="#eventCarousel3" data-slide="prev"></a>
                     <a class="right carousel-control" href="#eventCarousel3" data-slide="next"></a>
@@ -123,42 +168,74 @@
             </div>
           </div>
 
-          <!--Fourth Category-->
-          <h4> Tutorials </h4>
+          <!--Third Category -->
+          
           <div class="row">
+          <h4> Tutorials </h4>
             <div class="span12">
               <div class="well">
                 <div id="myCarousel" class="carousel fdi-Carousel slide">
                   <!-- Carousel items -->
-                  <div class="carousel fdi-Carousel slide music" id="eventCarousel4" data-interval="0">
-                    <div class="carousel-inner onebyone-carosel">                              
+                  <div class="carousel fdi-Carousel slide music" id="eventCarousel2" data-interval="0">
+                    <div class="carousel-inner onebyone-carosel"> 
+                    <% @campaign_tutorials = Tag.where(name: "tutorials").first.campaigns %>                             
                       <div class="item active">
-                        <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= @campaign.first.title %></div>
+                        <div class="col-md-4"> <!--that divs -->
+                          <div id='music-section'>
+                            <a href="#"><img src="/assets/images/demoavatar.jpg" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= @campaign_tutorials.first.title %></div></h5>
+                            <div class="text-left"><%= @campaign_tutorials.first.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End" %></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= @campaign_tutorials.first.total_contributors %></div>
+                              <div class="col-md-4"><%= @campaign_tutorials.first.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                            <% iterate_campaign.each do |x| %>
+                            <% @campaign_tutorials.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
-                          <div class="text-center"><%= x.title %></div>
+                          <div id='music-section'>
+                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <h5><div class="text-left"><%= x.title %></div></h5>
+                            <div class="text-left"><%= x.description %></div>
+                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="row">
+                              <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
+                              <div class="col-md-4"><%= "Amount" %></div>
+                              <div class="col-md-4"><%= "Date End"%></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4"><%= x.total_contributors %></div>
+                              <div class="col-md-4"><%= x.total_amount_contribute %></div>
+                              <div class="col-md-4"><%= "2/2017" %></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                             <% end %>     
+                            <% end %>     
                     </div>
-                    <a class="left carousel-control" href="#eventCarousel4" data-slide="prev"></a>
-                    <a class="right carousel-control" href="#eventCarousel4" data-slide="next"></a>
+                    <a class="left carousel-control" href="#eventCarousel2" data-slide="prev"></a>
+                    <a class="right carousel-control" href="#eventCarousel2" data-slide="next"></a>
                   </div>
                         <!--/carousel-inner-->
                 </div><!--/myCarousel-->
               </div><!--/well-->
             </div>
           </div>
-      </div> <!--section-col-md-9-->
-    </div><!--row-page-content-->
-  </div>
+
+          <!--Fourth Category-->
 </div>
+
+      
+
 <div id="test1" onclick="window.location.hash='back'; ">
 
 <script>
@@ -182,4 +259,6 @@
       });
   });
 </script>
+
+
 
