@@ -79,7 +79,40 @@
           </div>
           
           <!--Second Category-->
-          
+          <h4> Art </h4>
+          <div class="row">
+            <div class="span12">
+              <div class="well">
+                <div id="myCarousel" class="carousel fdi-Carousel slide">
+                  <!-- Carousel items -->
+                  <div class="carousel fdi-Carousel slide music" id="eventCarousel2" data-interval="0">
+                    <div class="carousel-inner onebyone-carosel">                              
+                      <div class="item active">
+                        <div class="col-md-4">
+                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                          <div class="text-center"><%= @campaign.first.title %></div>
+                        </div>
+                      </div>
+                            <% iterate_campaign.each do |x| %>
+                      <div class="item">
+                        <div class="col-md-4">
+                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                          <div class="text-center"><%= x.title %></div>
+                        </div>
+                      </div>
+                             <% end %>     
+                    </div>
+                    <a class="left carousel-control" href="#eventCarousel2" data-slide="prev"></a>
+                    <a class="right carousel-control" href="#eventCarousel2" data-slide="next"></a>
+                  </div>
+                        <!--/carousel-inner-->
+                </div><!--/myCarousel-->
+              </div><!--/well-->
+            </div>
+          </div>
+
+          <!--Third Category -->
+          <h4> Novels </h4>
           <div class="row">
           <h4> Novel </h4>
             <div class="span12">

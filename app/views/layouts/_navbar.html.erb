@@ -26,6 +26,7 @@
         <li class="dropdown">
           <% if signed_in? %>
           <a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style=" color: black"><%= current_user.email %> <span class="caret"></span></a>
             <% if current_user.profile.avatar.url != nil %>
               <img src="<%= current_user.profile.avatar.url %>" class="avatar img-circle img-thumbnail" alt="avatar" width="25px" height="25px">
               <% else %>
@@ -45,6 +46,7 @@
           </ul>
           <% else %>
            <a style=" color: black;" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
+           <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
           <% end %>
         </li>
       </ul>
@@ -67,6 +69,9 @@
               <div class="tab-pane fade active in" id="signin">
                 <div id="clearance" class="sign-in">
                     <%= render partial: '/sessions/form' %>
+                </div>
+              </div>
+                <div class="tab-pane fade" id="signup">
                 </div>
               </div>
                 <div class="tab-pane fade" id="signup">

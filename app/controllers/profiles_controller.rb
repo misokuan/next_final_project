@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
   def update
     params.permit!
     @profile = Profile.find(params[:id])
-    @profile.update(profile_params)
+    @profile.update(params[:profile])
     redirect_to user_profile_path(:user_id => @profile.user_id, :id => @profile.id)
     # respond_to do |format|
     #   if @profile.update(profile_params)

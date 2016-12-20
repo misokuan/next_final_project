@@ -14,7 +14,7 @@ before(:each) do
   it "Profile shows the users details" do
     get "/users/#{@user.id}/profiles/#{@profile.id}"
     expect(response.body).to include("Just a boy who loves the wind")
-    expect(response.body).to include("ejay")
+    expect(response.body).to include("Ejay")
     expect(response.body).to include("12-8-19 Hartamas Regency")
   end
 
