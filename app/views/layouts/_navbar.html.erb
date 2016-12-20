@@ -8,13 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Music & Arts </a>
+      <a class="navbar-brand" href="/"> ArtInAsia </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/featured">Featured</a></li>
+        <li><a href="/featured" style="color: black;">Featured</a></li>
       </ul>
       <% @search = Search.new %>
       <%= form_for @search, :html => {:class => "navbar-form navbar-left"}, :url => search_index_path do |f| %>
@@ -28,7 +28,7 @@
       
         <li class="dropdown">
           <% if signed_in? %>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style=" color: black"><%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
             <li><a href="/users/<%=current_user.id%>/streams/new">Create New Stream</a></li>
