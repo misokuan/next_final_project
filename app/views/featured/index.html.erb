@@ -23,7 +23,7 @@
                       <div class="item active">           
                         <div class="col-md-4">
                           <div id='music-section'> <!--that divs -->
-                            <a href="#"><img src="/assets/images/email_banner.jpg" class="img-responsive center-block"></a>
+                            <a href="/users/<%= @campaign_novels.first.user.id %>/campaigns/<%= @campaign_novels.first.id %>"><img src="/assets/images/email_banner.jpg" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_novels.first.title %></div></h5>
                             <div class="text-left"><%= @campaign_novels.first.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
@@ -44,7 +44,7 @@
                       <div class="item">
                         <div  class="col-md-4">
                           <div id="music-section">
-                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <a href="/users/<%= x.user.id %>/campaigns/<%= x.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
@@ -83,14 +83,14 @@
                     <div class="carousel-inner onebyone-carosel">                              
                       <div class="item active">
                         <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                          <a href="/users/<%= @campaign_arts.first.user.id %>/campaigns/<%= @campaign_arts.first.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                           <div class="text-center"><%= @campaign.first.title %></div>
                         </div>
                       </div>
                             <% iterate_campaign.each do |x| %>
                       <div class="item">
                         <div class="col-md-4">
-                          <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                          <a href="/users/<%= x.user.id %>/campaigns/<%= x.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                           <div class="text-center"><%= x.title %></div>
                         </div>
                       </div>
@@ -119,7 +119,7 @@
                       <div class="item active">
                         <div class="col-md-4"> <!--that divs -->
                           <div id='music-section'>
-                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <a href="/users/<%= @campaign_music.first.user.id %>/campaigns/<%= @campaign_music.first.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_music.first.title %></div></h5>
                             <div class="text-left"><%= @campaign_music.first.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
@@ -140,7 +140,7 @@
                       <div class="item">
                         <div id="music-section" class="col-md-4">
                           <div id='music-section'>
-                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <a href="/users/<%= x.user.id %>/campaigns/<%= x.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
@@ -182,7 +182,7 @@
                       <div class="item active">
                         <div class="col-md-4"> <!--that divs -->
                           <div id='music-section'>
-                            <a href="#"><img src="/assets/images/demoavatar.jpg" class="img-responsive center-block"></a>
+                            <a href="/users/<%= @campaign_tutorials.first.user.id %>/campaigns/<%= @campaign_tutorials.first.id %>"><img src="/assets/images/demoavatar.jpg" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_tutorials.first.title %></div></h5>
                             <div class="text-left"><%= @campaign_tutorials.first.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
@@ -203,7 +203,7 @@
                       <div class="item">
                         <div class="col-md-4">
                           <div id='music-section'>
-                            <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
+                            <a href="/users/<%= x.user.id %>/campaigns/<%= x.id %>"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
                             <div class="text-left"><%= "Insert Progress Bar Here" %></div>
