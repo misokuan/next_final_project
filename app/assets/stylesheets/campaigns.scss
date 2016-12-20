@@ -1,6 +1,9 @@
 // Place all the styles related to the Campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.well {
+    margin-top: -10px;
+}
 
 .card {
     margin-top: 20px;
@@ -25,18 +28,15 @@
     background-color: rgba(255, 255, 255, 1);
 }
 .card.hovercard .card-background {
-    height: 170px;
+    height: 200px;
 }
 .card-background img {
-    -webkit-filter: blur(25px);
-    -moz-filter: blur(25px);
-    -o-filter: blur(25px);
-    -ms-filter: blur(25px);
-    filter: blur(25px);
+    background-size: 100%;
+    -webkit-background-size: 100% auto;
     margin-left: -100px;
     margin-top: -200px;
     min-width: 130%;
-    width: 100%
+    width: 100%;
 }
 .card.hovercard .useravatar {
     position: absolute;
@@ -46,12 +46,12 @@
 }
 .card.hovercard .useravatar img {
 
-    width: 150px;
-    height:150px;
+    width:  200px;
+    height: 200px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 5px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
 }
 .card.hovercard .card-info {
     position: absolute;
@@ -267,13 +267,14 @@
 
 /*-Section Blocks-*/
 .section-block {
-    background-color: #212F3C;
+    background-color: #102E43;
     border-radius:4px;
     padding: 30px;
     margin-bottom:30px;
+    padding-top: none;
 }
 .section-block.summary {
-    background-color: #212F3C;
+    background-color: #102E43;
 }
 .section-block.summary h1 {
     color: #fff;
@@ -300,6 +301,7 @@
 
 /*-Main Content-*/
 .main-content {
+    padding: none;
 }
 
 /*-Profile Summary-*/
@@ -410,12 +412,12 @@
     padding-right:5px;
 }
 .progress-bar {
-    background-color: #B4B4B4;
+    background-color: #BA000D;
     box-shadow:none;
 }
 .progress {
     height: 30px;
-    background-color: #ECEBEB;
+    background-color: #FFFFFF  ;
     box-shadow:none;
     margin: 10px 0px 10px 0px;
 }
@@ -638,11 +640,29 @@
 }
 
 .col-md-8{
-    padding: 10px;
+    padding-top: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 /*-Overrides-*/
 .btn, input{
     outline:none;
     }
+
+#campaign-background-image {
+    background-image: url('http://i452.photobucket.com/albums/qq244/missnpk93/hzgs56ze49s-anthony-delanoix_zpsntk4lmwx.jpg');
+   
+    background-position: center top;
+    background-attachment: scroll;
+    -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: cover;
+    background-position: 0px -200px;
+    overflow: visible;
+    background-attachment: fixed;
+    padding-bottom: none;
+}
 

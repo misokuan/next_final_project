@@ -8,13 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"> ArtInAsia </a>
+      <a class="navbar-brand" href="/">ARTASIA</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/featured" style="color: black;">Featured</a></li>
+        <li><a style="color: black" href="/featured">Featured</a></li>
       </ul>
       <% @search = Search.new %>
       <%= form_for @search, :html => {:class => "navbar-form navbar-left"}, :url => search_index_path do |f| %>
@@ -23,12 +22,14 @@
         </div>
         <%= f.submit "Search", class: "btn btn-default" %>
         <% end %>
-
       <ul class="nav navbar-nav navbar-right">
-      
         <li class="dropdown">
           <% if signed_in? %>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style=" color: black"><%= current_user.email %> <span class="caret"></span></a>
+          <a style="color: black;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <% if current_user.profile.avatar.url != nil %>
+              <img src="<%= current_user.profile.avatar.url %>" class="avatar img-circle img-thumbnail" alt="avatar" width="25px" height="25px">
+              <% else %>
+              <img src="http://i452.photobucket.com/albums/qq244/missnpk93/defaultuser_zpsnsqypglf.png" class="avatar img-circle img-thumbnail" alt="avatar" width="25px" height="25px"><% end %>&nbsp;&nbsp;<%= current_user.email %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/users/<%=current_user.id%>/profiles/<%=current_user.profile.id%>">My Profile</a></li>
             <li><a href="/users/<%=current_user.id%>/streams/new">Create New Stream</a></li>
@@ -38,101 +39,59 @@
               <li><a href="/users/<%=current_user.id%>/campaigns/<%=current_user.campaign.id%>">My Campaign</a></li>
             <% end %>
             <li><a href="#">Settings</a></li>
-
             <li><a href="#"> FAQ </a></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
           </ul>
           <% else %>
-           <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a>
+           <a style=" color: black;" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
           <% end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
    <!-- Modal -->
 <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <br>
-        <div class='container'>
           <div class="bs-example bs-example-tabs">
-              <ul id="myTab" class="nav nav-tabs">
-                <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-                <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
-              </ul>
-          </div>
-        </div>
-      <div class="container">
-        <div class="modal-body">
-          <div id="myTabContent" class="tab-content">
-          <div class="tab-pane fade active in" id="signin">
-             <div id="clearance" class="sign-in">
-                <h2>Sign In</h2>
-                <%= render partial: '/sessions/form' %>
-             </div>
-          </div>
-          <div class="tab-pane fade" id="signup">
-              <div id="clearance" class="sign-up">
-                <h2>Sign Up</h2>
-                <% @user = User.new %>
-                <%= form_for @user do |form| %>
-                <%= render partial: 'clearance/users/form', object: form %>
-                  <div class="submit-field">
-                    <%= form.submit %>
-                  </div>
-                  <div class="other-links">
-                    <%= link_to t(".sign_in"), sign_in_path %>
-                  </div>
-                <% end %>
-              </div>
-          </div>
-          </div>
-        </div>
-
-        <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active col-lg-6 col-sm-6"><a href="#signin" data-toggle="tab"><center>Sign In</center></a></li>
               <li class="col-lg-6 col-sm-6"><a href="#signup" data-toggle="tab"><center>Register</center></a></li>
             </ul>
-        </div>
-      <div class="modal-body">
-        <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active in" id="signin">
-           <div id="clearance" class="sign-in">
-                <%= render partial: '/sessions/form' %>
-
-           </div>
-        </div>
-        <div class="tab-pane fade" id="signup">
-
-            <div id="clearance" class="sign-up">
-              <% @user = User.new %>
-              <%= form_for @user do |form| %>
-                <%= render partial: 'clearance/users/form', object: form %>
-
-                <div class="submit-field">
-                      <div class="modal-footer">
-      <center>
-                  <%= form.submit :class => "btn btn-primary btn-lg col-md-12 sign-in-size" %>
-                          </center>
-      </div>
+          </div>
+          <div class="modal-body">
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="signin">
+                <div id="clearance" class="sign-in">
+                    <%= render partial: '/sessions/form' %>
                 </div>
-              <% end %>
+              </div>
+                <div class="tab-pane fade" id="signup">
+                  <div id="clearance" class="sign-up">
+                      <% @user = User.new %>
+                      <%= form_for @user do |form| %>
+                      <%= render partial: 'clearance/users/form', object: form %>
+                    <div class="submit-field">
+                      <div class="modal-footer">
+                          <center>
+                          <%= form.submit :class => "btn btn-primary btn-lg col-md-12 sign-in-size" %>
+                          </center>
+                      </div>
+                    </div>
+                    <% end %>
+                </div>
+              </div>
             </div>
-      </div>
-    </div>
-      </div>
-    </div>
+          </div>
   </div>
 </div>
-
+</div>
     <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>
     </div>
-
 <!-- Post in line 45 -->

@@ -25,8 +25,11 @@
                           <div id='music-section'> <!--that divs -->
                             <a href="#"><img src="/assets/images/email_banner.jpg" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_novels.first.title %></div></h5>
-                            <div class="text-left"><%= @campaign_novels.first.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="text-left"><%= @campaign_novels.first.description %></div>                            
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (@campaign_novels.first.total_amount_contribute.to_d / @campaign_novels.first.goal.goal_per_month.to_d )*100 %>%;"> <%= (@campaign_novels.first.total_amount_contribute.to_d / @campaign_novels.first.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
@@ -47,7 +50,10 @@
                             <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (@campaign_novels.first.total_amount_contribute.to_d / @campaign_novels.first.goal.goal_per_month.to_d )*100 %>%;"> <%= (@campaign_novels.first.total_amount_contribute.to_d / @campaign_novels.first.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
@@ -89,7 +95,10 @@
                             <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_music.first.title %></div></h5>
                             <div class="text-left"><%= @campaign_music.first.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                             <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (@campaign_music.first.total_amount_contribute.to_d / @campaign_music.first.goal.goal_per_month.to_d )*100 %>%;"> <%= (@campaign_music.first.total_amount_contribute.to_d / @campaign_music.first.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
@@ -110,7 +119,10 @@
                             <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                             <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (x.total_amount_contribute.to_d / x.goal.goal_per_month.to_d )*100 %>%;"> <%= (x.total_amount_contribute.to_d / x.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
@@ -152,7 +164,10 @@
                             <a href="#"><img src="/assets/images/demoavatar.jpg" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= @campaign_tutorials.first.title %></div></h5>
                             <div class="text-left"><%= @campaign_tutorials.first.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (@campaign_tutorials.first.total_amount_contribute.to_d / @campaign_tutorials.first.goal.goal_per_month.to_d )*100 %>%;"> <%= (@campaign_tutorials.first.total_amount_contribute.to_d / @campaign_tutorials.first.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
@@ -173,7 +188,10 @@
                             <a href="#"><img src="http://lorempixel.com/200/200/abstract/1/" class="img-responsive center-block"></a>
                             <h5><div class="text-left"><%= x.title %></div></h5>
                             <div class="text-left"><%= x.description %></div>
-                            <div class="text-left"><%= "Insert Progress Bar Here" %></div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <%=  (x.total_amount_contribute.to_d / x.goal.goal_per_month.to_d )*100 %>%;"> <%= (x.total_amount_contribute.to_d / x.goal.goal_per_month.to_d )*100 %>%
+                                </div>
+                              </div>
                             <div class="row">
                               <div class="col-md-4"><span class="glyphicon glyphicon-user"></span></div>
                               <div class="col-md-4"><%= "Amount" %></div>
