@@ -47,7 +47,6 @@
           </ul>
           <% else %>
            <a style=" color: black;" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
-           <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In / Register</a>
           <% end %>
         </li>
       </ul>
@@ -73,10 +72,7 @@
                 </div>
               </div>
                 <div class="tab-pane fade" id="signup">
-                </div>
-              </div>
-                <div class="tab-pane fade" id="signup">
-                  <div id="clearance" class="sign-up">
+                <div id="clearance" class="sign-up">
                       <% @user = User.new %>
                       <%= form_for @user do |form| %>
                       <%= render partial: 'clearance/users/form', object: form %>
@@ -89,6 +85,7 @@
                     </div>
                     <% end %>
                 </div>
+              </div>
               </div>
             </div>
           </div>

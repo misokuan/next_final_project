@@ -34,12 +34,7 @@
              <%= @profile.address %><% else %>N/A<% end %><br><br>
           <b>City:</b><br><% if @profile.city != nil %>
              <%= @profile.city %><% else %>N/A<% end %><br><br>
-          <b>Interests</b><br><% if @profile.interest.length != 0 %>
-            <% @profile.interest.each do |int| %>
-              <% if int.to_i > 0 %>
-              #<%= Interest.find(int.to_i).interest_name.capitalize %>&nbsp;&nbsp;
-              <% end %>
-              <% end %><% else %>N/A<% end %><br><br>
+          
             <% if current_user == @profile.user %>
             <%= button_to "Edit Profile", edit_user_profile_path(@profile.user, @profile.id), method: :get, class: "btn btn-primary btn-lg col-md-12 profile-size"%>
             <% end %>
