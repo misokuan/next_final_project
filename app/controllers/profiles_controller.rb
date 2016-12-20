@@ -62,10 +62,6 @@ class ProfilesController < ApplicationController
 
   # DELETE /profiles/1
   # DELETE /profiles/1.json
-  def destroy
-    sign_out
-    redirect_to home_path
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

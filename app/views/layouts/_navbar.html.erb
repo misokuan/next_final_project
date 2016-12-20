@@ -21,7 +21,7 @@
       <div class="form-group">
         <%= f.text_field :words, class: "form-control" %>
         </div>
-        <%= f.submit "Search Tag", class: "btn btn-default" %>
+        <%= f.submit "Search", class: "btn btn-default" %>
         <% end %>
 
       <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
 
             <li><a href="#"> FAQ </a></li>
             <li role="separator" class="divider"></li>
-            <li><a data-method="delete" href="<%= sign_out_path %>">Sign Out</a></li>
+            <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
           </ul>
           <% else %>
            <a href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</a>
@@ -91,11 +91,39 @@
           </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
+
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active col-lg-6 col-sm-6"><a href="#signin" data-toggle="tab"><center>Sign In</center></a></li>
+              <li class="col-lg-6 col-sm-6"><a href="#signup" data-toggle="tab"><center>Register</center></a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="signin">
+           <div id="clearance" class="sign-in">
+                <%= render partial: '/sessions/form' %>
+
+           </div>
+        </div>
+        <div class="tab-pane fade" id="signup">
+
+            <div id="clearance" class="sign-up">
+              <% @user = User.new %>
+              <%= form_for @user do |form| %>
+                <%= render partial: 'clearance/users/form', object: form %>
+
+                <div class="submit-field">
+                      <div class="modal-footer">
       <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </center>
+                  <%= form.submit :class => "btn btn-primary btn-lg col-md-12 sign-in-size" %>
+                          </center>
+      </div>
+                </div>
+              <% end %>
+            </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>

@@ -6,11 +6,16 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new] do 
     resources :campaigns, only: [:new, :create, :show, :edit, :update] do 
       resources :be_hero, only: [:new, :create] 
+
+      resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
+        resources :comments, only: [:new, :create, :edit, :update, :destroy]
+
       resources :goals, only: [:new, :create, :edit, :update, :destroy]
       resources :rewards, only: [:new, :create, :edit, :update]
       resources :rewards, only: [:new, :create, :edit, :update]
       resources :posts, only: [:new, :create, :edit, :update, :destroy] do
         resources :comments, only: [:new, :create, :edit, :update, :destroy]
+
       end
     end
     resources :profiles, only: [:show, :edit, :update]

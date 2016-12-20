@@ -10,8 +10,7 @@
   <%= @post.body %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_user_campaign_post_path(user_id: params[:user_id], campaign_id: params[:campaign_id], id:@post) %> |
 <%= link_to 'Return to Campaign Page', user_campaign_path(user_id: params[:user_id], id: params[:campaign_id])%> <br>
 
 <% if current_user.id == @post.campaign.user_id %>
@@ -20,6 +19,23 @@
 <% end %> <br>
 
 <%= @post.body %> <br>
+
+<%= form_for(@comment, :url => user_campaign_post_comments_path(user_id: current_user.id, campaign_id: params[:campaign_id], post_id: @post.id)) do |f| %>
+	<p>
+        <%= f.text_field :body %>
+        <%= f.submit %>
+    </p>
+<% end %>
+
+<% @post.comments.each do |c|%> 
+	<%= c.body %> <%= c.user.email %><br>
+	<% if current_user.id = c.user_id %>
+	  <%= link_to 'Edit Comment', edit_user_campaign_post_comment_path(user_id: c.user_id, post_id: c.post_id, id: c.id)%>
+      <%= link_to 'Delete Comment', user_campaign_post_comment_path(user_id: c.user_id, post_id: c.post_id, id: c.id), :method => :delete, data: { confirm: "Are you sure to delete this post?" } %>
+      <br>
+    <% end %>
+
+<% end %>
 
 <% image_num = 0 %>
   <% while image_num <= @post.post_images.length - 1 %>      
